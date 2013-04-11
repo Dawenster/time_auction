@@ -1,0 +1,5 @@
+<%= form_for :bid, url: bids_path, remote: true do |f| %>
+  <%= f.text_field :time %>
+  <%= f.text_field :charity, placeholder: "Charity (optional)" %>
+  <%= f.submit %>
+<% end %>
