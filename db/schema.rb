@@ -13,16 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130411211637) do
 
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.integer  "time_donated",    :default => 0
-    t.string   "password_digest"
-    t.boolean  "admin",           :default => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-
   create_table "auctions", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -39,4 +29,16 @@ ActiveRecord::Schema.define(:version => 20130411211637) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "time_donated",    :default => 0
+    t.string   "password_digest"
+    t.boolean  "admin",           :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
 end
