@@ -1,14 +1,23 @@
+require 'date'
+
 class Auction < ActiveRecord::Base
   attr_accessible :category_id, :deadline, :description, :end_date, :title, :winner_id
   
   has_and_belongs_to_many :users
 
+  before_validation :create_end_date, :create_deadline, :on => :create
+
   validates_presence_of :title, :description, :end_date, :category_id, :deadline
 
-  before_save :create_deadline
+  
+
+  def create_end_date
+    self.end_date = DateTime.now + 14 #TODO: Hardcoded end date atm
+  end
+
 
   def create_deadline
-    self.deadline = self.end_date.month + 1 
+    self.deadline = self.end_date >> 1 #TODO: Hardcoded deadline atm
   end
-  
+
 end
