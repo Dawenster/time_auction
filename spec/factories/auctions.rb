@@ -7,6 +7,5 @@ FactoryGirl.define do
     end_date "2013-04-11 11:28:22"
     category_id 1
     winner_id 1
-    deadline "2013-04-11 11:28:22"
   end
 end

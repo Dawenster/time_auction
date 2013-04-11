@@ -5,15 +5,9 @@ class Auction < ActiveRecord::Base
   
   has_and_belongs_to_many :users
 
-  before_validation :create_end_date, :create_deadline, :on => :create
+  before_validation :create_deadline, :on => :create
 
   validates_presence_of :title, :description, :end_date, :category_id, :deadline
-
-  
-
-  def create_end_date
-    self.end_date = DateTime.now + 14 #TODO: Hardcoded end date atm
-  end
 
 
   def create_deadline

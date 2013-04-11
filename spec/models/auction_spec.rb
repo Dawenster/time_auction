@@ -7,5 +7,10 @@ describe Auction do
   it { should validate_presence_of(:category_id)}
   it { should validate_presence_of(:deadline)}
 
-  
+  it "should create an end date" do
+    Auction.create
+  end
+
+  it "should create a deadline based on the end date" do
+  end
 end
