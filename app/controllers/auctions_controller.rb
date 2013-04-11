@@ -1,4 +1,4 @@
-class AuctionsController < ActionController::Base
+class AuctionsController < ApplicationController
   def new
     @auction = Auction.new
     @categories = Category.all
