@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :auction do
     title "MyString"
     description "MyText"
-    end_date "2013-04-11 11:28:22"
+    end_date DateTime.now + 14
     category_id 1
     winner_id 1
   end
