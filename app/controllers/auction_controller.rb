@@ -1,5 +1,6 @@
 class AuctionController < ActionController::Base
   def new
+    @auction = Auction.new
   end
 
   def create
@@ -7,7 +8,7 @@ class AuctionController < ActionController::Base
 
   def show
   end
-  
+
   def edit
   end
 
