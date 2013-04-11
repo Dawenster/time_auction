@@ -9,10 +9,6 @@ describe Auction do
 
   let!(:auction) {FactoryGirl.create(:auction)}
 
-  # it "should create a deadline" do 
-        
-  # end
-
   it "should create a deadline based on the end date" do
     auction.deadline.should_not be_blank
   end
