@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
-
   attr_accessible :name, :email, :phone, :password, :time_donated, :admin
+  has_many :bids
+  has_many :auctions, through: :bids
 
   validates :name, :presence => true
   validates :email, :presence => true

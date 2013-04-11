@@ -2,8 +2,9 @@ require 'date'
 
 class Auction < ActiveRecord::Base
   attr_accessible :category_id, :description, :end_date, :title, :winner_id
+  has_many :bids
+  has_many :users, through: :bids
   
-  has_and_belongs_to_many :users
   belongs_to :category
 
   validates :title, :description, :end_date, :category_id, :deadline, :presence => true

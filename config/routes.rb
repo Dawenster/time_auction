@@ -1,10 +1,9 @@
 TimeAuction::Application.routes.draw do
+  root to: 'user#new'
   resources :users, :except => :index
   resources :sessions, :only =>[:new, :create, :destroy]
-  root to: 'user#new'
-
+  resources :bids, :only => [:create]
   resources :auctions
-
   resources :categories, :only => [:index, :show]
   # The priority is based upon order of creation:
   # first created -> highest priority.
