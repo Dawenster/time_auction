@@ -2,6 +2,7 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
-  <%= f.text_area :text %>
-  
-  <%= f. %>
+  <%= f.text_area :description %>
+  <%= f.select :category_id, @categories.collect {|cat| [ cat.name, cat.id ] } %>
+  <%= f.submit "Create Auction" %>
+<% end %>
