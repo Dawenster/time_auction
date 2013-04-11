@@ -9,6 +9,7 @@ gem 'pg'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'jquery-rails'
+gem 'selenium-webdriver'
 
 
 # Gems used only for assets and not required
