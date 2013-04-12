@@ -1,11 +1,50 @@
-nav {
-  background-color: #B4E0E8;
+/*
+cool blue:
+#383838
+light blue:
+#B4E0E8
+glow blue:
+#7C9A9F;
+red:
+#F20505
+pale:
+#F2F2F2
+
+*/
+
+.navbar-inner {
+  background: #B4E0E8;
 }
 
 #logo {
+  float: left;
+  margin-top: 5px;
+  margin-right: 0px;
+  font-size: 2.6em;
+  letter-spacing: -1px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+#logo_text a {
+  padding-top: 0px;
+  padding-left: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #7C9A9F;
   font-family: 'Oleo Script';
-  font-size: 3.6em;
-  color: #383838;
-  text-shadow: 2px 2px 2px #000;
-  letter-spacing: -2px;
+  font-size: 3.4em;
+  letter-spacing: -3px;
+  text-shadow: 2px 2px 2px #383838;
+}
+
+.nav li a {
+  
+}
+
+.navbar .nav > li > a {
+  padding: 20px 15px 20px;
 }
