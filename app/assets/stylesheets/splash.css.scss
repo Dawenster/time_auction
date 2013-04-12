@@ -1,1 +1,25 @@
-/*<div class="">*/
+.splashImage {
+  background: url('../assets/front-page6.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+  height: 640px;
+}
+
+.splashBox {
+  width: 300px;
+  border-radius: 10px;
+  opacity: 0.5;
+  background-color: #a2a2a2;
+  position: relative;
+  top: 25%;
+  left: 30%;
+}
+
+.splashBoxContent {
+  color: #fff;
+  opacity: 1;
+}
