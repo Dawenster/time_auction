@@ -1,1 +1,46 @@
-/*<div class="">*/
+.splashImage {
+  padding-top: 60px;
+  background: url('../assets/front-page.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+  height: 640px;
+}
+
+.splashBox {
+  width: 525px;
+  height: 225px;
+  border-radius: 10px;
+  opacity: 0.4;
+  background-color: #000;
+  position: absolute;
+  top: 25%;
+  left: 22%;
+}
+
+.splashBoxContent { 
+  padding: 24px;
+  color: #fff;
+  position: absolute;
+  top: 25%;
+  left: 22%;
+  z-index: 10;
+  font-family: 'PT Sans Narrow';
+  & h1{
+    margin-bottom: 25px;
+    margin-top: 0px;
+    font-size: 3em;
+   }
+  & p {
+    font-size: 24px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+  & a {
+    font-family: 'aller_lightregular';
+  }
+}

@@ -19,41 +19,71 @@ tittilliubolder: titilliumtext25l600_wt
 tittillium: titilliumtext25l250_wt;
 */
 
+ul.nav {
+  margin: 0px auto;
+  width: 1040px;
+}
 
-.navbar-inner {
-  background: #B4E0E8;
+nav {
+  float: right;
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+
+  background: #b4e0e8; /* Old browsers */
+  background: -moz-linear-gradient(top, #b4e0e8 0%, #8bacb2 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4e0e8), color-stop(100%,#8bacb2)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #b4e0e8 0%,#8bacb2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #b4e0e8 0%,#8bacb2 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #b4e0e8 0%,#8bacb2 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #b4e0e8 0%,#8bacb2 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e0e8', endColorstr='#8bacb2',GradientType=0 ); /* IE6-9 */
+}
+
+nav a {
+  color: #383838;
+  text-decoration: none;
+}
+
+nav a:hover {
+  height: 100%;
+  color: #000;
+  background: #b4dfe5; /* Old browsers */
+  background: -moz-linear-gradient(top, #b4dfe5 0%, #82a1a5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4dfe5), color-stop(100%,#82a1a5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #b4dfe5 0%,#82a1a5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #b4dfe5 0%,#82a1a5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #b4dfe5 0%,#82a1a5 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #b4dfe5 0%,#82a1a5 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4dfe5', endColorstr='#82a1a5',GradientType=0 ); /* IE6-9 */
+}
+
+.nav li {
+  font-family: 'titilliumtext25l600_wt';
+  font-size: 1.4em;
+  display: inline;
+  height: 60px;
+}
+
+.nav li, .nav li a {
+  font-family: 'titilliumtext25l600_wt';
+  font-size: 20px;
+  padding: 15px;
+  line-height: 60px;
+  display: inline;
 }
 
 #logo {
   float: left;
-  margin-top: 5px;
-  margin-right: 0px;
-  font-size: 2.6em;
-  letter-spacing: -1px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    text-decoration:none;
-  }
-}
-
-#logo_text a {
-  padding-top: 0px;
-  padding-left: 0px;
-  margin-top: 10px;
-  margin-bottom: 0px;
-  color: #7C9A9F;
+  padding-left: 30px;
+  padding-top: 20px;
+  color: #F2F2F2;
   font-family: 'Oleo Script';
-  font-size: 3.4em;
+  font-size: 3.6em;
   letter-spacing: -3px;
   text-shadow: 2px 2px 2px #383838;
-}
-
-.nav li a {
-  font-family: 'titilliumtext25l600_wt';
-  font-size: 20px;
-}
-
-.navbar .nav > li > a {
-  padding: 20px 15px 20px;
+  & a:hover{
+    text-decoration: none;
+  }
 }
