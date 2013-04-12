@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome, #{@user.name}!"
       sign_in(@user)
-      redirect_to user_path(@user)
+      redirect_back_or(user_path(@user))
     else
       flash.now[:errors] = @user.errors.full_messages.join(', ')
       render 'new'

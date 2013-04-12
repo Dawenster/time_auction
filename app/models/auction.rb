@@ -15,9 +15,14 @@ class Auction < ActiveRecord::Base
   validates :end_date, :presence => true
   validates :category_id, :presence => true
   
+  def highest_bid
+    self.bids.last 
+  end
 
   private
+
   def create_deadline
     self.deadline = self.end_date + 1.month if self.end_date
   end
+
 end

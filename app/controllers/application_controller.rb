@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  include SessionsHelper  
+
   def sign_in(user)
     session[:id] = user.id
   end

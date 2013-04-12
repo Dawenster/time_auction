@@ -2,9 +2,21 @@
 
 <%= @auction.description %></br>
 <%= convert_date(@auction.end_date) %></br>
-<%= convert_date(@auction.deadline) %>
+<%= convert_date(@auction.deadline) %></br>
+<div class="highest-bid">
+  Current highest bid: <span><%= @auction.highest_bid.time %></span> hours by <%= @auction.highest_bid.user.name %>
+</div>
+<div class='you-highest <%= 'hide' unless @auction.highest_bid.user == current_user %>'>
+  <h2>You are the highest bidder!</h2>
+</div>
 
-<button class="btn btn-primary btn-large bid-button">Bid</button>
+<div>
+  <% if current_user %>
+    <button class="btn btn-primary btn-large bid-button">Bid</button>
+  <% else %>
+    <a href='<%= new_user_path %>'><button class="btn btn-primary btn-large">Sign in to bid</button></a>
+  <% end %>
+</div>
 
 <%= render 'bids/form' %>
 <table class="bids">

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
       flash[:success] = "Welcome back, #{@user.name}!"
       sign_in(@user)
-      redirect_to user_path(@user)
+      redirect_back_or @user
     else
       flash.now[:error] = "Invalid email or password"
       render "new"
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:id)
+    reset_session
     redirect_to new_session_path
   end
 end

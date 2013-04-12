@@ -21,6 +21,7 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
+    store_location
   end
 
   def edit
