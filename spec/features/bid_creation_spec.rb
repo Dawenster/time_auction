@@ -4,9 +4,9 @@ describe "Bid creation" do
 
   subject { page }
 
-  describe "creating a bid" do
-    let(:auction) { FactoryGirl.create(:auction) }
-    let(:user) { FactoryGirl.create(:user) }
+  describe "creating a bid", :js => true do
+    let!(:auction) { FactoryGirl.create(:auction) }
+    let!(:user) { FactoryGirl.create(:user) }
 
     before do
       login_user(user)
@@ -26,5 +26,15 @@ describe "Bid creation" do
         }.to change(Bid, :count).by(1)
       end
     end
+
+    # context "with invalid info" do
+
+    #   it "saves a new bid" do
+    #     expect { 
+    #       click_button "Save Bid"
+    #       visit auction_path(auction)
+    #     }.not_to change(Bid, :count)
+    #   end
+    # end
   end
 end
