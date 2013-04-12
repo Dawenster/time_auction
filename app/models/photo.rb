@@ -4,4 +4,5 @@ class Photo < ActiveRecord::Base
   belongs_to :auction
   belongs_to :imageable, polymorphic: true
 
+  mount_uploader :url, PhotoUploader
 end
