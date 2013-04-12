@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.create(name: "People")
-Category.create(name: "Products")
-Category.create(name: "Experiences")
+require 'faker'
+
+cat1 = Category.create(name: "People")
+cat2 = Category.create(name: "Products")
+cat3 = Category.create(name: "Experiences")
+
+Auction.create!(title: "First Auction", description: Faker::Lorem.paragraph, end_date: (Time.now + 2.weeks), category_id: cat1.id)
+Auction.create!(title: "Second Auction", description: Faker::Lorem.paragraph, end_date: (Time.now + 2.weeks), category_id: cat2.id)
+Auction.create!(title: "Third Auction", description: Faker::Lorem.paragraph, end_date: (Time.now + 2.weeks), category_id: cat3.id)

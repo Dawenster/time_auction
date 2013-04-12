@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       sign_in(@user)
       flash[:success] = "Welcome back, #{@user.name}!"
+      sign_in(@user)
       redirect_to user_path(@user)
     else
       flash.now[:error] = "Invalid email or password"
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:id)
+    session.delete(:id)
     redirect_to new_session_path
   end
 end

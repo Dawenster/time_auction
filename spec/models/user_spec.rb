@@ -7,6 +7,7 @@ describe User do
   it { should respond_to :email }
   it { should validate_uniqueness_of :email }
   it { should respond_to :phone }
+  it { should have_many(:auctions).through(:bids) }
 
   describe "valid email" do
     let(:user) { FactoryGirl.create(:user) }

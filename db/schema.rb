@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411211637) do
+ActiveRecord::Schema.define(:version => 20130411224532) do
 
   create_table "auctions", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(:version => 20130411211637) do
     t.datetime "deadline"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "bids", :force => true do |t|
+    t.integer  "time"
+    t.integer  "user_id"
+    t.integer  "auction_id"
+    t.integer  "charity_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "categories", :force => true do |t|
