@@ -7,12 +7,17 @@ class Auction < ActiveRecord::Base
   
   belongs_to :category
 
-  validates :title, :description, :end_date, :category_id, :deadline, :presence => true
-  before_validation :create_deadline, :on => :create
+  before_validation :create_deadline
 
+  validates :deadline, :presence => true
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :end_date, :presence => true
+  validates :category_id, :presence => true
+  
 
+  private
   def create_deadline
-    self.update_attribute(:deadline, DateTime.now + 15)#self.end_date >> 1 #TODO: Hardcoded deadline atm
+    self.deadline = self.end_date >> 1
   end
-
 end
