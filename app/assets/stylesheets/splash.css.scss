@@ -1,4 +1,5 @@
 .splashImage {
+  padding-top: 60px;
   background: url('../assets/front-page.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -37,9 +38,7 @@
     font-size: 24px;
     line-height: 16px;
     letter-spacing: 1px;
-    &:nth-child(3){
     margin-bottom: 30px;
-    }
   }
   & a {
     font-family: 'aller_lightregular';
