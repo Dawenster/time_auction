@@ -13,6 +13,7 @@ $(document).ready(function() {
   });
   
   $('#new_bid_form').on('ajax:error', function(event, data) {
+    $('#flash').text("");
     $('#flash').append(data.responseText);
   });
 });
