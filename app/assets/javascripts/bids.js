@@ -7,12 +7,7 @@ $(document).ready(function() {
     $('.bids tr:nth-child(2)').before(data);
   });
   
-  $('#new_bid_form').on('ajax:fail', function(event, data) {
-    debugger
-    $('#flash').append(data.errors);
+  $('#new_bid_form').on('ajax:error', function(event, data) {
+    $('#flash').append(data.responseText);
   });
-  
-  var displayBid = function(event, data) {
-    $("SOMETHING").html(data);
-  }
 });
