@@ -12,6 +12,14 @@ pale:
 
 */
 
+/*
+aller: aller_lightregular;
+titilliumboldest: titilliumtext25l800_wt;
+tittilliubolder: titilliumtext25l600_wt
+tittillium: titilliumtext25l250_wt;
+*/
+
+
 .navbar-inner {
   background: #B4E0E8;
 }
@@ -42,7 +50,8 @@ pale:
 }
 
 .nav li a {
-  
+  font-family: 'titilliumtext25l600_wt';
+  font-size: 20px;
 }
 
 .navbar .nav > li > a {
