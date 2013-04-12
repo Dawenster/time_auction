@@ -6,13 +6,17 @@ class BidsController < ApplicationController
   def create
     @bid = Bid.new params[:bid]
     @bid.user = current_user
-    @last_bid = @bid.auction.bids.last
-
-    if @bid.time == nil
+    if @bid.auction.bids == []
+      @last_bid_time = 0
+    else
+      @last_bid_time = @bid.auction.bids.last.time
+    end
+    
+    if @bid.time.nil?
       render text: 'Please enter the number of hours you wish to bid!', status: :unprocessable_entity and return
     end
 
-    if @bid.time < @last_bid.time
+    if @bid.time <= @last_bid_time
       render text: 'Your bid must be higher than the current highest bid!', status: :unprocessable_entity and return
     end
 

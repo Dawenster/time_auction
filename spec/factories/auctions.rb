@@ -8,6 +8,5 @@ FactoryGirl.define do
     title "MyString"
     description "MyText"
     category_id 1
-    winner_id 1
   end
 end
