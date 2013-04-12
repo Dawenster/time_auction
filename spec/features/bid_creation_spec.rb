@@ -6,6 +6,7 @@ describe "Bid creation" do
 
   describe "creating a bid", :js => true do
     let!(:auction) { FactoryGirl.create(:auction) }
+    let!(:bid) { FactoryGirl.create(:bid) }
     let!(:user) { FactoryGirl.create(:user) }
 
     before do
