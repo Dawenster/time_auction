@@ -3,11 +3,11 @@ require 'date'
 
 FactoryGirl.define do
   factory :auction do
+    end_date DateTime.now
+    deadline DateTime.now + 30
     title "MyString"
     description "MyText"
-    end_date DateTime.now
     category_id 1
     winner_id 1
-    deadline DateTime.now + 30
   end
 end

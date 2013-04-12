@@ -3,6 +3,9 @@
   <%= f.text_field :title %>
   <%= f.label :description %>
   <%= f.text_area :description %>
+  <%= f.label :category %>
   <%= f.select :category_id, @categories.collect {|cat| [ cat.name, cat.id ] } %>
+  <%= f.label :end_date %>
+  <%= f.datetime_select :end_date  %>
   <%= f.submit "Create Auction" %>
 <% end %>
