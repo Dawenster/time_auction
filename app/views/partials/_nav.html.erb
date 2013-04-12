@@ -1,0 +1,26 @@
+<header class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <div id="logo_text">
+        <%= link_to "TimeAuction", root_path, id: 'logo' %>
+      </div>
+      <nav>
+        <ul class="nav pull-right">
+            <li><%= link_to "About", about_path %></li>
+          <% if current_user %>
+            <% if current_user.admin %>
+              <li><%= link_to "Add Auction", # %></li>
+            <% else %>
+              <li><%= link_to "Browse Auctions", categories_path %></li>
+            <% end %>
+            <li>Welcome, <%= link_to current_user.name.split(" ").first, user_path(current_user) %></li>
+            <li><%= link_to "Logout", session_path(session[:id]), :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Login", new_session_path %></li>
+            <li><%= link_to "Sign up", new_user_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
