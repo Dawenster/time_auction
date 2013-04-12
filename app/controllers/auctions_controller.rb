@@ -12,8 +12,6 @@ class AuctionsController < ApplicationController
     @auction.category_id = params[:auction][:category_id]
     @auction.end_date = params[:auction][:end_date]
 
-    Auction.create(title: "Asdfasdf", description: "Asdfasdfasdfdsf", category_id: 1, end_date: "2013-05-10".to_datetime)
-
     if @auction.save
       redirect_to auction_path @auction
     else

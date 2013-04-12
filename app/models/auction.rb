@@ -18,6 +18,6 @@ class Auction < ActiveRecord::Base
 
   private
   def create_deadline
-    self.deadline = self.end_date + 1.month
+    self.deadline = self.end_date + 1.month if self.end_date
   end
 end
