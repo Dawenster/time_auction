@@ -10,16 +10,38 @@
 }
 
 .splashBox {
-  width: 300px;
+  width: 525px;
+  height: 225px;
   border-radius: 10px;
-  opacity: 0.5;
-  background-color: #a2a2a2;
-  position: relative;
+  opacity: 0.4;
+  background-color: #000;
+  position: absolute;
   top: 25%;
-  left: 30%;
+  left: 22%;
 }
 
-.splashBoxContent {
+.splashBoxContent { 
+  padding: 24px;
   color: #fff;
-  opacity: 1;
+  position: absolute;
+  top: 25%;
+  left: 22%;
+  z-index: 10;
+  font-family: 'PT Sans Narrow';
+  & h1{
+    margin-bottom: 25px;
+    margin-top: 0px;
+    font-size: 3em;
+   }
+  & p {
+    font-size: 24px;
+    line-height: 16px;
+    letter-spacing: 1px;
+    &:nth-child(3){
+    margin-bottom: 30px;
+    }
+  }
+  & a {
+    font-family: 'aller_lightregular';
+  }
 }
