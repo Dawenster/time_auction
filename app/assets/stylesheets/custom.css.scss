@@ -1,4 +1,12 @@
+/*
+aller: aller_lightregular;
+titilliumboldest: titilliumtext25l800_wt;
+tittilliubolder: titilliumtext25l600_wt
+tittillium: titilliumtext25l250_wt;
+*/
+
 @import "bootstrap";
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -8,4 +16,9 @@
 
 body {
   background-color: #F2F2F2;
+  font-family: 'aller_lightregular';
+}
+
+h1 {
+  font-family: 'titilliumtext25l600_wt';
 }
