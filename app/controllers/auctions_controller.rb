@@ -6,9 +6,6 @@ class AuctionsController < ApplicationController
 
   def create
     params[:auction][:end_date] = [params[:auction]["end_date(1i)"],"-", params[:auction]["end_date(2i)"],"-", params[:auction]["end_date(3i)"]].join.to_datetime
-    puts "^" * 100
-    puts params[:auction][:end_date]
-    puts "&" * 100
     @auction = Auction.new
     @auction.title = params[:auction][:title]
     @auction.description = params[:auction][:description]

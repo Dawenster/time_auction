@@ -13,9 +13,7 @@ describe "UserLogins" do
 
     context "with valid input" do
       before do
-        fill_in :session_email, with: user.email
-        fill_in :session_password, with: user.password
-        click_button 'Log in'
+        login_user(user)
       end
 
       it "should create user" do
