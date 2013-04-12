@@ -10,6 +10,8 @@ gem 'bootstrap-sass'
 gem 'bcrypt-ruby'
 gem 'jquery-rails'
 gem 'selenium-webdriver'
+gem 'cloudinary'
+gem 'carrierwave'
 
 
 # Gems used only for assets and not required
