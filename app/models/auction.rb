@@ -4,7 +4,8 @@ class Auction < ActiveRecord::Base
   attr_accessible :category_id, :description, :end_date, :title, :winner_id
   has_many :bids
   has_many :users, through: :bids
-  
+  has_many :photos, :as => :imageable
+
   belongs_to :category
 
   before_validation :create_deadline
