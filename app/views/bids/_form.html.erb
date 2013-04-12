@@ -1,0 +1,6 @@
+<%= form_for :bid, url: bids_path, remote: true, html: { id: "new_bid_form", class: "hide" } do |f| %>
+  <%= f.text_field :time, placeholder: "Hours" %>
+  <%= f.text_field :charity_id, placeholder: "Charity (optional)" %>
+  <%= f.hidden_field :auction_id, value: @auction.id %>
+  <%= f.submit %>
+<% end %>

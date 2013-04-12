@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def sign_in(user)
-    cookies[:id] = user.id
+    session[:id] = user.id
   end
 
   def current_user
-    @current_user ||= User.find(cookies[:id]) if cookies[:id]
+    @current_user ||= User.find(session[:id]) if session[:id]
   end
 
   helper_method :current_user

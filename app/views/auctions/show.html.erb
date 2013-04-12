@@ -4,4 +4,11 @@
 <%= convert_date(@auction.end_date) %></br>
 <%= convert_date(@auction.deadline) %>
 
-<!-- TODO link to make bid -->
+<button class="btn btn-primary btn-large bid-button">Bid</button>
+
+<%= render 'bids/form' %>
+<div class="bids">
+  <% @auction.bids.each do |bid| %>
+    <%= render 'bids/bid', :bid => bid %>  
+  <% end %>  
+</div>

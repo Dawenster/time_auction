@@ -6,5 +6,7 @@ class Bid < ActiveRecord::Base
   belongs_to :user
   belongs_to :auction
 
-
+  def to_json
+    { name: self.user.name }.to_json
+  end
 end
