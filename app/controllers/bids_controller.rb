@@ -11,8 +11,7 @@ class BidsController < ApplicationController
     if @bid.save
       render text: render_to_string(partial: 'bid', locals: { bid: @bid })
     else
-      render json: { error: @bid.errors.full_messages.join(',') }, status: :unprocessable_entity
-
+      render json: { errors: @bid.errors.full_messages.join(',') }, status: :unprocessable_entity
     end
   end
 end

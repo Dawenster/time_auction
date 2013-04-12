@@ -1,1 +1,5 @@
-<%= bid.time %> Hours
+<tr>
+  <td><%= bid.user.name %></td> 
+  <td><%= bid.time %></td>
+  <td><%= time_ago_in_words(bid.created_at) %> ago</td>
+</tr>
