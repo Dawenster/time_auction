@@ -6,7 +6,7 @@
   <%= f.text_area :description %>
   <%= f.label :category %>
   <%= f.select :category_id, @categories.collect {|cat| [ cat.name, cat.id ] } %>
-  <%= f.label :end_date %>
+  <%= f.label :end_date, "Auction End Date" %>
   <%= f.datetime_select :end_date  %>
-  <%= f.submit "Create Auction" %>
+  <%= f.submit "Create Auction", :class => "btn btn-primary btn-large" %>
 <% end %>
