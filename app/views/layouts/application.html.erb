@@ -12,13 +12,14 @@
 
 <%= render 'partials/nav' %>
 
+<div class="container">
   <div id="flash">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
     <% end %>
   </div>
 
-<div class="container">
+
   <%= yield %>
 </div>
 
