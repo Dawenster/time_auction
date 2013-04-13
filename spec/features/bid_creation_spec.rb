@@ -6,13 +6,12 @@ describe "Bid creation" do
 
   describe "creating a bid", :js => true do
     let!(:auction) { FactoryGirl.create(:auction) }
-    # let!(:bid) { FactoryGirl.create(:bid) }
     let!(:user) { FactoryGirl.create(:user) }
 
     before do
       login_user(user)
       visit auction_path(auction)
-      click_button "Bid"
+      click_button "Bid hours"
     end
 
     it { should have_selector('#new_bid_form') }
@@ -22,7 +21,7 @@ describe "Bid creation" do
       it "saves a new bid" do
         expect { 
           fill_in :bid_time, with: "7"
-          click_button "Save Bid"
+          click_button "Submit Bid"
           visit root_path
         }.to change(Bid, :count).by(1)
       end
@@ -32,13 +31,13 @@ describe "Bid creation" do
 
       it "does not save a new bid" do
         expect { 
-          click_button "Save Bid"
+          click_button "Submit Bid"
           visit auction_path(auction)
         }.not_to change(Bid, :count)
       end
 
       it "displays an error" do
-        click_button "Save Bid"
+        click_button "Submit Bid"
         should have_content 'Please' || 'must be higher'
       end
     end
@@ -52,13 +51,13 @@ describe "Bid creation" do
     before do
       login_user(user)
       visit auction_path(auction)
-      click_button "Bid"
+      click_button "Bid hours"
     end
 
     it "cannot create a bid" do
       fill_in :bid_time, with: "4"
       expect { 
-        click_button "Save Bid"
+        click_button "Submit Bid"
         visit auction_path(auction)
       }.not_to change(Bid, :count)
     end

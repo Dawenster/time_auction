@@ -1,52 +1,136 @@
-<h1><%= @auction.title %></h1>
+<div class="row">
+  <div class="span8">
+    <div class="auction-photo shadow">
+      <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
+    </div>
+    <div class="auction-category">
+      <%= link_to '> ' + @auction.category.name, category_path(@auction.category) %>
+    </div>
+    <div class="auction-title">
+      <h1><%= @auction.title %></h1>
+    </div>
 
-<%= @auction.description %></br>
-Auction start: <%= @auction.start_date.strftime('%b %d, %Y') %></br>
+    <%= @auction.description %></br>
 
-<% if Time.now < @auction.end_date %>
-  Auction end: <%= @auction.end_date.strftime('%b %d, %Y') %></br>
-<% else %>
-  Auction end: This auction has ended. <%= link_to "Try another one?", categories_path %></br>
-<% end %>
+    <h2>Activity feed:</h2>
 
-<% if Time.now < @auction.deadline %>
-  Volunteer deadline: <%= @auction.deadline.strftime('%b %d, %Y') %></br>
-<% else %>
-  Volunteer status: <%= "#{@auction.verified_time.to_s} of #{@winning_time} hours completed!" unless @auction.verified_time.nil? %> <%= "Thank you " if @winner %><%= link_to @winner.name,  user_path(@winner) if @winner %></br>
-<% end %>
+    <table class="bids">
+      <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
+      <% @auction.bids.reverse.each do |bid| %>
+        <%= render 'bids/bid', :bid => bid %>  
+      <% end %>
+    </table>
+  </div>
+  <div class="span4">
+    <div class="highest-bid">
+      <% if @auction.bids == [] %>
+        <div class="highest-bid-title ribbon">
+          <div class="ribbon-front">
+            <div class='no-bids-yet'>No bids yet</div>
+          </div>
+          <div class="ribbon-edge-topleft"></div>
+          <div class="ribbon-edge-topright"></div>
+          <div class="ribbon-edge-bottomleft"></div>
+          <div class="ribbon-edge-bottomright"></div>
+          <div class="ribbon-back-left"></div>
+          <div class="ribbon-back-right"></div>
+        </div>
+        <div class="bid-time">
+          0<span>hrs</span>
+        </div>
+        <div class="highest-bidder">
+          Be the first to bid 
+        </div>
+        
+      <% else %>
 
-<div class="highest-bid">
-  <% if @auction.bids == [] %>
-    <div class='no-bids-yet'>No bids yet.</div>
-  <% else %>
-    <% if @winner %>
-      Winning bid: <span><%= @auction.highest_bid.time %></span> hours by <%= @auction.highest_bid.user.name %>
-    <% else %>
-      Current highest bid: <span><%= @auction.highest_bid.time %></span> hours by <%= @auction.highest_bid.user.name %>
-    <% end %>
-  <% end %>
-  <div class='you-highest <%= 'hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
-      <h2>You are the highest bidder!</h2>
+        <% if @winner %>
+          <div class="highest-bid-title ribbon">
+            <div class="ribbon-front">
+              Winning bid
+            </div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+          </div>
+          <div class="bid-time">
+            <%= @auction.highest_bid.time %><span>hrs</span>
+          </div>
+          <div class="highest-bidder">
+            By <%= link_to @auction.highest_bid.user.name, user_path(@auction.highest_bid.user) if @auction.highest_bid %>
+          </div>
+        <% else %>
+          <div class="highest-bid-title ribbon">
+            <div class="ribbon-front">
+              Highest bid
+            </div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+          </div>
+          <div class="bid-time">
+            <%= @auction.highest_bid.time %><span>hrs</span>
+          </div>
+          <div class="highest-bidder">
+            By <%= link_to @auction.highest_bid.user.name, user_path(@auction.highest_bid.user) if @auction.highest_bid %>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+
+    <div class='you-highest <%= 'hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
+        <h3>You're the top bidder!</h3>
+    </div>
+
+    <div class='main-bid-button'>
+      <div id="overlay"></div>
+
+      <% if current_user && (!@auction.started? && !@auction.complete?) || (@auction.started? && @auction.complete?) %>
+      <% elsif !current_user %>
+        <a href='<%= new_user_path %>'><button class="btn btn-success btn-large">Sign in to bid</button></a>
+      <% else %>
+        <div id="trigger"><button class="btn btn-success btn-large bid-button">Bid hours</button></div>
+      <% end %>
+    </div>
+
+    <%= render 'bids/form' %>
+
+    <div class='auction-details'>
+      
+      <% if Time.now < @auction.start_date %>
+        <div>Auction starts</div>
+        <div><h3><%= @auction.start_date.strftime('%b %d, %Y') %></h3></div>
+      <% else %>
+        <div>Auction started</div>
+        <div><h3><%= @auction.start_date.strftime('%b %d, %Y') %></h3></div>
+      <% end %>
+      
+      <% if Time.now < @auction.end_date %>
+        <div>Auction ends</div>
+        <div><h3><%= @auction.end_date.strftime('%b %d, %Y') %></h3></div>
+      <% else %>
+        <div>Auction ended</div>
+        <div><%= @auction.end_date.strftime('%b %d, %Y') %></div>
+        <div><h3><%= link_to "Check out others", categories_path %></h3></div>
+      <% end %>
+
+      <% if Time.now < @auction.deadline %>
+        <div>Volunteer deadline</div>
+        <div><h3><%= @auction.deadline.strftime('%b %d, %Y') %></h3></div>
+      <% else %>
+        <div>Volunteer status</div>
+        <div><%= "#{@auction.verified_time.to_s} of #{@winning_time} hours completed!" unless @auction.verified_time.nil? %> <%= "Thank you " if @winner %><%= link_to @winner.name,  user_path(@winner) if @winner %></div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<div>
-  <% if current_user && (!@auction.started? && !@auction.complete?) || (@auction.started? && @auction.complete?) %>
-  <% elsif !current_user %>
-    <a href='<%= new_user_path %>'><button class="btn btn-primary btn-large">Sign in to bid</button></a>
-  <% else %>
-    <button class="btn btn-primary btn-large bid-button">Bid</button>
-  <% end %>
-</div>
-
-<h3>Bid history</h3>
-<%= render 'bids/form' %>
-<table class="bids">
-  <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
-  <% @auction.bids.reverse.each do |bid| %>
-    <%= render 'bids/bid', :bid => bid %>  
-  <% end %>
-</table>
 
 
 
