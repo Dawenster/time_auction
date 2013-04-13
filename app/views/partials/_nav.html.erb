@@ -17,7 +17,7 @@
         </span>
       </li>
       <li>
-        <%= link_to "Logout", session_path(session[:id]), :method => :delete %>
+        <%= link_to "Logout", session_path(session[:id]), :method => :delete, :id => "navName" %>
       </li>
     <% elsif current_user %>
       <li>
@@ -29,7 +29,7 @@
         </span>
       </li>
       <li>
-        <span id="navName"><%= link_to "Wut the Fuk", session_path(current_user), :method => :delete, :id => "navName" %></span>
+        <%= link_to "Logout", session_path(current_user), :method => :delete, :id => "navName" %>
       </li>
     <% else %>
       <li><%= link_to "Login", new_session_path, :id => "navName" %></li>
