@@ -3,7 +3,8 @@ require 'date'
 
 FactoryGirl.define do
   factory :auction do
-    end_date DateTime.now
+    start_date DateTime.now
+    end_date DateTime.now + 1.day
     deadline DateTime.now + 1.month
     title "MyString"
     description "MyText"
