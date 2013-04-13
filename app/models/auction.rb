@@ -22,7 +22,7 @@ class Auction < ActiveRecord::Base
   end
 
   def started?
-    Time.now > self.start_date
+    Time.now >= self.start_date
   end
 
   def complete?

@@ -31,7 +31,7 @@ Auction start: <%= @auction.start_date.strftime('%b %d, %Y') %></br>
 </div>
 
 <div>
-  <% if current_user && (!@auction.started? || !@auction.complete?) %>
+  <% if current_user && (!@auction.started? && !@auction.complete?) || (@auction.started? && @auction.complete?) %>
   <% elsif !current_user %>
     <a href='<%= new_user_path %>'><button class="btn btn-primary btn-large">Sign in to bid</button></a>
   <% else %>
