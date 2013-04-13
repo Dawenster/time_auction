@@ -6,6 +6,7 @@ describe Auction do
   subject { auction }
   it { should validate_presence_of(:title)}
   it { should validate_presence_of(:description)}
+  it { should validate_presence_of(:start_date)}
   it { should validate_presence_of(:end_date)}
   it { should validate_presence_of(:category_id)}
   it { should have_many(:users).through(:bids) }

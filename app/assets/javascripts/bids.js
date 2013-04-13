@@ -5,11 +5,12 @@ $(document).ready(function() {
   })
   
   $('#new_bid_form').on('ajax:success', function(event, data) {
-    $('.bids tr:nth-child(2)').before(data);
+    $('.bids tr:first-child').after(data);
     var hours = data.replace(/\D+/g, "");
-    $('.highest-bid span').text(hours);
     $('.you-highest').removeClass('hide');
+    $('.highest-bid span').text(hours);
     $('#flash').text("");
+    $('.no-bids-yet').text("");
   });
   
   $('#new_bid_form').on('ajax:error', function(event, data) {

@@ -1,7 +1,7 @@
 require 'date'
 
 class Auction < ActiveRecord::Base
-  attr_accessible :category_id, :description, :end_date, :title, :winner_id
+  attr_accessible :category_id, :description, :start_date, :end_date, :title, :winner_id, :verified_time, :deadline
   has_many :bids
   has_many :users, through: :bids
   
@@ -12,11 +12,12 @@ class Auction < ActiveRecord::Base
   validates :deadline, :presence => true
   validates :title, :presence => true
   validates :description, :presence => true
+  validates :start_date, :presence => true
   validates :end_date, :presence => true
   validates :category_id, :presence => true
   
   def highest_bid
-    self.bids.last 
+    self.bids.last unless self.bids.empty? 
   end
 
   private

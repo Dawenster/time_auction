@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411224532) do
+ActiveRecord::Schema.define(:version => 20130412235624) do
 
   create_table "auctions", :force => true do |t|
     t.string   "title"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(:version => 20130411224532) do
     t.integer  "category_id"
     t.integer  "winner_id"
     t.datetime "deadline"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.datetime "start_date"
+    t.integer  "verified_time"
   end
 
   create_table "bids", :force => true do |t|

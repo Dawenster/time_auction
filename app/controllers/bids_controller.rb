@@ -20,6 +20,10 @@ class BidsController < ApplicationController
       render text: 'Your bid must be higher than the current highest bid!', status: :unprocessable_entity and return
     end
 
+    if @bid.auction.end_date <= Time.now
+      render text: 'Sorry!  This auction has ended.  Try another one?', status: :unprocessable_entity and return
+    end
+
     if @bid.save
       render text: render_to_string(partial: 'bid', locals: { bid: @bid })
     else

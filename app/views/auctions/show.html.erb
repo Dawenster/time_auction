@@ -1,27 +1,45 @@
 <h1><%= @auction.title %></h1>
 
 <%= @auction.description %></br>
-<%= convert_date(@auction.end_date) %></br>
-<%= convert_date(@auction.deadline) %></br>
+Auction start: <%= @auction.start_date.strftime('%b %d, %Y') %></br>
+
+<% if Time.now < @auction.end_date %>
+  Auction end: <%= @auction.end_date.strftime('%b %d, %Y') %></br>
+<% else %>
+  Auction end: This auction has ended. <%= link_to "Try another one?", categories_path %></br>
+<% end %>
+
+<% if Time.now < @auction.deadline %>
+  Volunteer deadline: <%= @auction.deadline.strftime('%b %d, %Y') %></br>
+<% else %>
+  Volunteer status: <%= "#{@auction.verified_time.to_s} of #{@winning_time} hours completed!" unless @auction.verified_time.nil? %> <%= "Thank you " if @winner %><%= link_to @winner.name,  user_path(@winner) if @winner %></br>
+<% end %>
+
 <div class="highest-bid">
   <% if @auction.bids == [] %>
-    No bids yet.
+    <div class='no-bids-yet'>No bids yet.</div>
   <% else %>
-    Current highest bid: <span><%= @auction.highest_bid.time %></span> hours by <%= @auction.highest_bid.user.name %>
-    <div class='you-highest <%= 'hide' unless @auction.highest_bid.user == current_user %>'>
-      <h2>You are the highest bidder!</h2>
-    </div>
+    <% if @winner %>
+      Winning bid: <span><%= @auction.highest_bid.time %></span> hours by <%= @auction.highest_bid.user.name %>
+    <% else %>
+      Current highest bid: <span><%= @auction.highest_bid.time %></span> hours by <%= @auction.highest_bid.user.name %>
+    <% end %>
   <% end %>
+  <div class='you-highest <%= 'hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
+      <h2>You are the highest bidder!</h2>
+  </div>
 </div>
 
 <div>
-  <% if current_user %>
+  <% if current_user && !@winner %>
     <button class="btn btn-primary btn-large bid-button">Bid</button>
+  <% elsif @winner %>
   <% else %>
     <a href='<%= new_user_path %>'><button class="btn btn-primary btn-large">Sign in to bid</button></a>
   <% end %>
 </div>
 
+<h3>Bid history</h3>
 <%= render 'bids/form' %>
 <table class="bids">
   <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
