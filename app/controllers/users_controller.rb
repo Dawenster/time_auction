@@ -17,5 +17,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @winning_auctions = Auction.where("winner_id = ?", params[:id])
   end
 end
