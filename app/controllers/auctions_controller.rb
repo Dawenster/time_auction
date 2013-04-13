@@ -2,10 +2,10 @@ class AuctionsController < ApplicationController
   def new
     @auction = Auction.new
     @categories = Category.all
+    @photo = @auction.photos.build
   end
 
   def create
-    @errors = []
 
     unless params[:auction][:start_date].blank? && params[:auction][:end_date].blank?
       params[:auction][:start_date] = DateTime.parse(params[:auction][:start_date].split('/').rotate(-1).join(''))

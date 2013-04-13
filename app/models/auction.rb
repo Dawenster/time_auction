@@ -1,13 +1,13 @@
 require 'date'
 
 class Auction < ActiveRecord::Base
-  attr_accessible :category_id, :description, :start_date, :end_date, :title, :winner_id, :verified_time, :deadline
+  attr_accessible :category_id, :description, :start_date, :end_date, :title, :winner_id, :verified_time, :deadline, :photos_attributes
   has_many :bids
   has_many :users, through: :bids
   has_many :photos, :as => :imageable
 
   belongs_to :category
-
+  accepts_nested_attributes_for :photos 
   before_validation :create_deadline
 
   validates :deadline, :presence => true
