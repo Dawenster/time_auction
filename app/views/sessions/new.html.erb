@@ -1,7 +1,7 @@
 <h1>Log in!</h1>
 <%= @messages %>
 <%= form_for :session, :url => sessions_path do |f| %>
-  <%= f.email_field :email, placeholder: "Email" %>
+  <%= f.email_field :email, placeholder: "Email", :autofocus=>true %>
   <%= f.password_field :password, placeholder: "Password" %>
   <%= f.submit "Log in" %>
 <% end %>

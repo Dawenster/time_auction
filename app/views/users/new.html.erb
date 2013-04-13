@@ -1,7 +1,7 @@
 <h1>Sign up!</h1>
 <%= @messages %>
 <%= form_for @user do |f| %>
-  <%= f.text_field :name, placeholder: "Full name" %>
+  <%= f.text_field :name, placeholder: "Full name", :autofocus=>true %>
   <%= f.email_field :email, placeholder: "Email" %>
   <%= f.text_field :phone, placeholder: "Phone number (optional)" %>
   <%= f.password_field :password, placeholder: "Password" %>
