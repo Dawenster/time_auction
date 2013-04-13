@@ -22,6 +22,7 @@ tittillium: titilliumtext25l250_wt;
 ul.nav {
   margin: 0px auto;
   width: 1040px;
+  padding: 0px;
 }
 
 nav {
@@ -29,7 +30,6 @@ nav {
   margin-bottom: 30px;
   width: 100%;
   text-align: right;
-  padding-right: 20px;
 
   background: #b4e0e8; /* Old browsers */
   background: -moz-linear-gradient(top, #b4e0e8 0%, #8bacb2 100%); /* FF3.6+ */
@@ -64,19 +64,24 @@ nav a:hover {
   font-size: 1.4em;
   display: inline;
   height: 60px;
+  padding: 0px;
 }
 
-.nav li, .nav li a {
+.nav li a {
   font-family: 'titilliumtext25l600_wt';
   font-size: 20px;
-  padding: 15px;
+  padding: 15px; 
   line-height: 60px;
   display: inline;
+  &#navName {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 a#logo {
   float: left;
-  padding-left: 30px;
+  /*padding-left: 30px;*/
   padding-top: 20px;
   color: #F2F2F2;
   font-family: 'Oleo Script';
@@ -87,4 +92,8 @@ a#logo {
     text-decoration: none;
     background: none;
   }
+}
+
+#adminNote {
+  color: #F20505;
 }
