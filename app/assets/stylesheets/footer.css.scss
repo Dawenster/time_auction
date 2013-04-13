@@ -1,10 +1,14 @@
 .footer {
   clear: both;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   background-color: #3a3a3a;
   background-size: cover;
   height: 300px;
   font-family: 'Open Sans';  
   font-weight: 300;
+  margin-top: 100px;
   & a {
     color: #999;
     &:hover {
