@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
     # else # TODO: Placeholder for inevitable Charity imageable
       # return false
     # end
-
+    puts params.inspect
     p = Photo.new
     p.url = params[:file]
 
@@ -21,6 +21,5 @@ class PhotosController < ApplicationController
       @imageable.photo = p
       p.save!
       redirect_to user_path(@imageable)
-    end
   end
 end
