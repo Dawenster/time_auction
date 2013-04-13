@@ -25,10 +25,13 @@ describe "AuctionCreation" do
       page.should have_content "Test Title"
     end
 
-    it "doesn't create an auction with invalid input" do
+    it "doesn't create an auction with blank input" do
       visit new_auction_path
       click_button 'Create Auction'
       page.should have_content "Add an Auction"
+    end
+
+    it "doesn't create an auction with start date > end date" do
     end
   end
 end

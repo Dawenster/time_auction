@@ -31,11 +31,11 @@ Auction start: <%= @auction.start_date.strftime('%b %d, %Y') %></br>
 </div>
 
 <div>
-  <% if current_user && !@winner %>
-    <button class="btn btn-primary btn-large bid-button">Bid</button>
-  <% elsif @winner %>
-  <% else %>
+  <% if current_user && (!@auction.started? || !@auction.complete?) %>
+  <% elsif !current_user %>
     <a href='<%= new_user_path %>'><button class="btn btn-primary btn-large">Sign in to bid</button></a>
+  <% else %>
+    <button class="btn btn-primary btn-large bid-button">Bid</button>
   <% end %>
 </div>
 
@@ -47,3 +47,17 @@ Auction start: <%= @auction.start_date.strftime('%b %d, %Y') %></br>
     <%= render 'bids/bid', :bid => bid %>  
   <% end %>
 </table>
+
+<!-- 
+winner user not_start => no case
+winner no_user no_start => no case
+
+winner user start => no button
+no_winner user no_start => no button
+
+winner no_user start => sign up button
+no_winner no_user start => sign up button
+no_winner no_user no_start => sign up button
+
+no_winner user start => bid button
+ -->

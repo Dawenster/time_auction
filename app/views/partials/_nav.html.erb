@@ -2,14 +2,14 @@
   <ul class="nav">
     <%= link_to "TimeAuction", root_path, id: 'logo' %>
     <li>
-      <%= link_to "About", '#', :class => "f2" %>
+      <%= link_to "About", '#', :id => "navName" %>
     </li>
     <% if current_user && current_user.admin %>
       <li>
-        <%= link_to "Add Auction", new_auction_path %>
+        <%= link_to "Add Auction", new_auction_path, :id => "navName" %>
       </li>
       <li>
-        <%= link_to "Browse Auctions", categories_path %>
+        <%= link_to "Browse Auctions", categories_path, :id => "navName" %>
       </li>
       <li>
         <span id="navWelcome">
@@ -17,11 +17,11 @@
         </span>
       </li>
       <li>
-        <%= link_to "Logout", session_path(session[:id]), :method => :delete %>
+        <%= link_to "Logout", session_path(session[:id]), :method => :delete, :id => "navName" %>
       </li>
     <% elsif current_user %>
       <li>
-        <%= link_to "Browse Auctions", categories_path %>
+        <%= link_to "Browse Auctions", categories_path, :id => "navName" %>
       </li>
       <li>
         <span id="navWelcome">
@@ -29,11 +29,14 @@
         </span>
       </li>
       <li>
-        <%= link_to "Logout", session_path(session[:id]), :method => :delete %>
+        <%= link_to "Logout", session_path(current_user), :method => :delete, :id => "navName" %>
       </li>
     <% else %>
-      <li><%= link_to "Login", new_session_path %></li>
-      <li><%= link_to "Sign up", new_user_path %></li>
+      <li><%= link_to "Login", new_session_path, :id => "navName" %></li>
+      <li><%= link_to "Sign up", new_user_path, :id => "navName" %></li>
     <% end %>
   </ul>
 </nav>
+
+<div class="backNav">
+</div>

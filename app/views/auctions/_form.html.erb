@@ -1,0 +1,23 @@
+<%= form_for @auction do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :category %>
+  <%= f.select :category_id, @categories.collect {|cat| [ cat.name, cat.id ] } %>
+  <%= f.label :start_date, "Auction Start Date" %>
+  <%= f.text_field :start_date, html: { id: 'datepicker' } %>
+  <%= f.label :end_date, "Auction End Date" %>
+  <%= f.text_field :end_date, html: { id: 'datepicker' } %>
+  <span class="hide" id="verified_time">
+    <%= f.label :verified_time %>
+    <%= f.text_field :verified_time %>
+  </span>
+  <%= f.submit "Create Auction", :class => "btn btn-primary btn-large" %>
+<% end %>
+
+<!-- 
+  <%#= form_tag auctions_path, :multipart => true do %>
+    <label for="file">Apply Photo</label>
+    <%#= file_field_tag "file" %>
+  <%# end %> -->
