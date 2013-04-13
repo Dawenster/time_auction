@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def new
+    if current_user
+      flash[:success] = "You've already logged in :)"
+      redirect_to(current_user)
+    end
     @user = User.new
   end
 
