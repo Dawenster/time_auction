@@ -32,3 +32,35 @@ Auction.create!(
   start_date: (Time.now + 3.days), 
   end_date: (Time.now + 2.weeks), 
   category_id: cat3.id)
+
+User.create!(
+  name: "Kevin Ko",
+  email: "kevin@kevin.com",
+  password: "password",
+  phone: "",
+  time_donated: 9001,
+  admin: true)
+
+User.create!(
+  name: "Philip Woo",
+  email: "philip@philip.com",
+  password: "password",
+  phone: "",
+  time_donated: 9001,
+  admin: true)
+
+User.create!(
+  name: "David Wen",
+  email: "david@david.com",
+  password: "password",
+  phone: "",
+  time_donated: 9001,
+  admin: true)
+
+User.create!(
+  name: "J Connolly",
+  email: "connolly@connolly.com",
+  password: "password",
+  phone: "",
+  time_donated: 9001,
+  admin: true)
