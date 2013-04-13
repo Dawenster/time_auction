@@ -4,5 +4,6 @@ $(document).ready(function() {
   var myRe = /edit/i;
   if ( myRe.test(window.location)) {
     $('#verified_time').removeClass('hide');
+    $('.btn').val('Edit Auction');
   }
 });

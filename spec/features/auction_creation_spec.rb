@@ -32,6 +32,40 @@ describe "AuctionCreation" do
     end
 
     it "doesn't create an auction with start date > end date" do
+      visit new_auction_path
+      fill_in "Title", with: "Test Title"
+      fill_in "Description", with: "Super valid description"
+      fill_in 'Auction Start Date', with: "04/13/2016"
+      fill_in 'Auction End Date', with: "04/13/2015"
+      page.select('Experiences', :from => "auction_category_id")
+      click_button 'Create Auction'
+      page.should have_content "Add an Auction"
+    end
+  end
+
+  describe "editing auction" do
+    let(:auction) { FactoryGirl.create(:auction) }
+
+    it "edits auction with valid input" do
+      visit edit_auction_path(auction)
+      fill_in "Title", with: "I changed some stuff"
+      click_button 'Create Auction'
+      page.should have_content "I changed some stuff"
+    end
+
+    it "doesn't edit an auction with blank input" do
+      visit edit_auction_path(auction)
+      fill_in "Title", with: ""
+      click_button 'Create Auction'
+      page.should have_content "Edit an Auction"
+    end
+
+    it "doesn't edit an auction with start date > end date" do
+      visit edit_auction_path(auction)
+      fill_in 'Auction Start Date', with: "04/13/2016"
+      fill_in 'Auction End Date', with: "04/13/2015"
+      click_button 'Create Auction'
+      page.should have_content "Edit an Auction"
     end
   end
 end
