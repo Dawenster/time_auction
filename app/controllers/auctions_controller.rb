@@ -24,6 +24,8 @@ class AuctionsController < ApplicationController
   end
 
   def edit
+    @auction = Auction.find(params[:id])
+    @categories = Category.all
   end
 
   def update
