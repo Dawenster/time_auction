@@ -1,0 +1,25 @@
+<div class="footer">
+  <div class="footerContainer">
+    <div class="footerContent">
+      <p><strong>&copy; 2013 by these Dev Bootcamp students:</strong></p>
+      <hr id="footer">
+      <li><%= link_to 'David Wen', 'https://github.com/Dawenster' %></li>
+      <li><%= link_to 'Kevin Ko', 'https://github.com/heyimkko' %></li>
+      <li><%= link_to 'J Connolly', 'https://github.com/jsconnolly' %></li>
+      <li><%= link_to 'Philip Woo', 'https://github.com/jhw1202' %></li>
+    </div>
+    <div class="footerContent">
+      <p><strong>Additional Resources:</strong></p>
+      <hr id="footer">
+      <li><%= link_to 'Source', 'https://www.github.com/Dawenster/time_auction' %></li>
+      <li><%= link_to 'About Us', '#' %></li>
+      <li><%= link_to 'Dev Bootcamp', 'http://www.devbootcamp.com' %></li>
+    </div>
+
+    <% if current_user %>
+      <%= render 'partials/logged_in_footer' %>
+    <% else %>
+      <%= render 'partials/guest_footer' %>
+    <% end %>
+  </div>
+</div>

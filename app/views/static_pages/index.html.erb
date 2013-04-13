@@ -3,13 +3,13 @@
 <head>
   <title>TimeAuction</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <link href='http://fonts.googleapis.com/css?family=Oleo+Script|PT Sans Narrow' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oleo+Script|PT Sans Narrow|Open+Sans:400,300|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= render 'partials/nav' %>
+  <%= render 'partials/nav' %>
 
   <div id="flash">
     <% flash.each do |name, msg| %>
@@ -17,15 +17,51 @@
     <% end %>
   </div>
 
-<div class="splashImage">
-  <div class="splashBoxContent">
-    <h1>Time is Money.</h1>
-    <p>Turn your charity hours into prizes and experiences.</p>
-    <%= link_to "Try TimeAuction", new_user_path, :class => "lpcenter btn btn-primary btn-large btn-danger" %>
+  <div class="splashImage">
+    <div class="splashBoxContent">
+      <h1>Time is Money.</h1>
+      <p>Turn your charity hours into prizes and experiences.</p>
+      <%= link_to "Try TimeAuction", new_user_path, :class => "lpcenter btn btn-primary btn-large btn-danger" %>
+    </div>
+    <div class="splashBox">
+    </div>
   </div>
-  <div class="splashBox">
-  </div>
-</div>
 
+  <div class="splashContainer">
+    <h2>Bid on prizes using volunteer hours, not money</h2>
+
+    <hr/>
+      
+    <div class="wrapper">
+      <h3><span id="count">1.</span> Bid on Auctions</h3> 
+    </div>
+    <div class="wrapper">
+      <h3><span id="count">2.</span> Perform Charity Work</h3>
+    </div>
+    <div class="wrapper">
+      <h3><span id="count">3.</span> Earn Reward</h3>
+    </div>
+
+    <div class="statisticsBox">
+      <div id="hoursCount">
+        <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
+        <div id="hours">HOURS</div>
+        <div id="hours">RAISED</div>
+      </div>
+    </div>
+
+    <div class="credentials">
+      <h3>Benefiting over <strong>50</strong> charities and non-profits</h3>
+      <h3>Averaging <strong>42 volunteer minutes per dollar</strong> of product donated.</h3>
+      <%= image_tag 'cred-dbc.png' %>
+      <%= image_tag 'cred-heroku.png' %>
+      <%= image_tag 'cred-rails.png' %>
+    </div>
+
+    <!-- <h3><%#= link_to "Start Bidding on a TimeAuction Today", new_user_path, :class => "lpcenter btn btn-primary btn-large" %></h3> -->
+
+  </div>
+
+  <%= render 'partials/footer' %>
 </body>
 </html>
