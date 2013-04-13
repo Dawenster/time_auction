@@ -1,7 +1,12 @@
 <h1>Add an Auction</h1>
-<%= form_for @auction do |f| %>
+<%= form_for @auction, :multipart => true do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= form_tag auctions_path, :multipart => true do %>
+    <label for="file">Apply Photo</label>
+    <%= file_field_tag "file" %>
+  <% end %>
+
   <%= f.label :description %>
   <%= f.text_area :description %>
   <%= f.label :category %>

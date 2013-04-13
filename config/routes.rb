@@ -5,7 +5,9 @@ TimeAuction::Application.routes.draw do
   end
   resources :sessions, :only =>[:new, :create, :destroy]
   resources :bids, :only => [:create]
-  resources :auctions
+  resources :auctions do
+    resources :photos, :only => [:create]
+  end
   resources :categories, :only => [:index, :show]
   
   # The priority is based upon order of creation:
