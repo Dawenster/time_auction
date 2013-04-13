@@ -1,6 +1,7 @@
 .splashImage {
+  background: url('../assets/front-page.jpg') no-repeat; 
   padding-top: 60px;
-  background: url('../assets/front-page.jpg') no-repeat center center fixed; 
+  width: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -47,7 +48,7 @@
 .splashContainer {
   width: 1040px;
   margin: auto;
-  h3 {
+  h2 {
   padding: 30px;
   text-align: center;
   color: #383838;
@@ -60,4 +61,17 @@ hr {
   border-top: 1px solid #000;
 }
 
-
+.wrapper {
+  width: 285px;
+  height: 285px;
+  float: left;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #ececec;
+  padding: 22px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  &:last-child {
+    margin-right: 0px;
+  }
+}
