@@ -65,6 +65,10 @@ ul.nav li {
   font-size: 1.4em;
   display: inline;
   padding: 15px;
+  & img {
+    padding-bottom: 5px;
+    padding-right: 2px;
+  }
 }
 
 ul.nav li a {
@@ -82,10 +86,6 @@ ul.nav li a {
       background: none;
     }
   }
-}
-
-#navWelcome {
-  color: #F3F3F3;
 }
 
 a#logo {
