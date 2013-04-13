@@ -16,7 +16,7 @@
   background-color: #000;
   position: absolute;
   top: 25%;
-  left: 22%;
+  left: 23%;
 }
 
 .splashBoxContent { 
@@ -24,11 +24,11 @@
   color: #fff;
   position: absolute;
   top: 25%;
-  left: 22%;
+  left: 23%;
   z-index: 10;
-  font-family: 'PT Sans Narrow';
   & h1{
-    margin-bottom: 25px;
+    font-family: 'Helvetica Neue';
+    margin-bottom: 15px;
     margin-top: 0px;
     font-size: 3em;
    }
@@ -36,9 +36,28 @@
     font-size: 24px;
     line-height: 16px;
     letter-spacing: 1px;
-    margin-bottom: 45px;
+    margin-bottom: 50px;
+    font-family: 'PT Sans Narrow';
   }
   & a {
     font-family: 'aller_lightregular';
   }
 }
+
+.splashContainer {
+  width: 1040px;
+  margin: auto;
+  h3 {
+  padding: 30px;
+  text-align: center;
+  color: #383838;
+  font-family: 'Open Sans Condensed';
+  font-size: 3em;
+  }
+}
+
+hr {
+  border-top: 1px solid #000;
+}
+
+
