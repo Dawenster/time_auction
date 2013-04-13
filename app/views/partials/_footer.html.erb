@@ -16,9 +16,10 @@
       <li><%= link_to 'Dev Bootcamp', 'http://www.devbootcamp.com' %></li>
     </div>
 
-    <div class="footerContent">
-      <%= link_to 'Sign Up', new_user_path, :class => 'footerSignUp' %>
-      <%= link_to 'Login', new_session_path, :class => 'footerSignUp' %>
-    </div>
+    <% if current_user %>
+      <%= render 'partials/logged_in_footer' %>
+    <% else %>
+      <%= render 'partials/guest_footer' %>
+    <% end %>
   </div>
 </div>
