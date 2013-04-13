@@ -18,6 +18,8 @@ describe "AuctionCreation" do
       visit new_auction_path
       fill_in "Title", with: "Test Title"
       fill_in "Description", with: "Super valid description"
+      fill_in 'Auction Start Date', with: "04/13/2014"
+      fill_in 'Auction End Date', with: "04/13/2015"
       page.select('Experiences', :from => "auction_category_id")
       click_button 'Create Auction'
       page.should have_content "Test Title"

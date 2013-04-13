@@ -1,1 +1,29 @@
-You're in!
+<div class="row">
+  <h1>Profile for <%= @user.name %></h1>
+  <div class="span3">
+    <% if @user.photo %>
+      <%= cl_image_tag @user.photo.url, :width => 150, :height => 150, :crop => :fill %>
+    <% else %>
+      <%= image_tag '/assets/avatar_blank.jpg' %>
+    <% end %>
+
+    <% if current_user == @user %>
+       <%= form_tag [@user, Photo.new], :method => 'post', :multipart => true do %>
+        <label for="file">Change Photo</label>
+        <%= file_field_tag "file" %>
+        <%= hidden_field_tag :user_id, @user.id %>
+        <%= submit_tag "Upload", :class => "btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="span9">
+    <h3>Auctions Won</h3>
+      <ul>
+        <% @winning_auctions.each do |auction| %>
+          <li><%= link_to auction.title, auction %></li>
+          <li>Deadline: <%= auction.deadline %></li>
+        <% end %>
+      </ul>
+  </div>
+</div>

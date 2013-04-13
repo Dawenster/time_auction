@@ -5,14 +5,18 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    params[:auction][:start_date] = DateTime.parse(params[:auction][:start_date].split('/').rotate(-1).join(''))
-    params[:auction][:end_date] = DateTime.parse(params[:auction][:end_date].split('/').rotate(-1).join(''))
+    unless params[:auction][:start_date].blank? && params[:auction][:end_date].blank?
+      params[:auction][:start_date] = DateTime.parse(params[:auction][:start_date].split('/').rotate(-1).join(''))
+      params[:auction][:end_date] = DateTime.parse(params[:auction][:end_date].split('/').rotate(-1).join(''))
+    end
+
     @auction = Auction.new params[:auction]
 
     if @auction.save
       redirect_to auction_path @auction
     else
-      redirect_to new_auction_path
+      @categories = Category.all
+      render :new
     end
   end
 
