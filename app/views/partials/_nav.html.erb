@@ -8,6 +8,12 @@
       <li>
         <%= link_to "Add Auction", new_auction_path %>
       </li>
+      <li>
+        Welcome, <%= link_to current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
+      </li>
+      <li>
+        <%= link_to "Logout", session_path(session[:id]), :method => :delete %>
+      </li>
     <% elsif current_user %>
       <li>
         <%= link_to "Browse Auctions", categories_path %>
