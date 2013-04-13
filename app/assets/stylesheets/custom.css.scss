@@ -1,4 +1,19 @@
 /*
+cool blue:
+#383838
+light blue:
+#B4E0E8
+glow blue:
+#7C9A9F;
+red:
+#F20505
+pale:
+#F2F2F2
+
+*/
+
+
+/*
 aller: aller_lightregular;
 titilliumboldest: titilliumtext25l800_wt;
 tittilliubolder: titilliumtext25l600_wt
@@ -37,4 +52,12 @@ h1 {
 
 .span4 {
   margin-left: 60px;
+}
+
+a {
+  color: #F20505;
+  &:hover{
+    color: #B20404;
+    text-decoration: none;
+  }
 }

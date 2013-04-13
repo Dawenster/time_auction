@@ -28,12 +28,7 @@
           <div class="ribbon-front">
             <div class='no-bids-yet'>No bids yet</div>
           </div>
-          <div class="ribbon-edge-topleft"></div>
-          <div class="ribbon-edge-topright"></div>
-          <div class="ribbon-edge-bottomleft"></div>
-          <div class="ribbon-edge-bottomright"></div>
-          <div class="ribbon-back-left"></div>
-          <div class="ribbon-back-right"></div>
+          <%= render 'ribbon' %>
         </div>
         <div class="bid-time">
           0<span>hrs</span>
@@ -49,12 +44,7 @@
             <div class="ribbon-front">
               Winning bid
             </div>
-            <div class="ribbon-edge-topleft"></div>
-            <div class="ribbon-edge-topright"></div>
-            <div class="ribbon-edge-bottomleft"></div>
-            <div class="ribbon-edge-bottomright"></div>
-            <div class="ribbon-back-left"></div>
-            <div class="ribbon-back-right"></div>
+            <%= render 'ribbon' %>
           </div>
           <div class="bid-time">
             <%= @auction.highest_bid.time %><span>hrs</span>
@@ -67,12 +57,7 @@
             <div class="ribbon-front">
               Highest bid
             </div>
-            <div class="ribbon-edge-topleft"></div>
-            <div class="ribbon-edge-topright"></div>
-            <div class="ribbon-edge-bottomleft"></div>
-            <div class="ribbon-edge-bottomright"></div>
-            <div class="ribbon-back-left"></div>
-            <div class="ribbon-back-right"></div>
+            <%= render 'ribbon' %>
           </div>
           <div class="bid-time">
             <%= @auction.highest_bid.time %><span>hrs</span>
