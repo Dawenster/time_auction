@@ -52,13 +52,15 @@
   padding: 30px;
   text-align: center;
   color: #383838;
-  font-family: 'Open Sans Condensed';
+  font-family: 'Open Sans';
+  font-weight: 300;
   font-size: 3em;
+  letter-spacing: 1px;
   }
 }
 
 hr {
-  border-top: 1px solid #000;
+  border-top: 1px solid #aeaeae;
 }
 
 .wrapper {
@@ -68,10 +70,64 @@ hr {
   border: 2px solid #ccc;
   border-radius: 10px;
   background-color: #ececec;
-  padding: 22px;
+  padding: 10px 22px 22px 22px;
   margin-right: 20px;
-  margin-bottom: 40px;
-  &:last-child {
+  margin-bottom: 70px;
+  &:nth-child(5) {
     margin-right: 0px;
+  }
+  & h3{
+    font-size: 1.7em;
+    text-align: center;
+  }
+  & #count{
+    color: #F20505;
+  }
+}
+
+.statisticsBox {
+  clear: both;
+  float: left;
+  width: 300px;
+  display: inline-block;
+  background-color: #F20505;
+  color: #fff;
+  padding: 50px;
+  text-align: center;
+  & #hoursCount{
+    font-family: 'titilliumtext25l250_wt';
+    font-size: 4.5em;
+    line-height: 60px;
+  }
+  & #hours{
+    font-family: 'titilliumtext25l800_wt';
+    font-size: 1em;
+    letter-spacing: -2px;
+  }
+  & #hours:nth-child(2){
+    font-family: 'titilliumtext25l800_wt';
+    font-size: 1em;
+    letter-spacing: -3px;
+  }
+}
+
+.credentials {
+  margin-left: 20px;
+  float: left;
+  display: inline-block;
+  width: 600px;
+  color: #383838;
+  & h3{
+    margin: -3px 0px 20px 0px;
+    &:nth-child(2) {
+      margin-bottom: 0px;
+    }
+    font-family: 'Open Sans';
+    font-size: 2em;
+    font-weight: 300;
+    line-height: 1em;
+    &#strong {
+      font-weight: 400;
+    }
   }
 }
