@@ -33,6 +33,9 @@ class AuctionsController < ApplicationController
   end
 
   def update
+    @auction = Auction.find(params[:id])
+    @auction.update_attributes(params[:auction])
+    redirect_to auction_path(@auction)
   end
 
   def destroy

@@ -21,6 +21,14 @@ class Auction < ActiveRecord::Base
     self.bids.last unless self.bids.empty? 
   end
 
+  def started?
+    Time.now > self.start_date
+  end
+
+  def complete?
+    self.winner_id
+  end
+
   private
 
   def create_deadline
