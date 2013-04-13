@@ -29,33 +29,39 @@
 
   <div class="splashContainer">
     <h2>Bid on prizes using volunteer hours, not money</h2>
+
     <hr/>
-    
-  <div class="wrapper">
-    <h3><span id="count">1.</span> Bid on Auctions</h3> 
-  </div>
-  <div class="wrapper">
-    <h3><span id="count">2.</span> Perform Charity Work</h3>
-  </div>
-  <div class="wrapper">
-    <h3><span id="count">3.</span> Earn Reward</h3>
-  </div>
-
-  <div class="statisticsBox">
-    <div id="hoursCount">
-      <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
-      <div id="hours">HOURS</div>
-      <div id="hours">RAISED</div>
+      
+    <div class="wrapper">
+      <h3><span id="count">1.</span> Bid on Auctions</h3> 
     </div>
+    <div class="wrapper">
+      <h3><span id="count">2.</span> Perform Charity Work</h3>
+    </div>
+    <div class="wrapper">
+      <h3><span id="count">3.</span> Earn Reward</h3>
+    </div>
+
+    <div class="statisticsBox">
+      <div id="hoursCount">
+        <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
+        <div id="hours">HOURS</div>
+        <div id="hours">RAISED</div>
+      </div>
+    </div>
+
+    <div class="credentials">
+      <h3>Benefiting over <strong>50</strong> charities and non-profits</h3>
+      <h3>Averaging <strong>42 volunteer minutes per dollar</strong> of product donated.</h3>
+      <%= image_tag 'cred-dbc.png' %>
+      <%= image_tag 'cred-heroku.png' %>
+      <%= image_tag 'cred-rails.png' %>
+    </div>
+
+    <!-- <h3><%#= link_to "Start Bidding on a TimeAuction Today", new_user_path, :class => "lpcenter btn btn-primary btn-large" %></h3> -->
+
   </div>
 
-  <div class="credentials">
-    <h3>Benefiting over <strong>50</strong> charities and non-profits</h3>
-    <h3>Averaging <strong>42 volunteer minutes per dollar</strong> of product donated.</h3>
-    <%= image_tag 'cred-dbc.png' %>
-    <%= image_tag 'cred-heroku.png' %>
-    <%= image_tag 'cred-rails.png' %>
-  </div>
-
+  <%= render 'partials/footer' %>
 </body>
 </html>
