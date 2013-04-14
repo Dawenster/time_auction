@@ -8,44 +8,45 @@
   background-size: cover;
   height: 800px;
   opacity: 0.8;
+  & .transparent {
+    visibility: hidden;
+    }
+  & h1 {
+      font-family: 'Open Sans';
+      font-weight: 300;
+      margin-bottom: 35px;
+      margin-top: 0px;
+      font-size: 6em;
+    }
+  & p {
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      font-family: 'Open Sans Condensed';
+      text-shadow: 2px 2px 2px #000;
+    }
+  & p:last-child {
+    margin-bottom: 0px;
+  }
 }
 
-.aboutBox {
-  width: 960px;
-  height: 365px;
-  border-radius: 10px;
-  opacity: 0.9;
-  background-color: #000;
-  position: absolute;
-  top: 25%;
-  left: 23%;
-}
-
-.aboutBoxContent { 
-  width: 900px;
+.aboutBoxContent, .aboutBox { 
+  width: 47%;
   padding: 36px;
   color: #fff;
   position: absolute;
   top: 25%;
-  left: 23%;
+  left: 25%;
   z-index: 10;
   text-shadow: 2px 2px 2px #000;
-  & h1 {
-    font-family: 'Open Sans';
-    font-weight: 300;
-    margin-bottom: 35px;
-    margin-top: 0px;
-    font-size: 6em;
-   }
-  & p {
-    font-size: 24px;
-    line-height: 30px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    font-family: 'Open Sans Condensed';
-    text-shadow: 2px 2px 2px #000;
-  }
-  & a {
-    font-family: 'aller_lightregular';
-  }
+}
+
+.aboutBox {
+  z-index: 1;
+  min-height: 290px;
+  border-radius: 10px;
+  opacity: 0.9;
+  background-color: #000;
+  overflow: none;
 }
