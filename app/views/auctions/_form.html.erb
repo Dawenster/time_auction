@@ -4,7 +4,8 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
   <%= f.label :category %>
-  <%= f.select :category_id, @categories.collect {|cat| [ cat.name, cat.id ] } %>
+  <%= collection_select(:auction, :category_id, Category.all, :id, :name ) %>
+  <%#= f.select :category_id, @categories.collect {|cat| [ cat.name, cat.id ] } %>
   <%= f.label :start_date, "Auction Start Date" %>
   <%= f.text_field :start_date, html: { id: 'datepicker' } %>
   <%= f.label :end_date, "Auction End Date" %>
