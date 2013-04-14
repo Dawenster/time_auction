@@ -1,3 +1,5 @@
+<!-- LIGHTBOX -->
+
 <div class="row">
   <div class="span10 offset1 hidden-bid-partial">
     <%= render 'bids/form' %>
@@ -5,6 +7,8 @@
 </div>
 <div class="row">
   
+
+<!-- TITLE -->
   <div class="span12">
     <div class="auction-category">
       <%= link_to '> ' + @auction.category.name, category_path(@auction.category) %>
@@ -12,11 +16,17 @@
     <div class="auction-title">
       <h1><%= @auction.title %></h1>
     </div>
+    <hr>
   </div>
+
+<!-- LEFT SIDE CONTENT -->
+
   <div class="span8">
     <div class="auction-photo shadow">
         <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
       </div>
+
+<!-- TABS -->
 
     <ul class="nav nav-tabs">
       <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
@@ -24,48 +34,69 @@
       <li><a href="#auction-comments" data-toggle="tab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a></li>
     </ul>
 
+<!-- DESCRIPTION -->
+
     <div class="tab-content">
       <div class="tab-pane active" id="auction-description"> 
-        <%= simple_format(@auction.description) %>
+        <h3>Auction Description</h3>
+          <%= simple_format(@auction.description) %>
       </div>
 
-      <div class="tab-pane" id="auction-bid-history">
-        <h2>Activity feed:</h2>
+<!-- BID HISTORY -->
 
+      <div class="tab-pane" id="auction-bid-history">
+        <h3>Auction History</h3>
         <table class="bids">
-          <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
+          <tr>
+            <th>Name</th>
+            <th>Hours Bid</th>
+            <th>Posted</th>
+          </tr>
           <% @auction.bids.reverse.each do |bid| %>
             <%= render 'bids/bid', :bid => bid %>  
           <% end %>
         </table>
       </div>
 
+<!-- COMMENTS -->
       <div class="tab-pane" id="auction-comments">
         <h3>Auction Comments</h3>
-          <ul class="comments">
-            <% @comments.reverse.each do |comment| %>
-              <li class="comment">
-                <%= simple_format(comment.content) %>
-                <div class="posted_by">
-                  Posted by: <%= link_to comment.user.name, user_path(comment.user) %>
-                  <% if comment.user == current_user %>
-                    <%= link_to '', auction_comment_path(@auction, comment), 
-                        :class => 'icon-remove', :remote => true, :method => 'delete' %>
-                  <% end %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-            <% if current_user %>
-              <%= form_for [@auction, Comment.new], :remote => true do |f| %>
-              <%= f.text_area :content, :rows => 5, :class => "small_desc_box", :placeholder => "Comment on this Auction" %>
-                <%= f.submit "Add Comment", :class => "btn btn-success" %>
+        <ul class="comments">
+          <% @comments.reverse.each do |comment| %>
+          <div class="commentBlock">
+            <div class="commentAvatar">
+              <% if comment.user.photo %>
+                <%= cl_image_tag comment.user.photo.url, :width => 48, :height => 48 %>
+              <% else %>
+                <%= cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 48, :height => 48 %>
               <% end %>
+            </div>
+            <li class="comment">
+              <div class="posted_by">
+                <%= link_to comment.user.name, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago
+                  <% if comment.user == current_user %>
+                    <%= link_to '', auction_comment_path(@auction, comment), :class => 'icon-remove', :remote => true, :method => 'delete' %>
+                  <% end %>
+              </div>
+              <p>
+                <%= simple_format(comment.content) %>
+              </p>
+              </li>
+            </div>
+          <% end %>
+        </ul>
+          <% if current_user %>
+            <%= form_for [@auction, Comment.new], :remote => true do |f| %>
+            <%= f.text_area :content, :rows => 5, :class => "desc_box", :placeholder => "Comment on this Auction" %>
+            <%= f.submit "Add Comment", :class => "btn btn-large btn-danger" %>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   
+<!-- RIGHT SIDE CONTENT -->
+
   <div class="span4">
     <div class="highest-bid">
       <% if @auction.bids == [] %>
@@ -76,7 +107,8 @@
           <%= render 'ribbon' %>
         </div>
         <div class="bid-time">
-          0<span>hrs</span>
+          <div id="hours">0</div>
+          <div id="hours">Hours</div>
         </div>
         <div class="highest-bidder">
           Be the first to bid <%= "when it starts!" unless @auction.started? %>
@@ -87,37 +119,29 @@
         <% if @winner %>
           <div class="highest-bid-title ribbon">
             <div class="ribbon-front">
-              Winning bid
+              Winning Bid
             </div>
             <%= render 'ribbon' %>
           </div>
-          <div class="bid-time">
-            <%= @auction.highest_bid.time %><span>hrs</span>
-          </div>
-          <div class="highest-bidder">
-            By <%= link_to @auction.highest_bid.user.name, user_path(@auction.highest_bid.user) if @auction.highest_bid %>
-          </div>
+            <%= render 'bids/highest_bid' %>
         <% else %>
           <div class="highest-bid-title ribbon">
             <div class="ribbon-front">
-              Highest bid
+              Highest Bid
             </div>
             <%= render 'ribbon' %>
           </div>
-          <div class="bid-time">
-            <%= @auction.highest_bid.time %><span>hrs</span>
-          </div>
-          <div class="highest-bidder">
-            By <%= link_to @auction.highest_bid.user.name, user_path(@auction.highest_bid.user) if @auction.highest_bid %>
-          </div>
+            <%= render 'bids/highest_bid' %>
         <% end %>
 
       <% end %>
     </div>
 
     <div class='you-highest <%= 'hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
-        <h3>You're the top bidder!</h3>
+        <h3>You're the Top Bidder!</h3>
     </div>
+
+<!-- BID BUTTON -->
 
     <div class='main-bid-button'>
       <div id="overlay"></div>
@@ -126,12 +150,13 @@
       <% elsif !current_user %>
         <a href='<%= new_user_path %>'><button class="btn btn-success btn-large">Sign in to bid</button></a>
       <% else %>
-        <div id="trigger"><button class="btn btn-success btn-large bid-button">Bid hours</button></div>
+        <div id="trigger"><button class="btn btn-danger btn-large bid-button">Bid hours</button></div>
       <% end %>
     </div>
 
+<!-- AUCTION DETAILS -->
+
     <div class='auction-details'>
-      
       <% if Time.now < @auction.start_date %>
         <div>Auction starts</div>
         <div><h3><%= @auction.start_date.strftime('%b %d, %Y') %></h3></div>

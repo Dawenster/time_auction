@@ -43,7 +43,10 @@
 }
 
 .auction-title {
-  margin: 10px 10px 30px 10px;
+  margin: 10px 10px 10px 10px;
+  & h1 {
+    font-family: 'titilliumtext25l800_wt';
+  }
 }
 
 .auction-category {
@@ -53,7 +56,6 @@
 
 .highest-bid {
   width: 90%;
-  height: 150px;
   margin: 10px 20px 0px 20px;
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -61,6 +63,9 @@
   padding: 10px;
   text-align: center;
   position: relative;
+  &:hover {
+    background-color: #e0e0e0;
+  }
 }
 
 .you-highest {
@@ -82,15 +87,22 @@
 }
 
 .bid-time {
-  font-size: 7em;
-  margin-top: 75px;
-  span {
-    font-size: 0.3em;
+  margin-top: 65px;
+  font-size: 5em;
+  letter-spacing: -1px;
+  & #hours {
+    font-family: 'titilliumtext25l800_wt';
+  }
+  & #hours:nth-child(2) {
+    font-family: 'titilliumtext25l250_wt';
+    margin-top: 25px;
+    font-size: 0.5em;
+    letter-spacing: -2px;
   }
 }
 
 .highest-bidder {
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
 .main-bid-button {
@@ -109,8 +121,10 @@
   padding: 10px;
   text-align: center;
   position: relative;
-  z-index: -10;
-  h3 {
+  &:hover {
+    background-color: #e0e0e0;
+  }
+  & h3 {
     margin-top: 0;
   }
 }
@@ -178,6 +192,7 @@
   position: relative;
 }
   .ribbon-front {
+  font-size: 16px;
   background-color: #666666;
   height: 30px;
   color: white;
@@ -291,4 +306,16 @@ ul.nav-tabs {
   width: 580px;
   padding: 12px;
   padding-left: 20px;
+  & h3 {
+    font-size: 2.2em;
+    font-family: 'Open Sans';
+    font-weight: 300;
+  }
+}
+
+.span12 hr {
+  width: 1040px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  border-top: 1px #ddd solid;
 }
