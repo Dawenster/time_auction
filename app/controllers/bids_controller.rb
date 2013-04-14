@@ -7,6 +7,8 @@ class BidsController < ApplicationController
 
     @bid.charity = charity
 
+    @all_charity_names = Charity.all.map { |charity| charity.name }
+
     if @bid.auction.bids == []
       @last_bid_time = 0
     else
