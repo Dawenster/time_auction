@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'selenium-webdriver'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'faker'
+
 
 
 # Gems used only for assets and not required
