@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe "Charity Creation" do
-
+  before { login_user(user) }
+  let(:user) { FactoryGirl.create(:user, :admin => true) }
   subject { page }
 
   it "can create a charity" do
-    expect {  
+    expect {
       visit new_charity_path
       fill_in :charity_name, with: Faker::Name.name
       fill_in :charity_description, with: Faker::Lorem.paragraph
@@ -28,10 +29,12 @@ describe "Charity Creation" do
 end
 
 describe "Charity Creation" do
+  before { login_user(user) }
   let(:charity) { FactoryGirl.create(:charity) }
+  let(:user) { FactoryGirl.create(:user, :admin => true) }
   subject { page }
 
-  it "can create a charity" do
+  it "can edit a charity" do
     visit edit_charity_path(charity)
     fill_in :charity_name, with: "New name"
     click_button 'Update Charity'
