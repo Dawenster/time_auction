@@ -16,6 +16,9 @@
     <div class="auction-title">
       <h1><%= @auction.title %></h1>
     </div>
+    <div class="edit-as-admin">
+      <%= link_to "Edit as admin", edit_auction_path(@auction) if current_user.admin %>
+    </div>
     <hr>
   </div>
 

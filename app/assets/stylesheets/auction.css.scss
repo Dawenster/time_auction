@@ -49,6 +49,10 @@
   }
 }
 
+.edit-as-admin {
+  margin-left: 10px;
+}
+
 .auction-category {
   margin: 5px 10px 0px 10px;
   font-size: 1.5em;
@@ -150,11 +154,12 @@
 #new_bid_form {
     position: absolute;
     width: 800px;
-    height: 425px;
+    min-height: 425px;
     background: white;
     padding: 25px;
     border-radius: 15px;
     z-index: 1000;
+    overflow: none;
 }
 
 .pop-up {
@@ -171,10 +176,6 @@
 
 .pop-up-right {
   width: 35%;
-  float: left;
-}
-
-.pop-up-right2 {
   float: left;
 }
 

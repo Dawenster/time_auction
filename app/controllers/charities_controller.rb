@@ -25,6 +25,7 @@ class CharitiesController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless current_user.admin
     @charity = Charity.find(params[:id])
     @photo = @charity.photos.build
   end

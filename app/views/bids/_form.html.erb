@@ -15,10 +15,8 @@
     </div>
     <div class="pop-up-right">
       <%= cl_image_tag @auction.photos.first.url, :width => 200, :height => 150 unless @auction.photos == [] %>
-    </div>
-    <div class="pop-up-right2">
       <h4><%= @auction.title %></h4>
-    </div>  
+    </div>
     <div class="pop-up-bottom">
       I, <%= current_user.name if current_user %>, will bid <span><%= f.text_field :time, placeholder: "Number", :class => "input-small" %> hours.</span>
       <span>Where will you volunteer?</span> <span><%= f.text_field :charity_id, :title => "Select a charity or enter a new one", :placeholder => "Charity name (optional)" %></span>

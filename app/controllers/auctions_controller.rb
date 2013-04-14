@@ -40,6 +40,7 @@ class AuctionsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path unless current_user.admin
     @auction = Auction.find(params[:id])
     @categories = Category.all
   end
