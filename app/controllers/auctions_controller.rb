@@ -38,6 +38,7 @@ class AuctionsController < ApplicationController
     @winner = User.find(@auction.winner_id) if @auction.winner_id
     @winning_time = @auction.bids.last.time if @winner
     store_location
+    @comments = Comment.where('auction_id = ?', @auction.id)
   end
 
   def edit

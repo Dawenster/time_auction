@@ -19,14 +19,12 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
       <li><a href="#auction-bid-history" data-toggle="tab">Bid History</a></li>
-      <li><a href="#auction-comments" data-toggle="tab">Comments</a></li>
+      <li><a href="#auction-comments" data-toggle="tab">Comments (<%= @comments.count %>)</a></li>
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="auction-description">
-      
-
-        <%= @auction.description %></br>
+      <div class="tab-pane active" id="auction-description"> 
+        <%= @auction.description %>
       </div>
 
       <div class="tab-pane" id="auction-bid-history">
@@ -41,15 +39,31 @@
       </div>
 
       <div class="tab-pane" id="auction-comments">
-        <p>My Comments, so fresh.</p>
+        <h3>Auction Comments (<%= @comments.count %>):</h3>
+          <ul class="comments">
+            <% @comments.reverse.each do |comment| %>
+              <li class="comment">
+                <%= simple_format(comment.content) %>
+                <div class="posted_by">
+                  Posted by: <%= link_to comment.user.username, user_path(comment.user) %>
+                  <% if comment.user == current_user %>
+                    <%= link_to '', auction_comment_path(@auction, comment), 
+                        :class => 'icon-remove', :remote => true, :method => 'delete' %>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+            <% if current_user %>
+              <%= form_for [@auction, Comment.new], :remote => true do |f| %>
+              <%= f.text_area :content, :rows => 5, :class => "small_desc_box", :placeholder => "Comment on this Auction" %>
+                <%= f.submit "Add Comment", :class => "btn btn-success" %>
+              <% end %>
+            <% end %>
+        </div>
       </div>
     </div>
-  </div>
   
-
-
-
-
   <div class="span4">
     <div class="highest-bid">
       <% if @auction.bids == [] %>
