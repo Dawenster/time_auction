@@ -1,0 +1,23 @@
+.category-browse{
+
+}
+
+.auction-list {
+  list-style: none;
+  /*width: 80%;*/
+  margin: 0;
+}
+
+.auction-list li{
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.tab-pane.browse-auctions ul li{
+  margin: 0;
+}
+
+.browse-photo{
+  border-radius: 9px;
+}
