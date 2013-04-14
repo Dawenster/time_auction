@@ -59,43 +59,38 @@
       </div>
 
 <!-- COMMENTS -->
-
       <div class="tab-pane" id="auction-comments">
         <h3>Auction Comments</h3>
-          <ul class="comments">
-            <% @comments.reverse.each do |comment| %>
-              <div class="commentAvatar">
-                <% if comment.user.photo %>
-                  <%= cl_image_tag comment.user.photo.url, :width => 48, :height => 48 %>
-                <% else %>
-                  <%= cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 48, :height => 48 %>
-                <% end %>
-              </div>
-              <li class="comment">
-
-                <div class="posted_by">
-                  <%= link_to comment.user.name, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago
-                    <% if comment.user == current_user %>
-                      <%= link_to '', auction_comment_path(@auction, comment), :class => 'icon-remove', :remote => true, :method => 'delete' %>
-                    <% end %>
-                </div>
-                <p>
-                  <%= simple_format(comment.content) %>
-                </p>
-                </li>
-
-
-            <% end %>
-          </ul>
-
-
-
-            <% if current_user %>
-              <%= form_for [@auction, Comment.new], :remote => true do |f| %>
-              <%= f.text_area :content, :rows => 5, :class => "small_desc_box", :placeholder => "Comment on this Auction" %>
-                <%= f.submit "Add Comment", :class => "btn btn-success" %>
+        <ul class="comments">
+          <% @comments.reverse.each do |comment| %>
+          <div class="commentBlock">
+            <div class="commentAvatar">
+              <% if comment.user.photo %>
+                <%= cl_image_tag comment.user.photo.url, :width => 48, :height => 48 %>
+              <% else %>
+                <%= cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 48, :height => 48 %>
               <% end %>
+            </div>
+            <li class="comment">
+              <div class="posted_by">
+                <%= link_to comment.user.name, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago
+                  <% if comment.user == current_user %>
+                    <%= link_to '', auction_comment_path(@auction, comment), :class => 'icon-remove', :remote => true, :method => 'delete' %>
+                  <% end %>
+              </div>
+              <p>
+                <%= simple_format(comment.content) %>
+              </p>
+              </li>
+            </div>
+          <% end %>
+        </ul>
+          <% if current_user %>
+            <%= form_for [@auction, Comment.new], :remote => true do |f| %>
+            <%= f.text_area :content, :rows => 5, :class => "desc_box", :placeholder => "Comment on this Auction" %>
+            <%= f.submit "Add Comment", :class => "btn btn-large btn-danger" %>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>

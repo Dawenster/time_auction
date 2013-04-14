@@ -14,12 +14,12 @@ var Comment = {
   appendComment: function(event, data) {
     $('li#comment_errors').hide();
     $(this).siblings("ul").prepend('<div class="posted_by">Posted by: ' + data.user.name + '</div>');
-    $(this).siblings("ul").prepend('<li class="comment">' + data.comment.content + '</li>'); //Can add deleteIcon in the future
+    $(this).siblings("ul").prepend('<li class="comment"><p>' + data.comment.content + '</p></li>'); //Can add deleteIcon in the future
   },
 
   showErrors: function(xhr, data, status) {
     if (data.statusText == "Unauthorized") return window.location = data.responseText
-      $('ul.comments').before("<li id='comment_errors'>" + data.responseText + "</li>");
+      $('.desc_box').before("<li id='comment_errors'>" + data.responseText + "</li>");
   },
 
   confirmDelete: function() {
@@ -31,7 +31,7 @@ var Comment = {
   },
 
   deleteComment: function() {
-    $(this).parent().parent('li').hide('slow');
+    $(this).parent().parent().parent('.commentBlock').hide('slow');
   },
 
   addCommentCount: function() {
