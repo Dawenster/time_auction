@@ -3,15 +3,17 @@
     <%= render 'bids/form' %>
   </div>
 </div>
-  <div class="span8">
-
+<div class="row">
+  
+  <div class="span12">
     <div class="auction-category">
       <%= link_to '> ' + @auction.category.name, category_path(@auction.category) %>
     </div>
     <div class="auction-title">
       <h1><%= @auction.title %></h1>
     </div>
-
+  </div>
+  <div class="span8">
     <div class="auction-photo shadow">
         <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
       </div>
@@ -24,7 +26,7 @@
 
     <div class="tab-content">
       <div class="tab-pane active" id="auction-description"> 
-        <%= @auction.description %>
+        <%= simple_format(@auction.description) %>
       </div>
 
       <div class="tab-pane" id="auction-bid-history">

@@ -42,6 +42,7 @@ h1 {
 .container {
   width: 1040px;
   padding-top: 100px;
+  padding-left: 0px;
   clear: both;
   min-height: 500px;
 }
@@ -60,4 +61,8 @@ a {
     color: #B20404;
     text-decoration: none;
   }
+}
+
+::selection {
+  background-color: #B4E0E8;
 }

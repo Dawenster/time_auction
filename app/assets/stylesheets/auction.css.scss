@@ -263,6 +263,10 @@
   z-index: 0;
 }
 
+ul.nav-tabs {
+  width: 600px !important;
+}
+
 .nav-tabs li {
   padding: 0px !important;
   margin: 0px !important;
@@ -281,4 +285,10 @@
       border-bottom: 1px solid #f2f2f2 !important;
     }
   }
+}
+
+.tab-pane {
+  width: 580px;
+  padding: 12px;
+  padding-left: 20px;
 }
