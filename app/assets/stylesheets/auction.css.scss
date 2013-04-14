@@ -44,6 +44,9 @@
 
 .auction-title {
   margin: 10px 10px 10px 10px;
+  & h1 {
+    font-family: 'titilliumtext25l800_wt';
+  }
 }
 
 .auction-category {
@@ -303,6 +306,11 @@ ul.nav-tabs {
   width: 580px;
   padding: 12px;
   padding-left: 20px;
+  & h3 {
+    font-size: 2.2em;
+    font-family: 'Open Sans';
+    font-weight: 300;
+  }
 }
 
 .span12 hr {

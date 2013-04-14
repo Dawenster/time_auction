@@ -1,0 +1,34 @@
+li.comment {
+  margin-left: 30px;
+  list-style: none;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  padding: 5px;
+  & p {
+    margin-top: 20px;
+    line-height: 1.6em;
+    font-size: 1.1em;
+  }
+  &:hover {
+    background-color: #ddd;
+  }
+}
+
+.commentAvatar {
+  margin-left :-30px;
+  padding: 0px 5px;
+  float: left;
+}
+
+.posted_by {
+  float: left;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #888;
+  margin-top: -4px;
+  a {
+    font-size: 1.4em;
+    font-weight: 400;
+  }
+}
