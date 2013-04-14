@@ -1,3 +1,24 @@
-<% @categories.each do |category| %>
-  <%= link_to category.name, category_path(category) %>
-<% end %>
+   <ul class="nav nav-tabs">
+      <li class="active"><a href="#people" data-toggle="tab">People</a></li>
+      <li><a href="#products" data-toggle="tab">Products</a></li>
+      <li><a href="#experiences" data-toggle="tab">Experiences</a></li>
+    </ul>
+
+<% i = 0  %>
+<div class="tab-content">
+  <% @auctions_categories.each do |category, auctions| %>
+    <% if i == 0 %>
+        <div class="tab-pane active" id="<%= category.downcase %>">
+      <% else %>
+        <div class="tab-pane" id="<%= category.downcase %>">
+      <% end %>
+    <ul>
+      <% auctions.each do |auction|%>
+        <li><%= link_to auction.title, auction_path(auction) %></li>
+      <% end %>
+    </ul>
+      <% i += 1  %>
+    </div>
+    <% end %>
+</div>
+

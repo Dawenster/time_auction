@@ -1,3 +1,7 @@
+.tab-pane {
+  display: none;
+}
+
 .auction-photo {
   background:#FFF;
   margin: 10px;
@@ -43,7 +47,7 @@
 }
 
 .auction-category {
-  margin: 30px 10px 0px 10px;
+  margin: 5px 10px 0px 10px;
   font-size: 1.5em;
 }
 
@@ -57,7 +61,6 @@
   padding: 10px;
   text-align: center;
   position: relative;
-  z-index: -10;
 }
 
 .you-highest {
@@ -257,5 +260,35 @@
   right: 0px;
   width: 0px;
   height: 40px;
-    z-index: 0;
+  z-index: 0;
+}
+
+ul.nav-tabs {
+  width: 600px !important;
+}
+
+.nav-tabs li {
+  padding: 0px !important;
+  margin: 0px !important;
+  height: 52px;
+  border-bottom-color: none !important;
+  & a:hover {
+   border-bottom: 0px !important;
+   padding: 8px 12px;
+   background-color: transparent !important;
+  }
+  &.active a {
+    color: #383838;
+    background-color: #f2f2f2 !important; 
+    &:hover {
+      color: #383838;
+      border-bottom: 1px solid #f2f2f2 !important;
+    }
+  }
+}
+
+.tab-pane {
+  width: 580px;
+  padding: 12px;
+  padding-left: 20px;
 }

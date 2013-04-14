@@ -4,28 +4,68 @@
   </div>
 </div>
 <div class="row">
-  <div class="span8">
-    <div class="auction-photo shadow">
-      <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
-    </div>
+  
+  <div class="span12">
     <div class="auction-category">
       <%= link_to '> ' + @auction.category.name, category_path(@auction.category) %>
     </div>
     <div class="auction-title">
       <h1><%= @auction.title %></h1>
     </div>
-
-    <%= @auction.description %></br>
-
-    <h2>Activity feed:</h2>
-
-    <table class="bids">
-      <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
-      <% @auction.bids.reverse.each do |bid| %>
-        <%= render 'bids/bid', :bid => bid %>  
-      <% end %>
-    </table>
   </div>
+  <div class="span8">
+    <div class="auction-photo shadow">
+        <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
+      </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
+      <li><a href="#auction-bid-history" data-toggle="tab">Bid History</a></li>
+      <li><a href="#auction-comments" data-toggle="tab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="auction-description"> 
+        <%= simple_format(@auction.description) %>
+      </div>
+
+      <div class="tab-pane" id="auction-bid-history">
+        <h2>Activity feed:</h2>
+
+        <table class="bids">
+          <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
+          <% @auction.bids.reverse.each do |bid| %>
+            <%= render 'bids/bid', :bid => bid %>  
+          <% end %>
+        </table>
+      </div>
+
+      <div class="tab-pane" id="auction-comments">
+        <h3>Auction Comments</h3>
+          <ul class="comments">
+            <% @comments.reverse.each do |comment| %>
+              <li class="comment">
+                <%= simple_format(comment.content) %>
+                <div class="posted_by">
+                  Posted by: <%= link_to comment.user.name, user_path(comment.user) %>
+                  <% if comment.user == current_user %>
+                    <%= link_to '', auction_comment_path(@auction, comment), 
+                        :class => 'icon-remove', :remote => true, :method => 'delete' %>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+            <% if current_user %>
+              <%= form_for [@auction, Comment.new], :remote => true do |f| %>
+              <%= f.text_area :content, :rows => 5, :class => "small_desc_box", :placeholder => "Comment on this Auction" %>
+                <%= f.submit "Add Comment", :class => "btn btn-success" %>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  
   <div class="span4">
     <div class="highest-bid">
       <% if @auction.bids == [] %>
@@ -33,12 +73,7 @@
           <div class="ribbon-front">
             <div class='no-bids-yet'>No bids yet</div>
           </div>
-          <div class="ribbon-edge-topleft"></div>
-          <div class="ribbon-edge-topright"></div>
-          <div class="ribbon-edge-bottomleft"></div>
-          <div class="ribbon-edge-bottomright"></div>
-          <div class="ribbon-back-left"></div>
-          <div class="ribbon-back-right"></div>
+          <%= render 'ribbon' %>
         </div>
         <div class="bid-time">
           0<span>hrs</span>
@@ -54,12 +89,7 @@
             <div class="ribbon-front">
               Winning bid
             </div>
-            <div class="ribbon-edge-topleft"></div>
-            <div class="ribbon-edge-topright"></div>
-            <div class="ribbon-edge-bottomleft"></div>
-            <div class="ribbon-edge-bottomright"></div>
-            <div class="ribbon-back-left"></div>
-            <div class="ribbon-back-right"></div>
+            <%= render 'ribbon' %>
           </div>
           <div class="bid-time">
             <%= @auction.highest_bid.time %><span>hrs</span>
@@ -72,12 +102,7 @@
             <div class="ribbon-front">
               Highest bid
             </div>
-            <div class="ribbon-edge-topleft"></div>
-            <div class="ribbon-edge-topright"></div>
-            <div class="ribbon-edge-bottomleft"></div>
-            <div class="ribbon-edge-bottomright"></div>
-            <div class="ribbon-back-left"></div>
-            <div class="ribbon-back-right"></div>
+            <%= render 'ribbon' %>
           </div>
           <div class="bid-time">
             <%= @auction.highest_bid.time %><span>hrs</span>

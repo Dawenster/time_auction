@@ -5,6 +5,7 @@ class Auction < ActiveRecord::Base
   has_many :bids
   has_many :users, through: :bids
   has_many :photos, :as => :imageable
+  has_many :comments
 
   belongs_to :category
   accepts_nested_attributes_for :photos 

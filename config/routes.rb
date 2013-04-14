@@ -7,6 +7,7 @@ TimeAuction::Application.routes.draw do
   resources :bids, :only => [:create]
   resources :auctions do
     resources :photos, :only => [:create]
+    resources :comments, :only => [:create, :destroy]
   end
   resources :categories, :only => [:index, :show]
   resources :charities

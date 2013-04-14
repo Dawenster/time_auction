@@ -1,7 +1,6 @@
 class AuctionsController < ApplicationController
   def new
     @auction = Auction.new
-    @categories = Category.all
     @photo = @auction.photos.build
   end
 
@@ -22,7 +21,6 @@ class AuctionsController < ApplicationController
     if @auction.save && proper_date
       redirect_to auction_path @auction
     else
-      @categories = Category.all
       if flash.now[:errors]
         flash.now[:errors] += ". "
         flash.now[:errors] += @auction.errors.full_messages.join(". ")
@@ -38,6 +36,7 @@ class AuctionsController < ApplicationController
     @winner = User.find(@auction.winner_id) if @auction.winner_id
     @winning_time = @auction.bids.last.time if @winner
     store_location
+    @comments = Comment.where('auction_id = ?', @auction.id)
   end
 
   def edit

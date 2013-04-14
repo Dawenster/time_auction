@@ -12,9 +12,11 @@
         <%= link_to "Browse Auctions", categories_path, :id => "navName" %>
       </li>
       <li>
-        <span id="navWelcome">
-          Welcome, <%= link_to current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
-        </span>
+        <% if current_user.photo %>
+          <%= link_to (cl_image_tag current_user.photo.url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
+        <% else %>
+          <%= link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
+        <% end %>
       </li>
       <li>
         <%= link_to "Logout", session_path(session[:id]), :method => :delete, :id => "navName" %>
@@ -24,9 +26,11 @@
         <%= link_to "Browse Auctions", categories_path, :id => "navName" %>
       </li>
       <li>
-        <span id="navWelcome">
-          Welcome, <%= link_to current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
-        </span>
+        <% if current_user.photo %>
+          <%= link_to (cl_image_tag current_user.photo.url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
+        <% else %>
+          <%= link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
+        <% end %>
       </li>
       <li>
         <%= link_to "Logout", session_path(current_user), :method => :delete, :id => "navName" %>
