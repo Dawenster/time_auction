@@ -31,7 +31,7 @@
     <div class="hours-left">
       <ul>
         <% @remaining_tasks.each do |bid| %>
-        <li><%= bid.auction.title %>: <%= bid.auction.verified_time ? bid.time - bid.auction.verified_time : bid.time %> hours left</li>
+        <li><%= bid.auction.title %>: <%= bid.time - bid.auction.verified_time %> hours left</li>
         <% end %>
       </ul>
     </div>
@@ -51,11 +51,9 @@
   </div>
   <div>
     <ul>
-      <% if @entered_auctions %>
-        <% @entered_auctions.each do |auction| %>
-          <% @bids.each do |bid| %>
-          <li>You bid <%= bid.time %> hours on <%= link_to auction.title, auction_path(auction) %></li>
-          <% end %>
+      <% if @bids %>
+        <% @bids.each do |bid| %>
+          <li>You bid <%= bid.time %> hours on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
         <% end %>
       <% end %>
     </ul>
