@@ -4,9 +4,14 @@
     <li>
       <%= link_to "About", '#', :id => "navName" %>
     </li>
+
     <% if current_user && current_user.admin %>
-      <li>
-        <%= link_to "Add Auction", new_auction_path, :id => "navName" %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" href="#" id="navName">Create</a>
+        <ul class="dropdown-menu">
+          <li><%= link_to 'New Auction', new_auction_path %></li>
+          <li><%= link_to 'New Charity', new_charity_path %></li>
+        </ul>
       </li>
       <li>
         <%= link_to "Browse Auctions", categories_path, :id => "navName" %>
@@ -21,7 +26,9 @@
       <li>
         <%= link_to "Logout", session_path(session[:id]), :method => :delete, :id => "navName" %>
       </li>
+
     <% elsif current_user %>
+
       <li>
         <%= link_to "Browse Auctions", categories_path, :id => "navName" %>
       </li>
@@ -35,10 +42,14 @@
       <li>
         <%= link_to "Logout", session_path(current_user), :method => :delete, :id => "navName" %>
       </li>
+    
     <% else %>
+
       <li><%= link_to "Login", new_session_path, :id => "navName" %></li>
       <li><%= link_to "Sign up", new_user_path, :id => "navName" %></li>
+    
     <% end %>
+
   </ul>
 </nav>
 
