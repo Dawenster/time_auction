@@ -10,6 +10,7 @@ class Auction < ActiveRecord::Base
   belongs_to :category
   accepts_nested_attributes_for :photos 
   before_validation :create_deadline
+  before_create :initial_verified_time
 
   validates :deadline, :presence => true
   validates :title, :presence => true
@@ -31,6 +32,11 @@ class Auction < ActiveRecord::Base
   end
 
   private
+
+  def initial_verified_time
+    self.verified_time = 0
+  end
+
 
   def create_deadline
     self.deadline = self.end_date + 1.month if self.end_date
