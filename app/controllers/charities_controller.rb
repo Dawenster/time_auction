@@ -25,7 +25,6 @@ class CharitiesController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless current_user.admin
     @charity = Charity.find(params[:id])
     @photo = @charity.photos.build
   end
@@ -38,5 +37,12 @@ class CharitiesController < ApplicationController
       flash.now[:errors] = @charity.errors.full_messages.join(". ")
       render 'edit'
     end
+  end
+
+  def destroy
+    @charity = Charity.find(params[:id])
+    flash[:success] = "You have successfully deleted #{@charity.name}"
+    Charity.destroy(@charity)
+    redirect_to user_path(current_user)
   end
 end

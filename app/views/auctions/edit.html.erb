@@ -1,3 +1,4 @@
-<h1>Edit an Auction</h1> <span><%= link_to "Back to auction", auction_path(@auction) %></span>
+<div class="auction-category"><%= link_to "> Back to auction", auction_path(@auction) %></div>
+<div class="auction-title"><h1>Edit auction</h1></div>
 <%= render 'form' %>
 <%= link_to "Delete auction", auction_path(@auction), :method => 'delete', :class => 'btn btn-danger btn-large' %>

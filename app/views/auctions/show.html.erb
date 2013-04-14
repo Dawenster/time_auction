@@ -26,7 +26,7 @@
 
   <div class="span8">
     <div class="auction-photo shadow">
-        <%= cl_image_tag @auction.photos.first.url, :transformation => { :width => 600, :height => 450 } unless @auction.photos == [] %>
+        <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
       </div>
 
 <!-- TABS -->
@@ -69,9 +69,9 @@
           <div class="commentBlock">
             <div class="commentAvatar">
               <% if comment.user.photo %>
-                <%= cl_image_tag comment.user.photo.url, :transformation => { :width => 48, :height => 48 } %>
+                <%= cl_image_tag comment.user.photo.url, :width => 48, :height => 48 %>
               <% else %>
-                <%= cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :transformation => { :width => 48, :height => 48 } %>
+                <%= cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 48, :height => 48 %>
               <% end %>
             </div>
             <li class="comment">
