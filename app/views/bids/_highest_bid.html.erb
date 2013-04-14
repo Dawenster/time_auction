@@ -1,0 +1,7 @@
+<div class="bid-time">
+  <div id="hours"><%= @auction.highest_bid.time %></div>
+  <div id="hours">Hours</div>
+</div>
+<div class="highest-bidder">
+  By <%= link_to @auction.highest_bid.user.name, user_path(@auction.highest_bid.user) if @auction.highest_bid %>
+</div>
