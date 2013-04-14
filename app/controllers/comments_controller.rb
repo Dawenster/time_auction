@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
-    @comment = @auction.comments.build(:content => params[:comment][:content])
+    @comment = Comment.new(:content => params[:comment][:content]) #TODO: WHY CANT I BUILD?
+    @comment.auction = Auction.find(params[:auction_id])
     @comment.user = current_user
 
     if @comment.save

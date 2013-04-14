@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :phone, :password, :time_donated, :admin
   has_many :bids
   has_many :auctions, through: :bids
+  has_many :comments
   has_one :photo, :as => :imageable
 
   validates :name, :presence => true
