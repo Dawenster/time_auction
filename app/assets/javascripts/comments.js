@@ -1,25 +1,11 @@
 var Comment = {
   init: function() {
-    $('form.new_comment').on('ajax:success', this.appendComment);
     $('form.new_comment').on('ajax:success', this.clearTextArea);
     $('form.new_comment').on('ajax:success', this.addCommentCount);
     
     $('.comments').on('click', 'a.icon-remove', this.confirmDelete);
     $('.comments').on('ajax:success', 'a.icon-remove', this.deleteComment);
     $('.comments').on('ajax:success', 'a.icon-remove', this.subtractCommentCount);
-
-    $('form.new_comment').on('ajax:error', this.showErrors);
-  },
-    
-  appendComment: function(event, data) {
-    $('li#comment_errors').hide();
-    $(this).siblings("ul").prepend('<div class="posted_by">Posted by: ' + data.user.name + '</div>');
-    $(this).siblings("ul").prepend('<li class="comment"><p>' + data.comment.content + '</p></li>'); //Can add deleteIcon in the future
-  },
-
-  showErrors: function(xhr, data, status) {
-    if (data.statusText == "Unauthorized") return window.location = data.responseText
-      $('.desc_box').before("<li id='comment_errors'>" + data.responseText + "</li>");
   },
 
   confirmDelete: function() {

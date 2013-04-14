@@ -50,3 +50,14 @@
   background-color: #000;
   overflow: none;
 }
+
+.teamCell {
+  margin-right: 15px;
+  width: 240px;
+  height: 360px;
+  border: 1px solid #000;
+  background-color: #ccc;
+  &:last-child {
+    margin-right: 0px;
+  }
+}
