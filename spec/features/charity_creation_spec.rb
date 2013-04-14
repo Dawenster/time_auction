@@ -26,3 +26,22 @@ describe "Charity Creation" do
     should have_selector '.alert-errors'
   end
 end
+
+describe "Charity Creation" do
+  let(:charity) { FactoryGirl.create(:charity) }
+  subject { page }
+
+  it "can create a charity" do
+    visit edit_charity_path(charity)
+    fill_in :charity_name, with: "New name"
+    click_button 'Update Charity'
+    should have_content "New name"
+  end
+
+  it "does not save a charity if edited with an empty title" do
+    visit edit_charity_path(charity)
+    fill_in :charity_name, with: ""
+    click_button 'Update Charity'
+    should have_selector '.alert-errors'
+  end
+end
