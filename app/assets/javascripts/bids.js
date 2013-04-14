@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('.bids tr:first-child').after(data);
     var hours = data.replace(/\D+/g, "");
     $('.you-highest').removeClass('hide');
-    $('.highest-bid bid-time').text(hours);
+    $('.highest-bid .bid-time').text(hours);
     $('#flash').text("");
     $('.no-bids-yet').text("");
   });
