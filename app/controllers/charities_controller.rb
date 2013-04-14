@@ -21,5 +21,20 @@ class CharitiesController < ApplicationController
 
   def show
     @charity = Charity.find(params[:id])
+    @volunteers = @charity.bids.map { |bid| bid.user }.uniq
+  end
+
+  def edit
+    @charity = Charity.find(params[:id])
+  end
+
+  def update
+    @charity = Charity.find(params[:id])
+    if @charity.update_attributes(params[:charity])
+      redirect_to charity_path(@charity)
+    else
+      flash.now[:errors] = @charity.errors.full_messages.join(". ")
+      render 'edit'
+    end
   end
 end

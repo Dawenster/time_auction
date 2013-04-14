@@ -3,7 +3,7 @@ class BidsController < ApplicationController
     @bid = Bid.new params[:bid]
     @bid.user = current_user
 
-    charity = Charity.find_or_create_by_name(params[:bid][:charity_id])
+    charity = Charity.find_or_create_by_name(params[:bid][:charity_id].downcase.capitalize)
 
     @bid.charity = charity
 

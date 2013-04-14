@@ -79,7 +79,7 @@
           0<span>hrs</span>
         </div>
         <div class="highest-bidder">
-          Be the first to bid 
+          Be the first to bid <%= "when it starts!" unless @auction.started? %>
         </div>
         
       <% else %>
