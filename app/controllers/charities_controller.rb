@@ -26,6 +26,7 @@ class CharitiesController < ApplicationController
 
   def edit
     @charity = Charity.find(params[:id])
+    @photo = @charity.photos.build
   end
 
   def update
