@@ -3,13 +3,15 @@ $(document).ready(function() {
     $('.bids tr:first-child').after(data);
     var hours = data.replace(/\D+/g, "");
     $('.you-highest').removeClass('hide');
-    $('.highest-bid .bid-time').text(hours);
+    $('#hours').text(hours);
     $('#flash').text("");
-    $('.no-bids-yet').text("");
+    $('#flash').removeClass("alert alert-errors");
+    $('.no-bids-yet').text("Highest Bid");
   });
   
   $('#new_bid_form').on('ajax:error', function(event, data) {
     $('#flash').text("");
+    $('#flash').addClass("alert alert-errors");
     $('#flash').append(data.responseText);
   });
 
