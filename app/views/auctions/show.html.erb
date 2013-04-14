@@ -3,11 +3,8 @@
     <%= render 'bids/form' %>
   </div>
 </div>
-<div class="row">
   <div class="span8">
-    <div class="auction-photo shadow">
-      <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
-    </div>
+
     <div class="auction-category">
       <%= link_to '> ' + @auction.category.name, category_path(@auction.category) %>
     </div>
@@ -15,17 +12,44 @@
       <h1><%= @auction.title %></h1>
     </div>
 
-    <%= @auction.description %></br>
+    <div class="auction-photo shadow">
+        <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
+      </div>
 
-    <h2>Activity feed:</h2>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
+      <li><a href="#auction-bid-history" data-toggle="tab">Bid History</a></li>
+      <li><a href="#auction-comments" data-toggle="tab">Comments</a></li>
+    </ul>
 
-    <table class="bids">
-      <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
-      <% @auction.bids.reverse.each do |bid| %>
-        <%= render 'bids/bid', :bid => bid %>  
-      <% end %>
-    </table>
+    <div class="tab-content">
+      <div class="tab-pane active" id="auction-description">
+      
+
+        <%= @auction.description %></br>
+      </div>
+
+      <div class="tab-pane" id="auction-bid-history">
+        <h2>Activity feed:</h2>
+
+        <table class="bids">
+          <tr> <th>Name</th> <th>Hours Bid</th> <th>Posted</th> </tr>
+          <% @auction.bids.reverse.each do |bid| %>
+            <%= render 'bids/bid', :bid => bid %>  
+          <% end %>
+        </table>
+      </div>
+
+      <div class="tab-pane" id="auction-comments">
+        <p>My Comments, so fresh.</p>
+      </div>
+    </div>
   </div>
+  
+
+
+
+
   <div class="span4">
     <div class="highest-bid">
       <% if @auction.bids == [] %>
