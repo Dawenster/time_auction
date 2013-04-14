@@ -2,7 +2,7 @@
   <ul class="nav">
     <%= link_to "TimeAuction", root_path, id: 'logo' %>
     <li>
-      <%= link_to "About", '#', :id => "navName" %>
+      <%= link_to "About", about_path, :id => "navName" %>
     </li>
 
     <% if current_user && current_user.admin %>
