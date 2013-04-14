@@ -1,3 +1,29 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#user-profile-name{
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-bid-hours{
+  /*width: 20%;
+  float:left;*/
+  margin: 0;
+}
+
+#activities{
+  text-align: left;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+  bottom: 0;
+  font-size: 24.5px;
+  margin-top: 16px;
+}
+
+#user-auctions{
+  text-align: right;
+  float:left;
+}
