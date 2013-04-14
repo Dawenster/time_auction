@@ -84,3 +84,23 @@ a#logo {
 #adminNote {
   color: #F20505;
 }
+
+ul.nav li.dropdown:hover ul.dropdown-menu {
+  display: block;
+  list-style: none;
+  background-color: #ECECEC;
+  text-align: left;
+  & li a {
+  margin: 0;
+  padding: 0;
+  line-height: 40px;
+    &:hover{
+      background: transparent !important;
+      color: #F20505;
+    }
+  }
+}
+
+a.menu:after, .dropdown-toggle:after {
+  content: none;
+}
