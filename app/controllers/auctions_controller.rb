@@ -43,6 +43,7 @@ class AuctionsController < ApplicationController
   def edit
     redirect_to root_path unless current_user.admin
     @categories = Category.all
+    @photo = @auction.photos.build
   end
 
   def update
@@ -72,11 +73,14 @@ class AuctionsController < ApplicationController
   end
 
   def destroy
+    @auction = Auction.find(params[:id])
+    flash[:success] = "You have successfully deleted #{@auction.title}"
+    Auction.destroy(@auction)
+    redirect_to user_path(current_user)
   end
 
   private
   def load_auction
     @auction = Auction.find(params[:id])
   end
-
 end

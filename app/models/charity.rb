@@ -4,6 +4,6 @@ class Charity < ActiveRecord::Base
   validates :name, :uniqueness => true
 
   has_many :bids
-  has_many :photos, :as => :imageable
+  has_many :photos, :as => :imageable, :dependent => :destroy
   accepts_nested_attributes_for :photos
 end
