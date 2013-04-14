@@ -21,7 +21,7 @@
     </div>  
     <div class="pop-up-bottom">
       I, <%= current_user.name if current_user %>, will bid <span><%= f.text_field :time, placeholder: "Number", :class => "input-small" %> hours.</span>
-      <span>Where will you volunteer?</span> <span><%= f.text_field :charity_id, placeholder: "Charity (optional)" %></span>
+      <span>Where will you volunteer?</span> <span><%= f.text_field :charity_id, :title => "Select a charity or enter a new one", :placeholder => "Charity name (optional)" %></span>
       <%= f.hidden_field :auction_id, value: @auction.id %>
 
       <div>By clicking below, you agree to the official <%= link_to "Time Auction rules", "#" %>.</div><br>

@@ -1,11 +1,12 @@
 class BidsController < ApplicationController
-  def new
-    render partial: 'new'
-  end
-
   def create
     @bid = Bid.new params[:bid]
     @bid.user = current_user
+
+    charity = Charity.find_or_create_by_name(params[:bid][:charity_id])
+
+    @bid.charity = charity
+
     if @bid.auction.bids == []
       @last_bid_time = 0
     else

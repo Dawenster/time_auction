@@ -5,6 +5,7 @@ class Bid < ActiveRecord::Base
   validates :time, presence: true
   belongs_to :user
   belongs_to :auction
+  belongs_to :charity
 
   def to_json
     { name: self.user.name }.to_json

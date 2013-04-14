@@ -9,6 +9,7 @@ TimeAuction::Application.routes.draw do
     resources :photos, :only => [:create]
   end
   resources :categories, :only => [:index, :show]
+  resources :charities
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

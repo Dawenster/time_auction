@@ -27,4 +27,13 @@ $(document).ready(function() {
       $('#new_bid_form').fadeOut(200);
       $('#overlay').fadeOut(200);
   });
+  
+  $('#bid_charity_id').tooltip({
+    'placement': "top"
+  })
+
+  var availableTags = <%= Charity.all.map { |charity| charity.name } %>
+  $("#bid_charity_id").autocomplete({
+    source: availableTags
+  });
 });

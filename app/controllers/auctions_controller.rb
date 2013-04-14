@@ -24,10 +24,10 @@ class AuctionsController < ApplicationController
     else
       @categories = Category.all
       if flash.now[:errors]
-        flash.now[:errors] += ", "
-        flash.now[:errors] += @auction.errors.full_messages.join(", ")
+        flash.now[:errors] += ". "
+        flash.now[:errors] += @auction.errors.full_messages.join(". ")
       else
-        flash.now[:errors] = @auction.errors.full_messages.join(", ")
+        flash.now[:errors] = @auction.errors.full_messages.join(". ")
       end
       render :new
     end
@@ -64,10 +64,10 @@ class AuctionsController < ApplicationController
     else
       @categories = Category.all
       if flash.now[:errors]
-        flash.now[:errors] += ", "
-        flash.now[:errors] += @auction.errors.full_messages.join(", ")
+        flash.now[:errors] += ". "
+        flash.now[:errors] += @auction.errors.full_messages.join(". ")
       else
-        flash.now[:errors] = @auction.errors.full_messages.join(", ")
+        flash.now[:errors] = @auction.errors.full_messages.join(". ")
       end
       render 'edit'
     end

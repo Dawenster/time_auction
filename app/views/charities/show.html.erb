@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="span8">
+    <div>
+      <h1><%= @charity.name %></h1>
+    </div>
+      <p><%= @charity.description %></p>
+    <div>
+    </div>
+  </div>
+  <div class="span4 shadow">
+    <%= cl_image_tag @charity.photos.last.url, :width => 600, :height => 450 unless @charity.photos == [] %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+
+  </div>
+</div>

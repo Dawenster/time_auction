@@ -7,5 +7,5 @@ describe Bid do
   it { should validate_presence_of :auction_id }
   it { should belong_to :user }
   it { should belong_to :auction }
-
+  it { should belong_to :charity }
 end

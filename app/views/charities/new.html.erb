@@ -1,0 +1,11 @@
+<%= form_for @charity do |f| %>
+  <%= f.label :name, 'Charity name', :autofocus => true %>
+  <%= f.text_field :name %>
+  <%= f.label :description, 'Describe the work that the charity does' %>
+  <%= f.text_area :description %>
+  <%= f.fields_for :photos, :html => { multipart: true } do |builder| %>
+    <label for="file">Apply Photo</label>
+    <%= builder.file_field :url %>
+  <% end %>
+  <%= f.submit "Create Charity", :class => "btn btn-primary btn-large" %>
+<% end %>
