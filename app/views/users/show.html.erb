@@ -1,6 +1,7 @@
 <div id="user-profile-name"><h1>Profile for <%= @user.name %></h1></div>
 <div class="row">      
   <div class="span3">
+    <div class="photo-upload">
     <% if @user.photo %>
       <%= cl_image_tag @user.photo.url, :width => 150, :height => 150, :crop => :fill %>
     <% else %>
@@ -9,14 +10,17 @@
     <% if current_user == @user %>
        <%= form_tag [@user, Photo.new], :method => 'post', :multipart => true do %>
         <label for="file">Change Photo</label>
-        <%= file_field_tag "file" %>
+        <%= file_field_tag "file", :style => "visibility:hidden;" %>
         <%= hidden_field_tag :user_id, @user.id %>
         <%= submit_tag "Upload", :class => "btn btn-success" %>
       <% end %>
     <% end %>
   </div>
 
+  </div>
+
   <div class="span9">
+    <div class="todo-header"><h3>Remaining Tasks</h3></div>
     <div id="user-auctions">
     <h3>Hours Logged</h3>
     <div class="highest-bid user-bid-hours">
@@ -33,10 +37,22 @@
       </ul> -->
     </div>
   </div>
+
 </div>
 
 <% if current_user == @user %>
   <div id="activities">
     Recent Bids
+  </div>
+  <div>
+    <ul>
+      <% if @auctions %>
+        <% @auctions.each do |auction| %>
+          <% @bids.each do |bid| %>
+            <li><%= auction.title%>: <%= bid.time %> hours</li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 <% end %>

@@ -20,10 +20,23 @@ div#user-profile-name{
   padding-bottom: 20px;
   bottom: 0;
   font-size: 24.5px;
-  margin-top: 16px;
+  margin-top: 96px;
 }
 
 #user-auctions{
   text-align: right;
-  float:left;
+  margin: 0;
+  float:right;
+}
+
+.todo-header{
+  border-bottom: 1px solid gray;
+  width: 70%;
+  display:inline-block;
+}
+
+.photo-upload{
+  margin-top: 20px;
+  display:inline-block;
+
 }
