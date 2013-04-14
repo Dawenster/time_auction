@@ -22,6 +22,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @winning_auctions = Auction.where("winner_id = ?", params[:id])
+    @hours_verified = @winning_auctions.inject{|sum, x| sum += x.verified_time} || 0
     @bids = @user.bids
+    @entered_auctions = @bids.map{|bid| bid.auction }
+    @remaining_tasks = []
+    @bids.each do |bid|
+      unless bid.auction.verified_time == bid.time
+        @remaining_tasks << bid
+      end
+    end
   end
 end

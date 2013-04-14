@@ -3,31 +3,38 @@
   <div class="span3">
     <div class="photo-upload">
     <% if @user.photo %>
-      <%= cl_image_tag @user.photo.url, :width => 150, :height => 150, :crop => :fill %>
+      <%= cl_image_tag @user.photo.url, :width => 200, :height => 200, :crop => :fill %>
     <% else %>
       <%= image_tag '/assets/avatar_blank.jpg' %>
     <% end %>
     <% if current_user == @user %>
        <%= form_tag [@user, Photo.new], :method => 'post', :multipart => true do %>
         <label for="file">Change Photo</label>
-        <%= file_field_tag "file", :style => "visibility:hidden;" %>
         <%= hidden_field_tag :user_id, @user.id %>
+        <%= file_field_tag "file", :style => "visibility:hidden;" %>
         <%= submit_tag "Upload", :class => "btn btn-success" %>
       <% end %>
     <% end %>
-  </div>
-
+    </div>
   </div>
 
   <div class="span9">
-    <div class="todo-header"><h3>Remaining Tasks</h3></div>
-    <div id="user-auctions">
+        <div id="user-auctions">
     <h3>Hours Logged</h3>
     <div class="highest-bid user-bid-hours">
       <div class="bid-time">
-        0<span>hrs</span>
+        <%= @hours_verified %><span>hrs</span>
       </div>
     </div>
+  </div>
+    <div class="todo-header"><h3>Remaining Hours</h3></div>
+    <div class="hours-left">
+    <ul>
+      <% @remaining_tasks.each do |bid| %>
+      <li><%= bid.auction.title %>: <%= bid.auction.verified_time ? bid.time - bid.auction.verified_time : bid.time %> hours left</li>
+      <% end %>
+    </ul>
+  </div>
      <!--  <ul>
         <% @winning_auctions.each do |auction| %>
           <li><%= link_to auction.title, auction %></li>
@@ -35,7 +42,6 @@
           <li>Hours Bid: <%= auction.deadline %></li>
         <% end %>
       </ul> -->
-    </div>
   </div>
 
 </div>
@@ -46,10 +52,10 @@
   </div>
   <div>
     <ul>
-      <% if @auctions %>
-        <% @auctions.each do |auction| %>
+      <% if @entered_auctions %>
+        <% @entered_auctions.each do |auction| %>
           <% @bids.each do |bid| %>
-            <li><%= auction.title%>: <%= bid.time %> hours</li>
+          <li>You bid <%= bid.time %> hours on <%= link_to auction.title, auction_path(auction) %></li>
           <% end %>
         <% end %>
       <% end %>
