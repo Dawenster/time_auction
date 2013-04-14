@@ -11,6 +11,8 @@ TimeAuction::Application.routes.draw do
   end
   resources :categories, :only => [:index, :show]
   resources :charities
+
+  get '/about' => "static_pages#about", :layout => false
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
