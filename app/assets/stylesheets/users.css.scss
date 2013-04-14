@@ -23,12 +23,6 @@ div#user-profile-name{
   margin-top: 48px;
 }
 
-#user-auctions{
-  text-align: right;
-  margin: 0;
-  float:right;
-}
-
 .todo-header{
   border-bottom: 1px solid gray;
   width: 70%;
@@ -42,4 +36,33 @@ div#user-profile-name{
 
 .hours-left{
   margin-top: 5px;
+}
+
+
+.userStatisticsBox {
+  margin-top: 20px;
+  float: right;
+  width: 180px;
+  height: 150px;
+  display: inline-block;
+  background-color: #B4E0E8;
+  color: #383838;
+  padding: 20px;
+  text-align: center;
+  /*text-align: right;*/
+  & #hoursCount{
+    font-family: 'titilliumtext25l250_wt';
+    font-size: 4.5em;
+    line-height: 60px;
+  }
+  & #hours{
+    font-family: 'titilliumtext25l800_wt';
+    font-size: 1em;
+    letter-spacing: -2px;
+  }
+  & #hours:nth-child(2){
+    font-family: 'titilliumtext25l800_wt';
+    font-size: 1em;
+    letter-spacing: -3px;
+  }
 }
