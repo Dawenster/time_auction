@@ -17,4 +17,5 @@ describe Comment do
     comment.auction_id = 1
     comment.should_not be_valid
   end
+
 end

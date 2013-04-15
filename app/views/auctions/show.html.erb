@@ -33,7 +33,7 @@
 
     <ul class="nav nav-tabs">
       <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
-      <li><a href="#auction-bid-history" data-toggle="tab">Bid History</a></li>
+      <li><a href="#auction-bid-history" data-toggle="tab" id="bidsTab">Bid History</a></li>
       <li><a href="#auction-comments" data-toggle="tab" id="commentsTab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a></li>
     </ul>
 
@@ -55,9 +55,7 @@
             <th>Hours Bid</th>
             <th>Posted</th>
           </tr>
-          <% @auction.bids.reverse.each do |bid| %>
-            <%= render 'bids/bid', :bid => bid %>  
-          <% end %>
+          <%= render @bids %>  
         </table>
       </div>
 

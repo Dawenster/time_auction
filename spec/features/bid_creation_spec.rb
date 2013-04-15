@@ -2,10 +2,15 @@ require 'spec_helper'
 
 describe "Bid creation" do
 
+#   PG::Error: ERROR: missing FROM-clause entry for table "comments" LINE 1: ...OM "bids" WHERE "bids"."auction_id" = 1 ORDER BY comments.c... ^ : SELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = 1 ORDER BY comments.created_at DESC
+# WEBrick/1.3.1 (Ruby/1.9.3/2013-01-15) at 127.0.0.1:50543 
+
   subject { page }
 
   describe "creating a bid", :js => true do
     let!(:auction) { FactoryGirl.create(:auction) }
+    let!(:first_user) { FactoryGirl.create(:user) }
+    let!(:existing_bid) { FactoryGirl.create(:bid, user_id: first_user.id, auction_id: auction.id) }
     let!(:user) { FactoryGirl.create(:user) }
 
     before do
@@ -17,13 +22,18 @@ describe "Bid creation" do
     it { should have_selector('#new_bid_form') }
     
     context "with valid info" do
-
+      before { fill_in :bid_time, with: "7" }
       it "saves a new bid" do
         expect { 
-          fill_in :bid_time, with: "7"
           click_button "Submit Bid"
           visit root_path
         }.to change(Bid, :count).by(1)
+      end
+
+      it "should show up at the top" do
+        click_button "Submit Bid"
+        page.find('#bidsTab').click
+        page.should have_selector('table:nth-child(2) td', text: user.name)
       end
     end
 

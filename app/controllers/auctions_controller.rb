@@ -38,6 +38,7 @@ class AuctionsController < ApplicationController
     @winning_time = @auction.bids.last.time if @winner
     store_location
     @comments = @auction.comments
+    @bids = @auction.bids
   end
 
   def edit
