@@ -17,7 +17,17 @@ class User < ActiveRecord::Base
     phone == ""
   end
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid))
+  def profile_pic
+    if self.photo
+      "<%= cl_image_tag @user.photo.url, :width => 200, :height => 200, :crop => :fill %>"
+    elsif
+      return true
+    else
+      "<%= image_tag '/assets/avatar_blank.jpg' %>"
+    end
+  end
+
+  def self.create_with_omniauth(info)
+    create(name: info[:name], email: info[:email])
   end
 end

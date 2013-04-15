@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :url
+  attr_accessible :url, :imageable_type, :imageable_id
   belongs_to :user
   belongs_to :auction
   belongs_to :charity

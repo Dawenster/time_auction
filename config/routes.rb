@@ -15,7 +15,8 @@ TimeAuction::Application.routes.draw do
   get '/about' => "static_pages#about", :layout => false
 
   # Omniauth-Facebook routes
-  match 'auth/:provider/callback', to: 'sessions#create_facebook'
+  match 'auth/facebook', as: 'fb_login'
+  match 'auth/:provider/callback', to: 'sessions#create_identity'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout' # maybe not required
   

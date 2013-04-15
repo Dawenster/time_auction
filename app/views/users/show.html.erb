@@ -4,10 +4,11 @@
 <div class="row">      
   <div class="span3">
     <div class="photo-upload">
+      <%= @user.profile_pic %>
     <% if @user.photo %>
-      <%= cl_image_tag @user.photo.url, :width => 200, :height => 200, :crop => :fill %>
+      
     <% else %>
-      <%= image_tag '/assets/avatar_blank.jpg' %>
+      
     <% end %>
     <% if current_user == @user %>
        <%= form_tag [@user, Photo.new], :method => 'post', :multipart => true do %>

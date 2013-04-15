@@ -17,7 +17,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 
 
 
