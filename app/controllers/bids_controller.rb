@@ -2,17 +2,18 @@ class BidsController < ApplicationController
   def create
     @bid = Bid.new params[:bid]
     @bid.user = current_user
+    @auction = @bid.auction
+    @bids = @auction.bids
 
     charity = Charity.find_or_create_by_name(params[:bid][:charity_id].downcase.capitalize)
 
     @bid.charity = charity
-
     @all_charity_names = Charity.all.map { |charity| charity.name }
 
-    if @bid.auction.bids == []
+    if @bids == []
       @last_bid_time = 0
     else
-      @last_bid_time = @bid.auction.bids.last.time
+      @last_bid_time = @bids.last.time
     end
     
     if @bid.time.nil?
@@ -28,6 +29,8 @@ class BidsController < ApplicationController
     end
 
     if @bid.save
+      EmailWorker.perform_async(@bids.reload.map(&:id))
+      
       render text: render_to_string(partial: 'bid', locals: { bid: @bid })
     else
       render text: @bid.errors.full_messages.join(','), status: :unprocessable_entity

@@ -13,6 +13,7 @@ gem 'selenium-webdriver'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'faker'
+gem 'sidekiq'
 
 
 # Gems used only for assets and not required

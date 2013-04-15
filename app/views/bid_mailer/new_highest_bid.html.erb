@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css" media="screen">
+      h1 { color: blue; }
+    </style>
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %>,</h1>
+    <p>
+      There is now a new highest bidder for the auction <%= link_to @auction.title, @url + auction_path(@auction) %>.  <%= link_to @new_winner.name, @url + user_path(@new_winner) %> bid <%= @bid.time %> hours!
+    </p>
+    <p>
+      Want to outbid <%= link_to @new_winner.name, @url + user_path(@new_winner) %>?  Don't wait - the auction ends on <%= @auction.end_date.strftime('%B %d, %Y') %>.
+    </p>
+    <p>Happy volunteering!</p>
+    <p>Time Auction Team</p>
+  </body>
+</html>

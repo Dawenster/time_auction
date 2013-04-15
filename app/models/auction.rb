@@ -2,7 +2,7 @@ require 'date'
 
 class Auction < ActiveRecord::Base
   attr_accessible :category_id, :description, :start_date, :end_date, :title, :winner_id, :verified_time, :deadline, :photos_attributes
-  has_many :bids, :order => 'bids.created_at DESC', :dependent => :destroy
+  has_many :bids, :order => 'bids.created_at DESC', :dependent => :destroy #GET RID OF THIS FUCKER
   has_many :users, through: :bids
   has_many :photos, :as => :imageable, :dependent => :destroy
   has_many :comments, :order => 'comments.created_at DESC', :dependent => :destroy
@@ -21,7 +21,7 @@ class Auction < ActiveRecord::Base
   validates :category_id, :presence => true
   
   def highest_bid
-    self.bids.last unless self.bids.empty? 
+    self.bids.order("time DESC").first unless self.bids.empty? 
   end
 
   def started?
