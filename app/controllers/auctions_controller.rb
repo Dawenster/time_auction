@@ -1,4 +1,6 @@
 class AuctionsController < ApplicationController
+  before_filter :load_auction, :only => [:show, :edit, :update, :destroy]
+
   def new
     @auction = Auction.new
     @photo = @auction.photos.build
@@ -32,23 +34,19 @@ class AuctionsController < ApplicationController
   end
 
   def show
-    @auction = Auction.find(params[:id])
     @winner = User.find(@auction.winner_id) if @auction.winner_id
     @winning_time = @auction.bids.last.time if @winner
     store_location
-    @comments = Comment.where('auction_id = ?', @auction.id)
+    @comments = @auction.comments
   end
 
   def edit
     redirect_to root_path unless current_user.admin
-    @auction = Auction.find(params[:id])
     @categories = Category.all
     @photo = @auction.photos.build
   end
 
   def update
-    @auction = Auction.find(params[:id])
-
     unless params[:auction][:start_date].blank? && params[:auction][:end_date].blank?
       @auction.start_date = DateTime.parse(params[:auction][:start_date].split('/').rotate(-1).join(''))
       @auction.end_date = DateTime.parse(params[:auction][:end_date].split('/').rotate(-1).join(''))
@@ -79,5 +77,10 @@ class AuctionsController < ApplicationController
     flash[:success] = "You have successfully deleted #{@auction.title}"
     Auction.destroy(@auction)
     redirect_to user_path(current_user)
+  end
+
+  private
+  def load_auction
+    @auction = Auction.find(params[:id])
   end
 end

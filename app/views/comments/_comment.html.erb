@@ -1,0 +1,21 @@
+<div class="commentBlock">
+  <div class="commentAvatar">
+    <% if comment.user.photo %>
+      <%= cl_image_tag comment.user.photo.url, :width => 48, :height => 48 %>
+    <% else %>
+      <%= cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 48, :height => 48 %>
+    <% end %>
+  </div>
+
+  <li class="comment">
+    <div class="posted_by">
+      <%= link_to comment.user.name, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago
+        <% if comment.user == current_user %>
+          <%= link_to '', auction_comment_path(comment.auction, comment), :class => 'icon-remove', :remote => true, :method => 'delete' %>
+        <% end %>
+    </div>
+    <p>
+      <%= simple_format(comment.content) %>
+    </p>
+  </li>
+</div>

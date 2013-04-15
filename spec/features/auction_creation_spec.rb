@@ -54,7 +54,7 @@ describe "AuctionCreation" do
       visit edit_auction_path(auction)
       fill_in :auction_title, with: ""
       click_button 'Create Auction'
-      page.should have_content "Edit an Auction"
+      page.should have_content "Edit Auction"
     end
 
     it "doesn't edit an auction with start date > end date" do
@@ -62,7 +62,7 @@ describe "AuctionCreation" do
       fill_in :auction_start_date, with: "04/13/2016"
       fill_in :auction_end_date, with: "04/13/2015"
       click_button 'Create Auction'
-      page.should have_content "Edit an Auction"
+      page.should have_content "Edit Auction"
     end
   end
 end

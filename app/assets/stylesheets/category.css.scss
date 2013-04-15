@@ -1,0 +1,73 @@
+.category-display{
+  width: 100%;
+}
+
+.category-browse{
+  margin: auto;
+}
+
+.auction-list {
+  list-style: none;
+  /*width: 80%;*/
+  margin: 0;
+}
+
+.auction-list li{
+  border-bottom: 1px solid gray;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.tab-pane.browse-auctions.active{
+  display:block;
+  width: 100%;
+  padding-left: 0;
+}
+
+.tab-pane.browse-auctions ul li{
+  margin: 0;
+}
+
+.browse-photo{
+  border-radius: 1px;
+  margin-left: 17px;
+  margin-right: 12px;
+  margin-top: 10px;
+}
+
+.tab-content.browse-auction{
+  margin: 0;
+}
+ 
+.auction-column{
+  margin: 10px 10px 10px 0;
+  width: 32%;
+  height: 300px;
+  display:inline-block;
+  border-radius: 2.5px;
+  background-color: #fbfbf9;
+  -moz-box-shadow: 0 0 7px 0 #888;
+  -webkit-box-shadow: 0 0 7px 0 #888;
+  box-shadow: 0 0 7px 0 #888;
+}
+
+.auction-column:hover{
+  background-color: #f5f4ee;
+} 
+
+ul.nav.nav-tabs.category{
+  margin:0;
+}
+
+p.auction-title{
+  text-align: center;
+  height: 31%;
+}
+
+p.current-high{
+  font-size: 0.9em;
+  border-top: 1px solid gray ;
+  padding: 5px;
+  width: 90%;
+  margin: auto;
+}

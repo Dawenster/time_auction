@@ -11,25 +11,35 @@
 
   <%= render 'partials/nav' %>
 
-  <div id="flash">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
-    <% end %>
-  </div>
-
   <div class="aboutImage">
     <div class="aboutBoxContent">
-      <h1>About Us</h1>
-      <p>TimeAuction evangelizes volunteership by giving eager participants another great reason to perform charity work.</p>
-      <p>David Wen started TimeAuction in 2007 as a part-time gift back to the community. Now, the message spreads online.</p>
-      <p>Also worth noting, this current version of the TimeAuction website is the final Dev Bootcamp project of the 4 handsome gentlemen you see below.</p>
+      <%= render 'about_blurb' %>
     </div>
     <div class="aboutBox">
+      <span class="transparent">
+        <%= render 'about_blurb' %>
+      </span>
     </div>
   </div>
 
   <div class="splashContainer">
     <h2>The TimeAuction Developers</h2>
+    <div class="row">
+
+      <div class="span3">
+        <div class="teamCell">
+        </div>
+      </div>
+      
+    </div>
+
+
+
+
+
+
+
+
   </div>
 
   <%= render 'partials/footer' %>

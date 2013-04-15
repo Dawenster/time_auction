@@ -5,7 +5,8 @@ class Auction < ActiveRecord::Base
   has_many :bids, :dependent => :destroy
   has_many :users, through: :bids
   has_many :photos, :as => :imageable, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
+  has_many :comments, :order => 'comments.created_at DESC', :dependent => :destroy
+
 
   belongs_to :category
   accepts_nested_attributes_for :photos 

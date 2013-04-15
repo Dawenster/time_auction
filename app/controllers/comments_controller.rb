@@ -5,10 +5,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      render :json => {:comment => @comment, :user => current_user }
+      render 'success'
     else
-      render :json => @comment.errors.full_messages.join(","),
-                      :status => :unprocessable_entity
+      render 'error'
     end
   end
 
