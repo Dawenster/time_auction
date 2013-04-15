@@ -43,8 +43,8 @@ class AuctionsController < ApplicationController
 
   def edit
     redirect_to root_path unless current_user.admin
-    @categories = Category.all
-    @photo = @auction.photos.build
+    # @categories = Category.all
+    # @photo = @auction.photos.build
   end
 
   def update

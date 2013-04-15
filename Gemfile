@@ -17,6 +17,8 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'omniauth-facebook'
+
 
 
 # Gems used only for assets and not required
