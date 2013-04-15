@@ -9,7 +9,7 @@ TimeAuction::Application.routes.draw do
     resources :photos, :only => [:create]
     resources :comments, :only => [:create, :destroy]
   end
-  resources :categories, :only => [:index, :show]
+  resources :categories, :only => [:index]
   resources :charities
 
   get '/about' => "static_pages#about", :layout => false

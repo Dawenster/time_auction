@@ -7,10 +7,5 @@ class CategoriesController < ApplicationController
       @auctions_categories[category.name] = category.auctions
     end
   end
-
-  def show
-    @auctions = Category.find(params[:id]).auctions
-  end
-
 end
 
