@@ -18,6 +18,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def create_facebook
+    user = User.from_omniauth(env["omniauth.auth"])
+    sign_in(user)
+    redirect_back_or root_path
+  end
+
   def destroy
     reset_session
     redirect_to new_session_path

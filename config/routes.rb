@@ -13,6 +13,11 @@ TimeAuction::Application.routes.draw do
   resources :charities
 
   get '/about' => "static_pages#about", :layout => false
+
+  # Omniauth-Facebook routes
+  match 'auth/:provider/callback', to: 'sessions#create_facebook'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout' # maybe not required
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

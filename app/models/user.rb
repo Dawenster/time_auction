@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :auctions, through: :bids
   has_many :comments
   has_one :photo, :as => :imageable
+  has_many :identities
 
   validates :name, :presence => true
   validates :email, :presence => true
@@ -14,5 +15,9 @@ class User < ActiveRecord::Base
  
   def empty?
     phone == ""
+  end
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid))
   end
 end
