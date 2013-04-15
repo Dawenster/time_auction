@@ -28,18 +28,52 @@
 
       <div class="span3">
         <div class="teamCell">
+          <div class="teamImage">
+            <%= cl_image_tag('v1365986316/d_kndyme.jpg', :width => 250, :height => 250) %>
+          </div>
+          <h4>David Wen</h4>
+          <div id="location">Vancouver <%= image_tag '/assets/CA.png' %></div>
+          <p>David is the Founder of the original TimeAuction.</p>
         </div>
       </div>
       
+      <div class="span3">
+        <div class="teamCell">
+          <div class="teamImage">
+            <%= cl_image_tag('v1365986316/k_z3rxfw.jpg', :width => 250, :height => 250) %>
+          </div>
+          <h4>Kevin Ko</h4>
+          <div id="location">Los Angeles <%= image_tag '/assets/us.png' %></div>
+          <p>Kevin is a full-stack engineer with a passion for visual design. He built the front-end design, including CSS, HTML, and AJAX comment submission.</p>
+        </div>
+      </div>
+
+      <div class="span3">
+        <div class="teamCell">
+          <div class="teamImage">
+            <%= cl_image_tag('v1365986316/p_hlfngk.jpg', :width => 250, :height => 250) %>
+            </div>
+          <h4>Philip Woo</h4>
+          <div id="location">Seoul <%= image_tag '/assets/KR.png' %></div>
+          <p>Philip is a</p>
+        </div>
+      </div>
+
+      <div class="span3">
+        <div class="teamCell">
+          <div class="teamImage">
+            <%= cl_image_tag('v1365986316/j_v3ndox.jpg', :width => 250, :height => 250) %>
+          </div>
+          <h4>J Connolly</h4>
+          <div id="location">Los Angeles <%= image_tag '/assets/us.png' %></div>
+          <p>J is a</p>
+        </div>
+      </div>
     </div>
-
-
-
-
-
-
-
-
+    
+    <div class="aboutGithub">
+      <%= link_to image_tag('/assets/github-icon.png'), 'https://www.github.com/Dawenster/time_auction' %>
+    </div>
   </div>
 
   <%= render 'partials/footer' %>
