@@ -37,7 +37,7 @@ class AuctionsController < ApplicationController
     @winner = User.find(@auction.winner_id) if @auction.winner_id
     @winning_time = @auction.bids.last.time if @winner
     store_location
-    @comments = @auction.comments
+    @comments = @auction.comments.paginate(page: params[:page], :per_page => 10)
     @bids = @auction.bids
   end
 
