@@ -11,7 +11,7 @@
 <!-- TITLE -->
   <div class="span12">
     <div class="auction-category">
-      <%= link_to '> ' + @auction.category.name, category_path(@auction.category) %>
+      <%= link_to '> ' + @auction.category.name, "/categories?tab=#{@auction.category.name}" %>
     </div>
     <div class="auction-title">
       <h1><%= @auction.title %></h1>

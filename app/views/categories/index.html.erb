@@ -1,22 +1,18 @@
 <div class="category-display">
   <ul class="nav nav-tabs category">
-    <li class="active"><a href="#people" data-toggle="tab">People</a></li>
-    <li><a href="#products" data-toggle="tab">Products</a></li>
-    <li><a href="#experiences" data-toggle="tab">Experiences</a></li>
+    <li class="<%= "active" if params[:tab] == @categories[0].name || params[:tab].nil? %>"><a href="#people" data-toggle="tab">People</a></li>
+    <li class="<%= "active" if params[:tab] == @categories[1].name %>"><a href="#products" data-toggle="tab">Products</a></li>
+    <li class="<%= "active" if params[:tab] == @categories[2].name %>"><a href="#experiences" data-toggle="tab">Experiences</a></li>
   </ul>
 
-  <% active_count = 0  %>
+  <% active_count = 0 if params[:tab].nil?  %>
 
   <% @auctions_categories.each do |category, auctions| %>
-    <% if active_count == 0 %>
-      <div class="tab-pane browse-auctions active" id="<%= category.downcase %>">
-    <% else %>
-      <div class="tab-pane browse-auctions" id="<%= category.downcase %>">
-    <% end %>
+      <div class="tab-pane browse-auctions <%= "active" if params[:tab] == category || active_count == 0 %>" id="<%= category.downcase %>">
     <% auctions.each do |auction|%>
       <div class="auction-column"><%= cl_image_tag auction.photos.last.url, width: 300, height: 145, :class=> "browse-photo" ,:crop => :fill %><p class="auction-title"><%= link_to auction.title, auction_path(auction) %></p><p class="current-high">Highest Bid: <%= auction.bids.empty? ? "Be the first to Bid!" : auction.bids.order("time DESC").first.time.to_s + "Hours" %></div>
     <% end %>
-    <% active_count += 1  %>
+    <% active_count += 1 if params[:tab].nil? %>
     </div>
   <% end %> 
 </div>
