@@ -1,4 +1,23 @@
 <div class="row">
+  <div class="span4">
+    <% if @charity.photos.any? %>
+      <%= cl_image_tag @charity.photos.last.url, :width => 300, :height => 200 unless @charity.photos == [] %>
+    <% else %>
+      <div class="no-charity-photo">
+        No logo yet for this charity<BR>
+        Help upload one: <%= link_to "Edit", edit_charity_path(@charity) %>
+      </div>
+    <% end %>
+    <h3>Volunteers</h3>
+    <% if @volunteers.any? %>
+      <% @volunteers.each do |volunteer| %>
+        <div><%= avatar(volunteer) %></div>
+      <% end %>
+    <% else %>
+      No volunteers yet - be the first!<BR>
+      Check out some <%= link_to "auctions", categories_path %> you can bid on.
+    <% end %>
+  </div>
   <div class="span8">
     <div>
       <h1><%= @charity.name %></h1>
@@ -7,17 +26,5 @@
       <p><%= @charity.description %></p>
       <div><%= link_to 'Edit', edit_charity_path(@charity), :class => "edit-charity", :title => "Help us edit information on this charity" %></div>
     </div>
-  </div>
-  <div class="span4 shadow">
-    <%= cl_image_tag @charity.photos.last.url, :width => 600, :height => 450 unless @charity.photos == [] %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span12">
-    <h3>People who have bid to volunteer for this charity</h3>
-    <% @volunteers.each do |volunteer| %>
-      <%= volunteer.name %>
-    <% end %>
   </div>
 </div>
