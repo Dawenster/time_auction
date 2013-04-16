@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css" media="screen">
+      h1 { color: blue; }
+    </style>
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %>,</h1>
+    <p>
+      Thank you for participating in a Time Auction.  The auction <%= link_to @auction.title, @url + auction_path(@auction) %> is now finished.  You bid <%= @bid.time %> hours on it, but unfortunately it wasn't enough... 
+    </p>
+    <p>
+      <%= link_to @winner.name, @url + user_path(@winner) %> bid <%= @highest_bid.time %> hours!
+    </p>
+    <p>
+      Please keep trying :)  Try browsing some other <%= link_to 'auctions', @url + categories_path %>!
+    </p>
+    <p>
+      Until next time,
+    </p>
+    <p>Time Auction Team</p>
+  </body>
+</html>
