@@ -13,7 +13,7 @@ gem 'selenium-webdriver'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'faker'
-
+gem 'thin'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
