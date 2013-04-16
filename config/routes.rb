@@ -1,5 +1,5 @@
 TimeAuction::Application.routes.draw do
-  root to: 'static_pages#index', :layout => false
+  root to: 'static_pages#index'
   resources :users, :except => :index do
     resources :photos, :only => [:create]
   end

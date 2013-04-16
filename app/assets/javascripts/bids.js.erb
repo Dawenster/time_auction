@@ -21,13 +21,18 @@ $(document).ready(function() {
   });
   
   $('#overlay').click(function(){
-      $('#new_bid_form').fadeOut(50);
+      $('#new_bid_form, #bid_success_popup').fadeOut(50);
       $('#overlay').fadeOut(50);
   });
 
   $('.commit-to-bid').click(function(){
       $('#new_bid_form').fadeOut(50);
-      $('#overlay').fadeOut(50);
+      $('#bid_success_popup').fadeIn(50);
+  });
+
+  $('#success_popup_close').click(function(){
+    $('#bid_success_popup').fadeOut(50);
+    $('#overlay').fadeOut(50);
   });
   
   $('#bid_charity_id').tooltip({

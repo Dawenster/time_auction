@@ -4,6 +4,9 @@
   <div class="span10 offset1 hidden-bid-partial">
     <%= render 'bids/form' %>
   </div>
+  <div class="span8 offset2">
+    <%= render 'bids/success_popup' %>
+  </div>
 </div>
 <div class="row">
   
@@ -164,7 +167,11 @@
         <div><%= "#{@auction.verified_time.to_s} of #{@winning_time} hours completed!" unless @auction.verified_time.nil? %> <%= "Thank you " if @winner %><%= link_to @winner.name,  user_path(@winner) if @winner %></div>
       <% end %>
     </div>
+    <div class="facebook_links">
+      <fb:like send="true" width="450" show_faces="true"></fb:like>
+    </div>
   </div>
+
 </div>
 
 <div class="hide all-charities"><%= @charities %></div>
