@@ -19,20 +19,13 @@ describe "Bid creation" do
     it { should have_selector('#new_bid_form') }
     
     context "with valid info" do
-      before do
-        
-      end
 
       it "saves a new bid" do
-        expect { 
+        expect do
           fill_in :bid_time, with: "7"
           click_button "Submit Bid"
           visit root_path
-        }.to change(Bid, :count).by(1)
-      end
-
-      it "shows finish page" do
-        pending
+        end.to change(Bid, :count).by(1)
       end
 
       it "should show up at the top" do
@@ -42,6 +35,13 @@ describe "Bid creation" do
         page.find('#bidsTab').click
         page.should have_selector('table:nth-child(2) td', text: user.name)
       end
+
+      it "shows success popup page" do
+        fill_in :bid_time, with: '9'
+        click_button "Submit Bid"
+        page.should have_selector('#bid_success_popup')
+      end
+
     end
 
     context "when the form is submitted without a time" do
@@ -56,6 +56,11 @@ describe "Bid creation" do
       it "displays an error" do
         click_button "Submit Bid"
         should have_content 'Please' || 'must be higher'
+      end
+
+      it 'does not show success popup' do
+        click_button "Submit Bid"
+        page.should_not have_selector('#bid_success_popup')
       end
     end
   end

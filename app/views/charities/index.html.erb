@@ -1,3 +1,26 @@
-<% @charities.each do |charity| %>
-  <%= link_to charity.name, charity_path(charity) %>
-<% end %>
+<div class="category-display" id="auction">
+
+  <% @charities.each do |charity| %>
+    <div class="auction-column">
+      <% if charity.photos.any? %>
+        <%= link_to (cl_image_tag charity.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), charity %>
+      <% else %>
+        <%= link_to (image_tag '/assets/charity_default.jpg', :class => "browse-photo", width: 300, height: 200), charity %>
+      <% end %>
+      <p class="charity-name">
+        <%= link_to charity.name.truncate(30), charity %>
+      </p>
+      <p class="charity-description">
+        <% if charity.description != "" && charity.description.length >= 40 %>
+          <%= link_to charity.description.truncate(68), charity %>
+        <% elsif charity.description.length < 40 && charity.description != "" %>
+          <%= link_to charity.description, charity %><BR>
+          (Short description - <%= link_to "Help edit this charity", edit_charity_path(charity) %>)
+        <% else %>
+          (No description yet)<BR>
+          <%= link_to "Help edit this charity", edit_charity_path(charity) %>
+        <% end %>
+      </p>
+    </div>
+  <% end %> 
+</div>

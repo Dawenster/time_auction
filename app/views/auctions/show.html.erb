@@ -4,6 +4,9 @@
   <div class="span10 offset1 hidden-bid-partial">
     <%= render 'bids/form' %>
   </div>
+  <div class="span8 offset2">
+    <%= render 'bids/success_popup' %>
+  </div>
 </div>
 <div class="row">
   
@@ -125,7 +128,7 @@
       <% end %>
     </div>
 
-    <div class='you-highest<%= ' hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
+    <div class='you-highest<%= ' hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user && !@auction.winner_id %>'>
         <h3>You're Currently the Top Bidder!</h3>
     </div>
 
@@ -136,7 +139,7 @@
 
       <% if current_user && (!@auction.started? && !@auction.complete?) || (@auction.started? && @auction.complete?) %>
       <% elsif !current_user %>
-        <%= button_to 'Signin to Bid', new_user_path %>
+        <%= button_to 'Signin to Bid', new_user_path, method: :get %>
       <% else %>
         <div id="trigger"><button class="btn btn-danger btn-large bid-button">Bid Hours</button></div>
       <% end %>
@@ -181,7 +184,11 @@
         <% end %>
       </div>
     </div>
+    <div class="facebook_links">
+      <fb:like send="true" width="450" show_faces="true"></fb:like>
+    </div>
   </div>
+
 </div>
 
 <div class="hide all-charities"><%= @charities %></div>

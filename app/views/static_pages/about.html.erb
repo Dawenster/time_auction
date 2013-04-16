@@ -1,15 +1,30 @@
-<%= render 'partials/static_header' %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TimeAuction || About Us</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Oleo+Script|PT Sans Narrow|Open+Sans:400,300|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
   <%= render 'partials/nav' %>
 
+  <div id="flash">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
+    <% end %>
+  </div>
+
   <div class="aboutImage">
     <div class="aboutBoxContent">
-      <%= render 'about_blurb' %>
+      <h1>About Us</h1>
+      <p>TimeAuction evangelizes volunteership by giving eager participants another great reason to perform charity work.</p>
+      <p>David Wen started TimeAuction in 2007 as a part-time gift back to the community. Now, the message spreads online.</p>
+      <p>Also worth noting, this current version of the TimeAuction website is the final Dev Bootcamp project of the 4 handsome gentlemen you see below.</p>
     </div>
     <div class="aboutBox">
-      <span class="transparent">
-        <%= render 'about_blurb' %>
-      </span>
     </div>
   </div>
 
@@ -57,7 +72,7 @@
           </div>
           <h4>J Connolly</h4>
           <div id="location">Los Angeles <%= image_tag '/assets/us.png' %></div>
-          <p>J is a</p>
+          <p>J is a rails developer and founder of LiftHero.com, which aims to make arranging transportation for seniors seamless and affordable. He delivers groceries as a volunteer for Meals on Wheels San Francisco.</p>
         </div>
       </div>
     </div>
