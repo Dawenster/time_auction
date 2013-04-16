@@ -36,7 +36,7 @@ describe "Bid creation" do
         page.should have_selector('table:nth-child(2) td', text: user.name)
       end
 
-      it "shows finish page" do
+      it "shows success popup page" do
         fill_in :bid_time, with: '9'
         click_button "Submit Bid"
         page.should have_selector('#bid_success_popup')
@@ -56,6 +56,11 @@ describe "Bid creation" do
       it "displays an error" do
         click_button "Submit Bid"
         should have_content 'Please' || 'must be higher'
+      end
+
+      it 'does not show success popup' do
+        click_button "Submit Bid"
+        page.should_not have_selector('#bid_success_popup')
       end
     end
   end

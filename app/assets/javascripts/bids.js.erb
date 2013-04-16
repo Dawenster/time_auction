@@ -1,7 +1,13 @@
 $(document).ready(function() {
   $('#new_bid_form').on('ajax:success', function(event, data) {
-    $('.bids tr:first-child').after(data);
+    $('#overlay').fadeIn(50);
     var hours = data.replace(/\D+/g, "");
+    if (hours >= 100) {
+      $('#bid_success_popup .errors').text('PLEASE NOTE: Due to the generous ' +
+       'size of this bid, it must first be approved by an admin.');
+    }
+    $('#bid_success_popup').fadeIn(50);
+    $('.bids tr:first-child').after(data);
     $('.you-highest').removeClass('hide');
     $('#hours').text(hours);
     $('#flash').text("");
@@ -27,7 +33,7 @@ $(document).ready(function() {
 
   $('.commit-to-bid').click(function(){
       $('#new_bid_form').fadeOut(50);
-      $('#bid_success_popup').fadeIn(50);
+      $('#overlay').fadeOut(50);
   });
 
   $('#success_popup_close').click(function(){
