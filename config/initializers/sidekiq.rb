@@ -1,6 +1,9 @@
 HEROKU_API_KEY = ENV['HEROKU_API_KEY']
 HEROKU_APP = ENV['HEROKU_APP']
 
+require 'autoscaler/sidekiq'
+require 'autoscaler/heroku_scaler'
+
 Sidekiq.configure_server do |config|
   config.redis = { url: ENV["REDISTOGO_URL"] }
 end unless ENV['REDISTOGO_URL'].blank?
