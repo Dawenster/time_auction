@@ -15,4 +15,5 @@
 /tmp
 
 /config/initializers/a-codes.rb
+/config/initializers/b-codes.rb
 config/mailer.yml
