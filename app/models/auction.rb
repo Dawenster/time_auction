@@ -25,7 +25,6 @@ class Auction < ActiveRecord::Base
     @finished = @auctions.select { |auction| auction.end_date < Time.now && auction.bids.any? && !auction.winner_id }
     @finished.each do |auction|
       auction.winner_id = auction.highest_bid.user.id
-      binding.pry
       auction.save
       AuctionEndWorker.perform_async(auction.bids.map(&:id).uniq)
     end
