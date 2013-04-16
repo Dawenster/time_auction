@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :name, :email, :phone, :password, :time_donated, :admin
-  has_many :bids
+  has_many :bids, :order => 'bids.created_at DESC', :dependent => :destroy
   has_many :auctions, through: :bids
   has_many :comments
   has_one :photo, :as => :imageable
