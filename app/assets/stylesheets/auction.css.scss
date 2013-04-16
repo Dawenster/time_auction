@@ -390,10 +390,12 @@ li#comment_errors {
 
 table.bids {
   width: 100%;
+  background-color: #eaeaea;
   th {
     font-family: 'aller_lightregular';
     font-size: 1.2em;
     padding-bottom: 10px;
+    background-color: #f4f4f4;
   }
   tr:first-child:hover {
     background-color: #f4f4f4;
@@ -411,8 +413,10 @@ table.bids {
     text-align: center;
     font-family: 'Open Sans';
     font-size: 1em;
-    padding: 15px 5px;
     text-align: left;
+    td {
+      padding: 15px 5px;
+    }
     td:first-child {
       width: 32%;
     }
