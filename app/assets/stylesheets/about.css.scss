@@ -8,108 +8,44 @@
   background-size: cover;
   height: 800px;
   opacity: 0.8;
-  & .transparent {
-    visibility: hidden;
-    }
-  & h1 {
-      font-family: 'Open Sans';
-      font-weight: 300;
-      margin-bottom: 35px;
-      margin-top: 0px;
-      font-size: 6em;
-    }
-  & p {
-      font-size: 24px;
-      line-height: 30px;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      font-family: 'Open Sans Condensed';
-      text-shadow: 2px 2px 2px #000;
-    }
-  & p:last-child {
-    margin-bottom: 0px;
-  }
 }
 
-.aboutBoxContent, .aboutBox { 
-  width: 47%;
+.aboutBox {
+  width: 960px;
+  height: 365px;
+  border-radius: 10px;
+  opacity: 0.9;
+  background-color: #000;
+  position: absolute;
+  top: 25%;
+  left: 23%;
+}
+
+.aboutBoxContent { 
+  width: 900px;
   padding: 36px;
   color: #fff;
   position: absolute;
   top: 25%;
-  left: 25%;
+  left: 23%;
   z-index: 10;
   text-shadow: 2px 2px 2px #000;
-}
-
-.aboutBox {
-  z-index: 1;
-  min-height: 290px;
-  border-radius: 10px;
-  opacity: 0.9;
-  background-color: #000;
-  overflow: none;
-}
-
-.row {
-  width: 1040px !important;
-  margin: 0px !important;
-}
-
-.span3 {
-  width: 240px !important;
-  margin: 0 0 0 24px !important;
-  &:first-child {
-    margin: 0px !important;
-  }
-}
-
-.teamCell {
-  width: 240px;
-  height: 500px;
-  border: 1px solid #000;
-  background-color: #ddd;
-
-  -webkit-box-shadow: 0px 4px 15px rgba(242, 5, 5, 0.10);
-  -moz-box-shadow:    0px 4px 15px rgba(242, 5, 5, 0.10);
-  box-shadow:         0px 4px 15px rgba(242, 5, 5, 0.10);
-
-
-  &:last-child {
-    margin-right: 0px;
-  }
-  & .teamImage {
-    -webkit-box-shadow: 0px 4px 15px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    0px 4px 15px rgba(50, 50, 50, 0.75);
-    box-shadow:         0px 4px 15px rgba(50, 50, 50, 0.75);
-  }
-  & h4 {
-    color: #333;
-    font-family: 'titilliumtext25l800_wt';
-    text-shadow: 1px 1px 1px #000;
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 3px;
-  }
-  &:hover {
-    background-color: #ccc;
-    -webkit-box-shadow: 0px 4px 15px rgba(242, 5, 5, 0.75);
-    -moz-box-shadow:    0px 4px 15px rgba(242, 5, 5, 0.75);
-    box-shadow:         0px 4px 15px rgba(242, 5, 5, 0.75);
-  }
+  & h1 {
+    font-family: 'Open Sans';
+    font-weight: 300;
+    margin-bottom: 35px;
+    margin-top: 0px;
+    font-size: 6em;
+   }
   & p {
-    padding: 8px;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans Condensed';
+    text-shadow: 2px 2px 2px #000;
   }
-}
-
-#location {
-  text-align: center;
-  font-size: 1em;
-  font-family: 'Lato';
-  font-weight: 300;
-}
-
-.aboutGithub {
-  margin-top: 30px;
-  text-align: center;
+  & a {
+    font-family: 'aller_lightregular';
+  }
 }

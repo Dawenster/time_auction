@@ -1,4 +1,13 @@
 $(document).ready(function() {
+  $('#new_bid_form').on('submit', function(event){
+    if ($("input#bid_time").val() >= 100 ) {
+      if( !confirm('Are you sure you want to submit this bid?') ) {
+        $('input#bid_time').val("")
+        return false;
+      }
+    }
+  });
+
   $('#new_bid_form').on('ajax:success', function(event, data) {
     $('#overlay').fadeIn(50);
     var hours = data.replace(/\D+/g, "");

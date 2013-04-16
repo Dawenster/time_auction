@@ -29,7 +29,7 @@ class BidsController < ApplicationController
     end
 
     if @bid.save
-      EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
+      #EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
       render text: render_to_string(partial: 'bid', locals: { bid: @bid })
     else
       render text: @bid.errors.full_messages.join(','), status: :unprocessable_entity
