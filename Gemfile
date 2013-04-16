@@ -13,13 +13,11 @@ gem 'selenium-webdriver'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'faker'
-
+gem 'thin'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem 'autoscaler'
 gem 'omniauth-facebook', '1.4.0'
-
-
 gem 'sidekiq'
 
 
@@ -43,6 +41,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem "binding_of_caller"
+  gem 'pry'
 end
 
 group :test do

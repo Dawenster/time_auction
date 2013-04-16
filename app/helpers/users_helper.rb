@@ -20,7 +20,7 @@ module UsersHelper
     end
 
     if user.photo_url
-      link = link_to (cl_image_tag current_user.photo_url.gsub('large', 'square'), 
+      link = link_to (cl_image_tag current_user.photo_url,#.gsub('large', 'square'), 
         :width => width, :height => height, 
         :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, 
         user_path(current_user), :id => link_id
