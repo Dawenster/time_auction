@@ -10,6 +10,6 @@ class AuctionEndWorker
       AuctionEndMailer.auction_winner(bid.user, auction, highest_bid).deliver and next if bid == highest_bid
       AuctionEndMailer.auction_loser(bid.user, winner, auction, highest_bid).deliver
     end
-    AuctionEndMailer.email_admins(auction, winner)
+    AuctionEndMailer.email_admins(auction, winner).deliver
   end
 end
