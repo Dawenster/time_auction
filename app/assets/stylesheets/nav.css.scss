@@ -93,17 +93,10 @@ ul#kstrap-navbar li.dropdown:hover ul.dropdown-menu {
   list-style: none;
   background-color: #ECECEC;
   text-align: left;
-  & li {
-    padding-top: 0px;
-  }
-  & li a {
-  margin: 0;
-  padding: 15px;
-  line-height: 35px;
-    &:hover{
-      background: transparent !important;
-      color: #F20505;
-    }
+  padding: 0px !important;
+  & li a:hover {
+    color: #F20505;
+    background: transparent !important;
   }
 }
 
