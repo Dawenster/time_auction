@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def profile_pic(user, width = 200, height = 200)
+  def profile_pic(user, width = 150, height = 150)
     if user.photo_url
       cl_image_tag user.photo_url, :width => width, :height => height, :crop => :pad
     else
@@ -8,17 +8,29 @@ module UsersHelper
     end
   end
 
-  def avatar(user, width = 25, height = 25)
-    if user.photo_url
-      link_to (cl_image_tag current_user.photo_url.gsub('large', 'square'), 
-      :width => width, :height => height, 
-      :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, 
-      user_path(current_user), :id => "navName"
+  def avatar(user, options = {})
+    height = options.fetch(:height, 25)
+    width = options.fetch(:width, 25)
+    link_id = options.fetch(:link_id, "navName")
+    
+    if user.admin
+      admin_note = "<span id=\"adminNote\">*</span>".html_safe
     else
-      link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', 
-      :width => width, :height => height, 
-      :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, 
-      user_path(current_user), :id => "navName"
+      admin_note = ""
+    end
+
+    if user.photo_url
+      link = link_to (cl_image_tag current_user.photo_url.gsub('large', 'square'), 
+        :width => width, :height => height, 
+        :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, 
+        user_path(current_user), :id => link_id
+      link + admin_note
+    else
+      link = link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', 
+        :width => width, :height => height, 
+        :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, 
+        user_path(current_user), :id => link_id
+      link + admin_note
     end
   end
 end

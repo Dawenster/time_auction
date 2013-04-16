@@ -1,0 +1,13 @@
+<% if current_user.admin %>
+<li class="dropdown">
+  <a class="dropdown-toggle" href="#" id="navName">Create</a>
+  <ul class="dropdown-menu">
+    <li><%= link_to 'Auction', new_auction_path %></li>
+    <li><%= link_to 'Charity', new_charity_path %></li>
+  </ul>
+</li>
+<% end %>
+<li><%= avatar(current_user) %></li>
+<li>
+  <%= link_to "Logout", session_path(session[:id]), :method => :delete, :id => "navName" %>
+</li>

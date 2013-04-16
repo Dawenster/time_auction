@@ -11,40 +11,13 @@
           <li><%= link_to 'Charities', charities_path %></li>
         </ul>
       </li>
-
-    <% if current_user && current_user.admin %>
-      <li class="dropdown">
-        <a class="dropdown-toggle" href="#" id="navName">Create</a>
-        <ul class="dropdown-menu">
-          <li><%= link_to 'Auction', new_auction_path %></li>
-          <li><%= link_to 'Charity', new_charity_path %></li>
-        </ul>
-      </li>
-      
-      <li>
-        <% if current_user.photo_url %>
-          <%= link_to (cl_image_tag current_user.photo_url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
-        <% else %>
-          <%= link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "Logout", session_path(session[:id]), :method => :delete, :id => "navName" %>
-      </li>
-
-    <% elsif current_user %>
-      <li><%= avatar(current_user) %></li>
-      <li>
-        <%= link_to "Logout", session_path(current_user), 
-            :method => :delete, :id => "navName" %>
-      </li>
+    <% if current_user %>
+      <%= render 'partials/logged_in_user_nav' %>
     <% else %>
       <li><%= link_to "Login", new_session_path, :id => "navName" %></li>
       <li><%= link_to "Sign up", new_user_path, :id => "navName" %></li>
     <% end %>
-
   </ul>
 </nav>
-
 <div class="backNav">
 </div>
