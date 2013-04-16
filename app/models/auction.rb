@@ -25,7 +25,7 @@ class Auction < ActiveRecord::Base
     @finished = @auctions.select { |auction| auction.end_date > Time.now }
     @finished.each do |auction|
       auction.winner_id = auction.highest_bid.user.id
-      AuctionEndWorker.perform_async(auction.bids.map(:&id).uniq)
+      AuctionEndWorker.perform_async(auction.bids.map(&:id).uniq)
     end
   end
 
