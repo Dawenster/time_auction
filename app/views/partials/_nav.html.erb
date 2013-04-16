@@ -22,8 +22,8 @@
       </li>
       
       <li>
-        <% if current_user.photo %>
-          <%= link_to (cl_image_tag current_user.photo.url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
+        <% if current_user.photo_url %>
+          <%= link_to (cl_image_tag current_user.photo_url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
         <% else %>
           <%= link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %><span id="adminNote">*</span>
         <% end %>
@@ -42,8 +42,8 @@
         </ul>
       </li>
       <li>
-        <% if current_user.photo %>
-          <%= link_to (cl_image_tag current_user.photo.url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
+        <% if current_user.photo_url %>
+          <%= link_to (cl_image_tag current_user.photo_url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
         <% else %>
           <%= link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
         <% end %>
