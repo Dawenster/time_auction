@@ -20,6 +20,16 @@ class Auction < ActiveRecord::Base
   validates :end_date, :presence => true
   validates :category_id, :presence => true
   
+  def self.check_auction_finished
+    @auctions = Auction.all
+    @finished = @auctions.select { |auction| auction.end_date > Time.now }
+    @finished.each do |auction|
+      auction.winner_id = auction.highest_bid.user.id
+      AuctionEndWorker.perform_async(auction.bids.map(:&id).uniq)
+    end
+  end
+
+
   def highest_bid
     self.bids.order("time DESC").first unless self.bids.empty? 
   end

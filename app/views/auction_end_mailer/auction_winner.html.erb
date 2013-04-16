@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css" media="screen">
+      h1 { color: blue; }
+    </style>
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %>,</h1>
+    <p>
+      Congratulations!  You have won the auction <%= link_to @auction.title, @url + auction_path(@auction) %>!  Your final bid was <%= @bid.time %> hours!
+    </p>
+    <p>
+      You have until <%= @auction.deadline.strftime('%B %d, %Y') %> to complete your volunteer hours.  If you finish early, give us a shout at team@timeauction.org and we'll call your charity to verify.
+    </p>
+    <p>
+      Actually, feel free to contact us with any questions whatsoever!  We look forward to hearing your stories.
+    </p>
+    <p>Thanks again!</p>
+    <p>Time Auction Team</p>
+  </body>
+</html>
