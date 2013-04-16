@@ -1,11 +1,14 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 div#user-profile-name{
   text-align: left;
   margin-top: 10px;
-  margin-bottom: 10px;
+}
+
+.span2 {
+  margin-left: 0px;
+}
+
+.span10 {
+  margin-left: 120px;
 }
 
 .user-bid-hours{
@@ -38,7 +41,6 @@ div#user-profile-name{
   margin-top: 5px;
 }
 
-
 .userStatisticsBox {
   margin-top: 20px;
   float: right;
@@ -69,7 +71,8 @@ div#user-profile-name{
 #fbconnect a {
   background-image: url('/assets/fb-connect.png');
   width: 280px;
-  height: 46px;
+  height: 47px;
+  margin: 5px 0px;
   display: block;
   &:hover {
     background-image: url('/assets/fb-connect-glow.png');

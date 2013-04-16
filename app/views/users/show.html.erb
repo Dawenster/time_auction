@@ -8,7 +8,7 @@
   <% end %>
 </div>
 <div class="row">      
-  <div class="span3">
+  <div class="span2">
     <div class="photo-upload">
       
       <%= profile_pic(@user) %>
@@ -33,14 +33,18 @@
       </div>
     </div>
     <div class="todo-header">
-      <h3>Remaining Hours</h3></div>
-    <div class="hours-left">
-      <ul>
-        <% @remaining_tasks.each do |bid| %>
-        <li><%= bid.auction.title %>: <%= bid.time - bid.auction.verified_time %> hours left</li>
-        <% end %>
-      </ul>
+      <h3>Recent Bids</h3>
     </div>
+      <div>
+        <ul>
+          <% if @bids %>
+            <% @bids.each do |bid| %>
+              <li>You bid <%= bid.time %> hours on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    
      <!--  <ul>
         <%# @winning_auctions.each do |auction| %>
           <li><%#= link_to auction.title, auction %></li>
@@ -53,14 +57,12 @@
 
 <% if current_user == @user %>
   <div id="activities">
-    Recent Bids
+    Remaining Hours
   </div>
-  <div>
+  <div class="hours-left">
     <ul>
-      <% if @bids %>
-        <% @bids.each do |bid| %>
-          <li>You bid <%= bid.time %> hours on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
-        <% end %>
+      <% @remaining_tasks.each do |bid| %>
+      <li><%= bid.auction.title %>: <%= bid.time - bid.auction.verified_time %> hours left</li>
       <% end %>
     </ul>
   </div>

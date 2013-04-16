@@ -33,24 +33,14 @@
       </li>
 
     <% elsif current_user %>
-
+      <li><%= avatar(current_user) %></li>
       <li>
-        <% if current_user.photo_url %>
-          <%= link_to (cl_image_tag current_user.photo_url, :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
-        <% else %>
-          <%= link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', :width => 25, :height => 25, :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, user_path(current_user), :id => "navName" %>
-        <% end %>
+        <%= link_to "Logout", session_path(current_user), 
+            :method => :delete, :id => "navName" %>
       </li>
-      <li>
-        <%= link_to "Logout", session_path(current_user), :method => :delete, :id => "navName" %>
-      </li>
-    
     <% else %>
-
       <li><%= link_to "Login", new_session_path, :id => "navName" %></li>
-      <li><%= link_to "(FB)", fb_login_path, :id => "navName" %></li>
       <li><%= link_to "Sign up", new_user_path, :id => "navName" %></li>
-    
     <% end %>
 
   </ul>
