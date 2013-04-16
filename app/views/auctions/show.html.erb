@@ -4,6 +4,9 @@
   <div class="span10 offset1 hidden-bid-partial">
     <%= render 'bids/form' %>
   </div>
+  <div class="span8 offset2">
+    <%= render 'bids/success_popup' %>
+  </div>
 </div>
 <div class="row">
   
@@ -181,7 +184,11 @@
         <% end %>
       </div>
     </div>
+    <div class="facebook_links">
+      <fb:like send="true" width="450" show_faces="true"></fb:like>
+    </div>
   </div>
+
 </div>
 
 <div class="hide all-charities"><%= @charities %></div>

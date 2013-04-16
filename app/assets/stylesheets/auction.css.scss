@@ -197,15 +197,23 @@
     z-index: 999;
 }
 
+
+#bid_success_popup, #new_bid_form {
+  position: absolute;
+  z-index: 1000;
+  overflow: none;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+}
+
 #new_bid_form {
-    position: absolute;
-    width: 800px;
-    min-height: 425px;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    z-index: 1000;
-    overflow: none;
+  width: 800px;
+  min-height: 425px;
+}
+
+#bid_success_popup .errors {
+  color: red;
 }
 
 .pop-up {
