@@ -78,3 +78,87 @@ div#user-profile-name{
     background-image: url('/assets/fb-connect-glow.png');
   }
 }
+
+.user_signup_container {
+  margin: 0px auto;
+  margin-top: 25px;
+  padding: 20px;
+  width: 400px;
+  border: 2px solid #555;
+  border-radius: 15px;
+  background-color: #eaeaea;
+  -webkit-box-shadow: 0px 4px 10px rgba(50, 50, 50, 0.50);
+  -moz-box-shadow:    0px 4px 10px rgba(50, 50, 50, 0.50);
+  box-shadow:         0px 4px 10px rgba(50, 50, 50, 0.50);
+  & h1 {
+    font-family: 'Lato';
+    text-align: center;
+    margin-bottom: 20px;
+  }  
+}
+
+
+
+.user_form {
+  margin: 0px auto;
+  width: 300px;
+  text-align: center;
+  #fbconnect {
+    padding-left: 10px;
+    margin: 0px;
+  }
+  form{
+  display: block;
+  margin-bottom: 2px;
+    input[type=text], input[type=email], input[type=password] {
+      height: 45px;
+      font-family: 'Lato';
+      font-size: 1.5em;
+      font-weight: 300;
+      width: 260px;
+      margin-bottom: 8px;
+      padding-left: 12px;
+      -webkit-box-shadow: 1px 1px 10px rgba(50, 50, 50, 0.40);
+      -moz-box-shadow:    1px 1px 10px rgba(50, 50, 50, 0.40);
+      box-shadow:         1px 1px 10px rgba(50, 50, 50, 0.40);
+    }
+    input[type=submit]{
+      width: 280px !important; 
+    }
+  }
+}
+
+
+
+.user_form_button {
+  display:inline-block;
+  color:#ffffff;
+  font-family:'Open Sans';
+  font-size:2em;
+  font-weight:300;
+  padding:25px 80px;
+  text-decoration:none;
+  border:1px solid #d83526;
+  padding:18px 76px;
+  text-decoration:none;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #fa665a), color-stop(100%, #d34639) );
+  background:-moz-linear-gradient( center top, #fa665a 5%, #d34639 100% );
+  background:-ms-linear-gradient( top, #fa665a 5%, #d34639 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa665a', endColorstr='#d34639');
+  background-color:#fa665a;
+  color:#ffffff;
+  display:inline-block;
+  text-shadow:1px 1px 10px #98231a;
+  -webkit-box-shadow:inset 1px 1px 18px -50px #fab3ad;
+  -moz-box-shadow:inset 1px 1px 18px -50px #fab3ad;
+  box-shadow:inset 1px 1px 18px -50px #fab3ad;
+}.user_form_button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #d34639), color-stop(100%, #fa665a) );
+  background:-moz-linear-gradient( center top, #d34639 5%, #fa665a 100% );
+  background:-ms-linear-gradient( top, #d34639 5%, #fa665a 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d34639', endColorstr='#fa665a');
+  background-color:#d34639;
+}.user_form_button:active {
+  position:relative;
+  top:1px;
+}

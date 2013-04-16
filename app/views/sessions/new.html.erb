@@ -1,9 +1,16 @@
-<h1>Log in!</h1>
-<%= @messages %>
-<%= form_for :session, :url => sessions_path do |f| %>
-  <%= f.email_field :email, placeholder: "Email", :autofocus=>true %>
-  <%= f.password_field :password, placeholder: "Password" %>
-  <%= f.submit "Log in" %>
-<% end %>
-<div id="fbconnect"><%= link_to "", fb_login_path %></div>
-Need an account? <%= link_to "Sign up here", new_user_path %>
+<div class="user_signup_container">
+  <h1 id="user_signup">Welcome Back</h1>
+  <div class="user_form">
+    <%= @messages %>
+    <%= form_for :session, :url => sessions_path do |f| %>
+      <%= f.email_field :email, placeholder: "E-mail", :autofocus=>true %>
+      <%= f.password_field :password, placeholder: "Password" %>
+      <%= f.submit "Login", :class => "user_form_button" %>
+    <% end %>
+    or
+    <div id="fbconnect">
+      <%= link_to "", fb_login_path %>
+    </div>
+    Need an account? <%= link_to "Sign up here", new_user_path %>
+  </div>
+</div>
