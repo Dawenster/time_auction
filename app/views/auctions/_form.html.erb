@@ -1,24 +1,35 @@
-<%= form_for @auction do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, :required => true, :autofocus => true %>
-  <%= f.label :description %>
-  <%= f.text_area :description, :required => true %>
-  <%= f.label :category %>
-  <%= collection_select(:auction, :category_id, Category.all, :id, :name ) %>
-  <%= f.label :start_date, "Auction Start Date" %>
-  <%= f.text_field :start_date, html: { id: 'datepicker' }, :required => true %>
-  <%= f.label :end_date, "Auction End Date" %>
-  <%= f.text_field :end_date, html: { id: 'datepicker' }, :required => true %>
-  <span class="hide" id="verified_time">
-    <%= f.label :verified_time %>
-    <%= f.text_field :verified_time %>
-  </span>
-  <%= f.fields_for :photos, :html => { multipart: true } do |builder| %>
-    <label for="file">Apply Photo</label>
-    <%= builder.file_field :url, :required => true %>
-  <% end %>
-  <%= f.submit "Create Auction", :class => "btn btn-primary btn-large" %>
-<% end %>
+<div class="creation_container">
+  <h1 id="creation_title"><%= @title %></h1>
+    <div class="auction-category">
+    <%= link_to "> Back to auction", auction_path(@auction) if @auction.valid? %>
+  </div>
+  <div class="creation_form">
+    <%= form_for @auction do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :required => true, :autofocus => true %>
+    <%= f.label :description %>
+    <%= f.text_area :description, :required => true %>
+    <%= f.label :category %>
+    <%= collection_select(:auction, :category_id, Category.all, :id, :name ) %>
+    <%= f.label :start_date, "Auction Start Date" %>
+    <%= f.text_field :start_date, html: { id: 'datepicker' }, :required => true %>
+    <%= f.label :end_date, "Auction End Date" %>
+    <%= f.text_field :end_date, html: { id: 'datepicker' }, :required => true %>
+    <span class="hide" id="verified_time">
+      <%= f.label :verified_time %>
+      <%= f.text_field :verified_time %>
+    </span>
+    <div class="upload">
+      <%= f.fields_for :photos, :html => { multipart: true } do |builder| %>
+        <label for="file">Apply Photo</label>
+        <%= builder.file_field :url %>
+      <% end %>
+    </div>
+      <%= f.submit @submit, :class => "user_form_button" %>
+    <% end %>
+    <%= @delete_button if @delete_button %>
+  </div>
+</div>
 
 
 
