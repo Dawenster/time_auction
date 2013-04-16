@@ -19,7 +19,7 @@ gem 'bootstrap-will_paginate'
 gem 'autoscaler'
 gem 'omniauth-facebook', '1.4.0'
 gem 'sidekiq'
-
+gem 'newrelic_rpm'
 
 
 # Gems used only for assets and not required
