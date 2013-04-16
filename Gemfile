@@ -43,6 +43,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem "binding_of_caller"
+  gem 'pry'
 end
 
 group :test do
