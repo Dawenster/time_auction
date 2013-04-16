@@ -8,7 +8,7 @@ class AuctionEndWorker
     winner = highest_bid.user
     bids.each do |bid|
       AuctionEndMailer.auction_winner(bid.user, auction, highest_bid).deliver and next if bid == highest_bid
-      AuctionEndMailer.auction_loser(bid.user, winner, auction, highest_bid, bid).deliver
+      AuctionEndMailer.auction_loser(bid.user, winner, auction, bid).deliver
     end
   end
 end
