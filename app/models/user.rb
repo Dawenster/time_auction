@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :auctions, through: :bids
   has_many :comments
   has_one :photo, :as => :imageable
-  has_many :identities#, :after_add => :import_pic
+  has_many :identities
 
   validates :name, :presence => true
   validates :email, :presence => true
@@ -30,14 +30,5 @@ class User < ActiveRecord::Base
       nil
     end
   end
-
-  # def import_pic
-  #   unless self.photo.any?
-  #     p = Photo.new
-  #     p.url = self.identities.first.image 
-  #     p.user = self
-  #     p.save!
-  #   end
-  # end
 
 end

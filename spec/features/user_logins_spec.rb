@@ -9,7 +9,7 @@ describe "UserLogins" do
     
     before { visit new_session_path }
 
-    it { should have_content "Log in" }
+    it { should have_content "Welcome Back" }
 
     context "with valid input" do
       before do
@@ -25,7 +25,7 @@ describe "UserLogins" do
       before do
         fill_in :session_email, with: "zzzzz"
         fill_in :session_password, with: user.password
-        click_button 'Log in'
+        click_button 'Login'
       end
 
       it "should not log in" do

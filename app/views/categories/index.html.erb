@@ -9,10 +9,18 @@
 
   <% @auctions_categories.each do |category, auctions| %>
       <div class="tab-pane browse-auctions <%= "active" if params[:tab] == category || active_count == 0 %>" id="<%= category.downcase %>">
-    <% auctions.each do |auction|%>
-      <div class="auction-column"><%= cl_image_tag auction.photos.last.url, width: 300, height: 145, :class=> "browse-photo" ,:crop => :fill %><p class="auction-title"><%= link_to auction.title, auction_path(auction) %></p><p class="current-high">Highest Bid: <%= auction.bids.empty? ? "Be the first to Bid!" : auction.bids.order("time DESC").first.time.to_s + "Hours" %></div>
-    <% end %>
-    <% active_count += 1 if params[:tab].nil? %>
+        <% auctions.each do |auction|%>
+          <div class="auction-column">
+            <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction %>
+            <p class="auction-title">
+              <%= link_to auction.title.truncate(68), auction %>
+            </p>
+            <p class="current-high">
+              <strong>Highest Bid:</strong> <%= auction.bids.empty? ? "Be the first to Bid!" : auction.bids.order("time DESC").first.time.to_s + " Hours" %>
+            </p>
+          </div>
+        <% end %>
+      <% active_count += 1 if params[:tab].nil? %>
     </div>
   <% end %> 
 </div>

@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe "Bid creation" do
 
-#   PG::Error: ERROR: missing FROM-clause entry for table "comments" LINE 1: ...OM "bids" WHERE "bids"."auction_id" = 1 ORDER BY comments.c... ^ : SELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = 1 ORDER BY comments.created_at DESC
-# WEBrick/1.3.1 (Ruby/1.9.3/2013-01-15) at 127.0.0.1:50543 
-
   subject { page }
 
   describe "creating a bid", :js => true do

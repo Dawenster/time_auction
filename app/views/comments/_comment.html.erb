@@ -14,8 +14,6 @@
           <%= link_to '', auction_comment_path(comment.auction, comment), :class => 'icon-remove', :remote => true, :method => 'delete' %>
         <% end %>
     </div>
-    <p>
-      <%= simple_format(comment.content) %>
-    </p>
+    <%= simple_format(comment.content) %>
   </li>
 </div>

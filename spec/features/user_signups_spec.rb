@@ -7,7 +7,7 @@ describe "UserSignups" do
   describe "signing up" do
     before { visit new_user_path }
 
-    it { should have_content "Sign up" }
+    it { should have_content "Create an Account" }
 
     context "with valid input" do
       before do
@@ -18,7 +18,7 @@ describe "UserSignups" do
       end
 
       it "should create user" do
-        expect {click_button "Create User" }.to change(User, :count).by(1)
+        expect {click_button "Sign Up" }.to change(User, :count).by(1)
       end
     end
 
@@ -32,11 +32,11 @@ describe "UserSignups" do
       end
 
       it "should not create user" do
-        expect {click_button "Create User" }.not_to change(User, :count)
+        expect {click_button "Sign Up" }.not_to change(User, :count)
       end
 
       it "should generate error messages" do
-        click_button 'Create User'
+        click_button 'Sign Up'
         should have_selector '.alert-errors'
       end
     end
