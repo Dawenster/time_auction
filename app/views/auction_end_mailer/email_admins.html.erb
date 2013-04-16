@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css" media="screen">
+      h1 { color: blue; }
+    </style>
+  </head>
+  <body>
+    <h1>An auction just finished</h1>
+    <p>
+      The deadline for this auction is <%= @finished_auction.deadline.strftime('%B %d, %Y') %>
+      <%= link_to @finished_auction.title, auction_path(@finished_auction) %>
+    </p>
+    <p>
+      The winner for this auction is <%= link_to @winner.name, user_path(@winner) %>
+    </p>
+    <p>Go Team!</p>
+  </body>
+</html>
