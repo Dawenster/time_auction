@@ -81,7 +81,7 @@ div#user-profile-name{
 
 .user_signup_container {
   margin: 0px auto;
-  margin-top: 25px;
+  margin-top: 75px;
   padding: 20px;
   width: 400px;
   border: 2px solid #555;
@@ -91,6 +91,7 @@ div#user-profile-name{
   -moz-box-shadow:    0px 4px 10px rgba(50, 50, 50, 0.50);
   box-shadow:         0px 4px 10px rgba(50, 50, 50, 0.50);
   & h1 {
+    color: #444;
     font-family: 'Lato';
     text-align: center;
     margin-bottom: 20px;
