@@ -12,7 +12,11 @@
       <div class="upload">
         <%= f.fields_for :photos, :html => { multipart: true } do |builder| %>
         <label for="file">Attach a related photo to this charity</label>
-        <%= builder.file_field :url %>
+        <% if @title == "Add a Charity" %>
+          <%= builder.file_field :url, :required => true %>
+        <% else %>
+          <%= builder.file_field :url %>
+        <% end %>
       <% end %>
     </div>
       <%= f.submit @submit, :class => "user_form_button" %>
