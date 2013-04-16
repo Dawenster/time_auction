@@ -1,5 +1,11 @@
 <div id="user-profile-name">
   <h1>Profile for <%= @user.name %></h1>
+  <% unless @user.identities.any? %>
+    <span id="fbconnect"><%= link_to "", fb_login_path %></span>
+  <% end %>
+  <% if @user.identities.any? %>
+    <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.identities.first.username}" %>
+  <% end %>
 </div>
 <div class="row">      
   <div class="span3">

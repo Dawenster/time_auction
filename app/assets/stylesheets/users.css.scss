@@ -65,3 +65,13 @@ div#user-profile-name{
     letter-spacing: -3px;
   }
 }
+
+#fbconnect a {
+  background-image: url('/assets/fb-connect.png');
+  width: 280px;
+  height: 46px;
+  display: block;
+  &:hover {
+    background-image: url('/assets/fb-connect-glow.png');
+  }
+}
