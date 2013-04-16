@@ -74,11 +74,11 @@
 
 .you-highest {
   width: 90%;
-  height: 55px;
+  /*height: 55px;*/
   margin: 10px 20px 0px 20px;
   border: 2px solid #ccc;
   border-radius: 10px;
-  background-color: #DFF0D8;
+  background-color: #B4E0E8;
   padding: 10px;
   text-align: center;
 }
@@ -117,7 +117,6 @@
 
 .auction-details {
   width: 90%;
-  height: 200px;
   margin: 0px 20px 0px 20px;
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -125,11 +124,21 @@
   padding: 10px;
   text-align: center;
   position: relative;
+  font-family: 'Lato';
   &:hover {
     background-color: #e0e0e0;
   }
-  & h3 {
-    margin-top: 0;
+  & .detail-box h3 {
+    margin: 0;
+    font-weight: 400;
+  }
+  & .detail-box p {
+    font-family: 'aller_lightregular';
+    font-size: 1.2em;
+    margin-bottom: 0px;
+    &:last-child {
+      margin-bottom: 15px;
+    }
   }
 }
 
