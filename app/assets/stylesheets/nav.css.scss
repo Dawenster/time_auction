@@ -29,7 +29,7 @@ nav {
   z-index: 10;
 }
 
-ul.nav {
+ul#kstrap-navbar {
   margin: 0px auto;
   width: 1040px;
 }
@@ -39,7 +39,7 @@ nav a {
   text-decoration: none;
 }
 
-ul.nav li {
+ul#kstrap-navbar li {
   font-family: 'titilliumtext25l600_wt';
   font-size: 1.4em;
   display: inline;
@@ -49,7 +49,7 @@ ul.nav li {
   }
 }
 
-ul.nav li a {
+ul#kstrap-navbar li a {
   font-family: 'titilliumtext25l600_wt';
   font-size: 20px; 
   line-height: 60px;
@@ -84,7 +84,7 @@ a#logo {
   color: #F20505;
 }
 
-ul.nav li.dropdown:hover ul.dropdown-menu {
+ul#kstrap-navbar li.dropdown:hover ul.dropdown-menu {
   min-width: 0px !important;
   margin-top: 15px;
   padding-top: 1px;

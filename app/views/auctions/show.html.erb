@@ -24,17 +24,22 @@
 
 <!-- LEFT SIDE CONTENT -->
 
-  <div class="span8">
+  <div class="span8" id="auction">
     <div class="auction-photo shadow">
-        <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
-      </div>
+      <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
+    </div>
 
 <!-- TABS -->
 
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
-      <li><a href="#auction-bid-history" data-toggle="tab" id="bidsTab">Bid History</a></li>
-      <li><a href="#auction-comments" data-toggle="tab" id="commentsTab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a></li>
+      <li class="active">
+        <a href="#auction-description" data-toggle="tab">Description</a></li>
+      <li>
+        <a href="#auction-bid-history" data-toggle="tab" id="bidsTab">Bid History</a>
+      </li>
+      <li>
+        <a href="#auction-comments" data-toggle="tab" id="commentsTab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a>
+      </li>
     </ul>
 
 <!-- DESCRIPTION -->

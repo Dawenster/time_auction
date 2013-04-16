@@ -283,11 +283,17 @@ ul.nav-tabs {
   width: 600px !important;
 }
 
-.nav-tabs li {
+#auction .nav-tabs li {
+  font-family: 'titilliumtext25l600_wt';
+  font-size: 20px;
+  line-height: 60px;
   padding: 0px !important;
   margin: 0px !important;
   height: 52px;
   border-bottom-color: none !important;
+  & a {
+    display: inline;
+  }
   & a:hover {
    border-bottom: 0px !important;
    padding: 8px 12px;
