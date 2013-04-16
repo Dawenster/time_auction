@@ -139,7 +139,7 @@
 
       <% if current_user && (!@auction.started? && !@auction.complete?) || (@auction.started? && @auction.complete?) %>
       <% elsif !current_user %>
-        <%= button_to 'Signin to Bid', new_user_path %>
+        <%= button_to 'Signin to Bid', new_user_path, method: :get %>
       <% else %>
         <div id="trigger"><button class="btn btn-danger btn-large bid-button">Bid Hours</button></div>
       <% end %>
