@@ -16,10 +16,8 @@ gem 'faker'
 gem 'thin'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem 'autoscaler'
 gem 'omniauth-facebook', '1.4.0'
-
-
 gem 'sidekiq'
 
 

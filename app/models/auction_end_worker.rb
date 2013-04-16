@@ -12,6 +12,3 @@ class AuctionEndWorker
     end
   end
 end
-
-
-# auction.bids.
