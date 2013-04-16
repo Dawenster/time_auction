@@ -1,24 +1,40 @@
 require 'spec_helper'
 
-# describe "CommentCreation" do
+describe "User creating a comment", js: true do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:auction) { FactoryGirl.create(:auction) }
+  
+  before do
+    login_user(user)
+    visit auction_path(auction)
+    page.find('#commentsTab').click
+  end
 
-#   describe "No comments for anonymous user" do
-#     it "should not have comment form for anonymous browser" do
-#       visit auction_path(3)
-      
-#     end
-#   end
+  it "button should appear if logged in" do
+    page.should have_selector('#new_comment')
+  end
 
-#   describe "logged in user should be able to add comments" do
-#     before do
-#       visit new_user_path 
-#       fill_in :user_name, with: "Test Name"
-#       fill_in :user_email, with: "j@example.com"
-#       fill_in :user_phone, with: "310-333-3333"
-#       fill_in :user_password, with: "Password1"
-#       click_button "Create User"
-#     end
+  describe "when passing a valid and successful comment" do
+    before do
+      page.fill_in('comment_content', :with => "That's so Rails")
+      click_button('Add Comment')
+      page.fill_in('comment_content', :with => "#PrayForKobe")
+      click_button('Add Comment')
+    end
 
-#   end
-# end
+    it "should accept comment if greater than 0 characters" do
+      page.should have_content('#PrayForKobe')
+    end
+
+    it "should show up at the top" do
+      page.find('#commentsTab').click
+      page.should have_selector('ul.comments .commentBlock .comment p', text: "#PrayForKobe")
+    end
+  end
+
+  it "should yield error if invalid" do
+    click_button('Add Comment')
+    page.should have_content("blank")
+  end
+end
 
