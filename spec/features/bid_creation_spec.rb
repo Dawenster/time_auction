@@ -13,7 +13,7 @@ describe "Bid creation" do
     before do
       login_user(user)
       visit auction_path(auction)
-      click_button "Bid hours"
+      click_button "Bid Hours"
     end
 
     it { should have_selector('#new_bid_form') }
@@ -58,7 +58,7 @@ describe "Bid creation" do
     before do
       login_user(user)
       visit auction_path(auction)
-      click_button "Bid hours"
+      click_button "Bid Hours"
     end
 
     it "cannot create a bid" do
