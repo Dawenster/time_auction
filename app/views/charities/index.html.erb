@@ -1,3 +1,14 @@
-<% @charities.each do |charity| %>
-  <%= link_to charity.name, charity_path(charity) %>
-<% end %>
+<div class="category-display" id="auction">
+
+  <% @charities.each do |charity| %>
+    <div class="auction-column">
+      <%= link_to (cl_image_tag charity.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), charity %>
+      <p class="charity-name">
+        <%= link_to charity.name, charity %>
+      </p>
+      <p class="charity-description">
+        <%= link_to charity.description.truncate(68), charity %>
+      </p>
+    </div>
+  <% end %> 
+</div>
