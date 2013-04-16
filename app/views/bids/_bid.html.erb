@@ -1,5 +1,12 @@
 <tr>
   <td><%= bid.user.name %></td> 
   <td><%= bid.time %></td>
+  <td>
+    <% if bid.charity %>
+      <%= link_to bid.charity.name, bid.charity %>
+    <% else %>
+      None Specified
+    <% end %>
+  </td>
   <td><%= time_ago_in_words(bid.created_at) %> ago</td>
 </tr>

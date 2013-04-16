@@ -12,8 +12,6 @@ div#user-profile-name{
 }
 
 .user-bid-hours{
-  /*width: 20%;
-  float:left;*/
   margin: 0;
 }
 
@@ -69,14 +67,18 @@ div#user-profile-name{
 }
 
 #fbconnect a {
+  text-indent: -99999px;
   background-image: url('/assets/fb-connect.png');
   width: 280px;
   height: 47px;
   margin: 5px 0px;
   display: block;
-  &:hover {
-    background-image: url('/assets/fb-connect-glow.png');
-  }
+  background-position: 0px 0px;
+}
+
+#fbconnect a:hover {
+  background-image: url('/assets/fb-connect.png');
+  background-position: 0px -47px;
 }
 
 .user_signup_container {
@@ -97,8 +99,6 @@ div#user-profile-name{
     margin-bottom: 20px;
   }  
 }
-
-
 
 .user_form {
   margin: 0px auto;
@@ -129,15 +129,12 @@ div#user-profile-name{
   }
 }
 
-
-
 .user_form_button {
   display:inline-block;
   color:#ffffff;
   font-family:'Open Sans';
   font-size:2em;
   font-weight:300;
-  padding:25px 80px;
   text-decoration:none;
   border:1px solid #d83526;
   padding:18px 76px;

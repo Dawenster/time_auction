@@ -27,17 +27,22 @@
 
 <!-- LEFT SIDE CONTENT -->
 
-  <div class="span8">
+  <div class="span8" id="auction">
     <div class="auction-photo shadow">
-        <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
-      </div>
+      <%= cl_image_tag @auction.photos.first.url, :width => 600, :height => 450 unless @auction.photos == [] %>
+    </div>
 
 <!-- TABS -->
 
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#auction-description" data-toggle="tab">Description</a></li>
-      <li><a href="#auction-bid-history" data-toggle="tab" id="bidsTab">Bid History</a></li>
-      <li><a href="#auction-comments" data-toggle="tab" id="commentsTab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a></li>
+      <li class="active">
+        <a href="#auction-description" data-toggle="tab">Description</a></li>
+      <li>
+        <a href="#auction-bid-history" data-toggle="tab" id="bidsTab">Bid History</a>
+      </li>
+      <li>
+        <a href="#auction-comments" data-toggle="tab" id="commentsTab">Comments (<span id="commentCount"><%= @comments.count %></span>)</a>
+      </li>
     </ul>
 
 <!-- DESCRIPTION -->
@@ -56,6 +61,7 @@
           <tr>
             <th>Name</th>
             <th>Hours Bid</th>
+            <th>Charity</th>
             <th>Posted</th>
           </tr>
           <%= render @bids %>  
@@ -122,8 +128,8 @@
       <% end %>
     </div>
 
-    <div class='you-highest <%= 'hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
-        <h3>You're the Top Bidder!</h3>
+    <div class='you-highest<%= ' hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user %>'>
+        <h3>You're Currently the Top Bidder!</h3>
     </div>
 
 <!-- BID BUTTON -->
@@ -133,39 +139,50 @@
 
       <% if current_user && (!@auction.started? && !@auction.complete?) || (@auction.started? && @auction.complete?) %>
       <% elsif !current_user %>
-        <a href='<%= new_user_path %>'><button class="btn btn-success btn-large">Sign in to bid</button></a>
+        <%= button_to 'Signin to Bid', new_user_path %>
       <% else %>
-        <div id="trigger"><button class="btn btn-danger btn-large bid-button">Bid hours</button></div>
+        <div id="trigger"><button class="btn btn-danger btn-large bid-button">Bid Hours</button></div>
       <% end %>
     </div>
 
 <!-- AUCTION DETAILS -->
 
     <div class='auction-details'>
-      <% if Time.now < @auction.start_date %>
-        <div>Auction starts</div>
-        <div><h3><%= @auction.start_date.strftime('%b %d, %Y') %></h3></div>
-      <% else %>
-        <div>Auction started</div>
-        <div><h3><%= @auction.start_date.strftime('%b %d, %Y') %></h3></div>
-      <% end %>
-      
-      <% if Time.now < @auction.end_date %>
-        <div>Auction ends</div>
-        <div><h3><%= @auction.end_date.strftime('%b %d, %Y') %></h3></div>
-      <% else %>
-        <div>Auction ended</div>
-        <div><%= @auction.end_date.strftime('%b %d, %Y') %></div>
-        <div><h3><%= link_to "Check out others", categories_path %></h3></div>
-      <% end %>
-
-      <% if Time.now < @auction.deadline %>
-        <div>Volunteer deadline</div>
-        <div><h3><%= @auction.deadline.strftime('%b %d, %Y') %></h3></div>
-      <% else %>
-        <div>Volunteer status</div>
-        <div><%= "#{@auction.verified_time.to_s} of #{@winning_time} hours completed!" unless @auction.verified_time.nil? %> <%= "Thank you " if @winner %><%= link_to @winner.name,  user_path(@winner) if @winner %></div>
-      <% end %>
+      <div class="detail-box">
+        <h3>Auction Start Date</h3>
+        <p>
+          <%= @auction.start_date.strftime('%b %d, %Y') %>
+        </p>
+      </div>
+      <div class="detail-box">
+        <% if Time.now < @auction.end_date %> <!-- Auction Hasn't Ended -->
+          <h3>Auction End Date</h3>
+          <p>
+            <h3><%= @auction.end_date.strftime('%b %d, %Y') %></h3>
+          </p>
+        <% else %> <!-- Auction Ended  -->
+          <h3>Auction Has Ended</h3>
+          <p>
+            <%= @auction.end_date.strftime('%b %d, %Y') %>
+          </p>
+          <p>
+            <%= link_to "Check out other auctions", categories_path %>
+          </p>
+        <% end %>
+      </div>
+      <div class="detail-box">
+        <% if Time.now < @auction.deadline %>  <!-- Auction Ended  -->
+          <h3>Volunteer Deadline</h3>
+          <p>
+            <%= @auction.deadline.strftime('%b %d, %Y') %>
+          </p>
+        <% else %>  <!-- Auction Ultimate Complete  -->
+          <h3>Volunteer Status</h3>
+          <p>
+            <%= "#{@auction.verified_time.to_s} of #{@winning_time} hours completed!" unless @auction.verified_time.nil? %> <%= "Thank you " if @winner %><%= link_to @winner.name,  user_path(@winner) if @winner %>
+          </p>
+        <% end %>
+      </div>
     </div>
     <div class="facebook_links">
       <fb:like send="true" width="450" show_faces="true"></fb:like>
