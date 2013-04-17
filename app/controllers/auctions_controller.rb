@@ -64,7 +64,6 @@ class AuctionsController < ApplicationController
       flash.now[:errors] = "Start date must be before end date"
     end
 
-
     if @auction.update_attributes(params[:auction]) && proper_date
       redirect_to auction_path(@auction)
     else

@@ -45,13 +45,20 @@ describe "AuctionEdit" do
     it "should update winner's time_donated when verified hours is updated" do
       auction.update_attribute(:winner_id, user.id)
       fill_in :auction_verified_time, with: "10"
-      expect { click_button 'Update Auction' }.to change{user.time_donated}.by(10)
+      click_button 'Update Auction'
+      visit user_path(user)
+      page.should have_css('#hoursCount', :text => "10")
     end
 
     it "updates winner's time_donated correctly if there is some verified time already" do
-      auction.update_attribute(:verified_time, 20)
+      auction.update_attribute(:winner_id, user.id)
+      fill_in :auction_verified_time, with: "10"
+      click_button 'Update Auction'
+      visit edit_auction_path(auction)
       fill_in :auction_verified_time, with: "50"
-      expect { click_button 'Update Auction'}.to change{user.time_donated}.by(30)
+      click_button 'Update Auction'
+      visit user_path(user)
+      page.should have_css('#hoursCount', :text => "50")
     end
   end
 end
