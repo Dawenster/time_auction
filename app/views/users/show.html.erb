@@ -4,14 +4,14 @@
 <div class="row">  
   <div class="span2">
     <div class="photo-upload">
+      <%= profile_pic(@user, 200, 200) %>
+
       <% if current_user == @user && !@user.identities.any? %>
         <%= link_to image_tag('/assets/facebook-connect-200.png'), fb_login_path %>
       <% end %>
       <% if @user.identities.any? %>
         <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.fb_identity.username}" %>
       <% end %>
-      
-      <%= profile_pic(@user, 200, 200) %>
 
       <% if current_user == @user %>
       <div class="upload">
@@ -38,7 +38,7 @@
   <div class="span10">
     <!-- TABS -->    
     <div id="userProfileTabs">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" id="profile">
         <li class="active">
           <a href="#user-recent-bids" data-toggle="tab">Recent Bids</a></li>
         <li>
@@ -56,21 +56,38 @@
 <!-- DESCRIPTION -->
 
     <div class="tab-content">
-      <div class="tab-pane active" id="auction-description"> 
-        <h3>Auction Description</h3>
+      <div class="tab-pane active" id="user-recent-bids profile"> 
+        <% if @entered_auctions.any? %>
+        <ul>
 
+          <div class="recentBidPhoto">
+            <% @entered_auctions.each do |auction| %>
+              <%= link_to (cl_image_tag auction.photos.first.url, width: 150, height: 150, :class => "browse-photo", :crop => :fill), auction %>
+            <% end %>
+          </div>
+
+
+        </div>
+                    <% @bids.each do |bid| %>
+            <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <%= @user.name %> hasn't participated in any auctions yet!
+        <% end %>
       </div>
 
 <!-- BID HISTORY -->
 
-      <div class="tab-pane" id="auction-bid-history">
-        <h3>Bid History</h3>
+      <div class="tab-pane" id="user-auctions-won">
+
        
       </div>
 
 <!-- COMMENTS -->
-      <div class="tab-pane" id="auction-comments">
-        <h3>Auction Comments</h3>
+      <div class="tab-pane" id="user-volunteer-info">
+
        
       </div>
       </div>
