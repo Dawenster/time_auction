@@ -9,6 +9,10 @@ class EmailWorker
     bids.each do |bid|
       BidMailer.highest_bidder(bid.user, auction, highest_bid).deliver and next if bid == highest_bid
       BidMailer.new_highest_bid(bid.user, new_winner, auction, highest_bid).deliver
+      if bid.time >= 100
+        @admins = User.where("admin = ?", true)
+        BidMailer.bid_over_hundred(bid, @admins).deliver 
+      end
     end    
   end
 end
