@@ -1,0 +1,37 @@
+.charity-name {
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+  font-size: 1.5em;
+  & h1 {
+    font-family: 'titilliumtext25l800_wt';
+  }
+}
+
+.charity-description {
+  text-align: center;
+  font-size: 1.2em;
+  font-family: 'Lato';
+  font-weight: 300;
+  border-top: 1px solid #ababab;
+  padding: 5px;
+  width: 90%;
+  margin: auto;
+  & strong {
+    font-family: 'Lato';
+    font-weight: 400;
+  }
+}
+
+.no-charity-photo {
+  width: 90%;
+  height: 120px;
+  padding-top: 80px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #ececec;
+  text-align: center;
+  position: relative;
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}
