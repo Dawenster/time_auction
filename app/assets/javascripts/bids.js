@@ -6,19 +6,19 @@ $(document).ready(function() {
     if (confirm("Really commit to "+commitment_time +" volunteer hours?")) {
       $("#new_bid_form").submit();
       $('#new_bid_form').fadeOut(50);
-      $('#overlay').fadeOut(50);
+      $('#spinner').fadeIn(50);
     }
       return false;
   });
 
   $('#new_bid_form').on('ajax:success', function(event, data) {
-    $('#overlay').fadeIn(50);
 
     var hours = data.match(/>\d+</)[0].replace(/</,"").replace(/>/,"")
     if (hours >= 100) {
       $('#bid_success_popup .errors').text('PLEASE NOTE: Due to the generous ' +
        'size of this bid, an admin may follow up with you.');
     }
+    $('#spinner').fadeOut(50);
     $('#bid_success_popup').fadeIn(50);
     $('.bids tr:first-child').after(data);
     $('.you-highest').removeClass('hide');
@@ -29,6 +29,8 @@ $(document).ready(function() {
   });
   
   $('#new_bid_form').on('ajax:error', function(event, data) {
+    $('#spinner').fadeOut(50);
+    $('#overlay').fadeOut(50);
     $('#flash').text("");
     $('#flash').addClass("alert alert-errors");
     $('#flash').append(data.responseText);
@@ -43,7 +45,7 @@ $(document).ready(function() {
   });
   
   $('#overlay').click(function(){
-      $('#new_bid_form, #bid_success_popup').fadeOut(50);
+      $('#new_bid_form, #bid_success_popup, #spinner').fadeOut(50);
       $('#overlay').fadeOut(50);
   });
 
@@ -53,7 +55,7 @@ $(document).ready(function() {
     $('#bid_success_popup').fadeOut(50);
     $('#overlay').fadeOut(50);
   });
-  
+
   $('#bid_charity_id').tooltip({
     'placement': "top"
   })

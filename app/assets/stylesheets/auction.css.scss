@@ -179,7 +179,7 @@
   }
 }
 
-/*Overlay*/
+/* Overlay */
 
 #overlay, #login {
     display: none;
@@ -198,13 +198,17 @@
 }
 
 
-#bid_success_popup, #new_bid_form {
+#bid_success_popup, #new_bid_form, #spinner {
   position: absolute;
   z-index: 1000;
   overflow: none;
   background: white;
   padding: 25px;
   border-radius: 15px;
+}
+
+#spinner {
+  top:350px;
 }
 
 #new_bid_form {
@@ -241,7 +245,7 @@
   padding-top: 30px;
 }
 
-/*Ribbon stuff*/
+/* Ribbon stuff */
 
 .ribbon-wrapper {
   position: relative;
