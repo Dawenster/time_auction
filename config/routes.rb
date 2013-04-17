@@ -13,6 +13,7 @@ TimeAuction::Application.routes.draw do
   resources :charities
 
   get '/about' => "static_pages#about", :layout => false
+  get '/rules' => "static_pages#rules", :layout => false
 
   # Omniauth-Facebook routes
   match 'auth/facebook', as: 'fb_login'

@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
     @users = User.all
     render :about, :layout => false
   end
+
+  def rules
+    render :rules
+  end
 end

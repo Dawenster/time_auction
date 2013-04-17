@@ -22,7 +22,7 @@
       <span>Where will you volunteer?</span> <span><%= f.text_field :charity_id, :title => "Select a charity or enter a new one", :placeholder => "Charity name (optional)" %></span>
       <%= f.hidden_field :auction_id, value: @auction.id %>
 
-      <div>By clicking below, you agree to the official <%= link_to "Time Auction rules", "#" %>.</div><br>
+      <div>By clicking below, you agree to the official <%= link_to "Time Auction rules", rules_path %>.</div><br>
       <div><%= f.submit "Submit Bid", :class => "btn btn-success btn-large commit-to-bid" %></div>
     </div>
   </div>
