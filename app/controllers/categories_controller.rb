@@ -1,11 +1,8 @@
 class CategoriesController < ApplicationController
 
   def index
+    @auctions_categories = Auction.includes(:category).all.group_by {|a| a.category.name}
     @categories = Category.all
-    @auctions_categories = Hash.new(Array.new)
-    @categories.each do |category|
-      @auctions_categories[category.name] = category.auctions
-    end
   end
 end
 
