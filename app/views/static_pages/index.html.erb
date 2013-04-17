@@ -1,13 +1,5 @@
 <%= render 'partials/static_header' %>
 
-  <%= render 'partials/nav' %>
-
-  <div id="flash">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
-    <% end %>
-  </div>
-
   <div class="splashImage">
     <div class="splashBoxContent">
       <h1>Time is Money.</h1>

@@ -11,31 +11,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- for facebook; consider putting into partial -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=295600783906928";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-  <!-- /facebook stuff -->
-
-<%= render 'partials/nav' %>
-
-<div class="container">
-  <div id="flash">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
-    <% end %>
+  <%= render 'partials/facebook_core' %>
+  <%= render 'partials/nav' %>
+  <div class="container">
+    <div id="flash">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
+      <% end %>
+    </div>
+    <%= yield %>
   </div>
-
-
-  <%= yield %>
-
-  
-</div>
-<%= render 'partials/footer' %>
+  <%= render 'partials/footer' %>
 </body>
 </html>
