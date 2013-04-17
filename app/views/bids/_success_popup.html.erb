@@ -4,6 +4,20 @@
   <p>We love you.</p>
   <br>
   <p class='errors'></p>
+
+  <!-- Facebook -->
+  <fb:share-button href="http://www.fbrell.com"
+                 type="button">
+  </fb:share-button>
+  <!--
+  May need to do something like this to actually change the 'identity' model in
+  our db:
+
+  <fb:login-button scope="publish_stream">
+    Post on facebook (requires login)
+  </fb:login-button> -->
+
+  <!-- Twitter -->
   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://TimeAuction.org/auctions/<%= @auction.id %>" data-text="I just bid charity hours at Time Auction-- can you pledge more?" data-size="large">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   <button id="success_popup_close" class='btn'>Close</button>

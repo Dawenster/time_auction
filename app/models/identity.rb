@@ -14,7 +14,19 @@ class Identity < ActiveRecord::Base
            oauth_token: auth['credentials']['token'], 
            oauth_expires_at: Time.at(auth['credentials']['expires_at']), 
            provider: auth['provider'], 
-           uid: auth['uid'], username: auth['extra']['raw_info']['username'])
+           uid: auth['uid'], 
+           username: auth['extra']['raw_info']['username'])
+  end
+
+  def update_with_omniauth(auth)
+    self.email = auth['info']['email']
+    self.image = auth['info']['image']
+    self.name = auth['info']['name']
+    self.oauth_token = auth['credentials']['token']
+    self.oauth_expires_at = Time.at(auth['credentials']['expires_at'])
+    self.uid = auth['uid']
+    self.username = auth['extra']['raw_info']['username']
+    self.save!
   end
 
   def create_user
