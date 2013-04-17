@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       redirect_back_or @user
     else
       flash.now[:error] = "Invalid email or password"
+      @session_email = params[:session][:email]
       render "new"
     end
   end

@@ -3,7 +3,7 @@
   <div class="user_form">
     <%= @messages %>
     <%= form_for :session, :url => sessions_path do |f| %>
-      <%= f.email_field :email, placeholder: "E-mail", :autofocus=>true %>
+      <%= f.email_field :email, value: (@session_email? @session_email : ""), placeholder: "E-mail", :autofocus=>true %>
       <%= f.password_field :password, placeholder: "Password" %>
       <%= f.submit "Login", :class => "user_form_button" %>
     <% end %>
