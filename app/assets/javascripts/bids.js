@@ -1,11 +1,14 @@
 $(document).ready(function() {
-    $('#new_bid_form').on('submit', function(event){
-    if ($("input#bid_time").val() >= 100 ) {
-      if( !confirm('Are you sure you want to submit this bid?') ) {
-        $('input#bid_time').val("")
-        return false;
-     }
-   }
+
+  $('.commit-to-bid').click(function(e){
+    e.preventDefault();
+    var commitment_time = $('#bid_time').val();
+    if (confirm("Really commit to "+commitment_time +" volunteer hours?")) {
+      $("#new_bid_form").submit();
+      $('#new_bid_form').fadeOut(50);
+      $('#overlay').fadeOut(50);
+    }
+      return false;
   });
 
   $('#new_bid_form').on('ajax:success', function(event, data) {
@@ -14,7 +17,7 @@ $(document).ready(function() {
     var hours = data.match(/>\d+</)[0].replace(/</,"").replace(/>/,"")
     if (hours >= 100) {
       $('#bid_success_popup .errors').text('PLEASE NOTE: Due to the generous ' +
-       'size of this bid, it must first be approved by an admin.');
+       'size of this bid, an admin may follow up with you.');
     }
     $('#bid_success_popup').fadeIn(50);
     $('.bids tr:first-child').after(data);
@@ -32,8 +35,11 @@ $(document).ready(function() {
   });
 
   $('#trigger').click(function(){
-      $('#new_bid_form').fadeIn(50);
-      $('#overlay').fadeIn(50);
+    if ( $(document).scrollTop() < 52 || $(document).scrollTop() > 132) {
+      $('body').animate({scrollTop:90}, 500);
+    }
+    $('#new_bid_form').fadeIn(50);
+    $('#overlay').fadeIn(50);
   });
   
   $('#overlay').click(function(){
@@ -41,10 +47,7 @@ $(document).ready(function() {
       $('#overlay').fadeOut(50);
   });
 
-  $('.commit-to-bid').click(function(){
-      $('#new_bid_form').fadeOut(50);
-      $('#overlay').fadeOut(50);
-  });
+ 
 
   $('#success_popup_close').click(function(){
     $('#bid_success_popup').fadeOut(50);
@@ -54,8 +57,6 @@ $(document).ready(function() {
   $('#bid_charity_id').tooltip({
     'placement': "top"
   })
-
-  
 
   $('#bid_charity_id').click(function() {
     $.ajax({
@@ -73,4 +74,5 @@ $(document).ready(function() {
       });
     })
   });
+
 });
