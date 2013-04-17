@@ -48,10 +48,10 @@ class AuctionsController < ApplicationController
 
   def update
     unless params[:auction][:start_date].blank? && params[:auction][:end_date].blank?
-      @auction.start_date = DateTime.parse(params[:auction][:start_date].split('/').rotate(-1).join(''))
-      @auction.end_date = DateTime.parse(params[:auction][:end_date].split('/').rotate(-1).join(''))
+      @auction.start_date = DateTime.parse(params[:auction].delete(:start_date).split('/').rotate(-1).join(''))
+      @auction.end_date = DateTime.parse(params[:auction].delete(:end_date).split('/').rotate(-1).join(''))
     end
-
+    
     proper_date = @auction.start_date < @auction.end_date if @auction.start_date && @auction.end_date
 
     unless proper_date

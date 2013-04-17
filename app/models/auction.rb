@@ -10,16 +10,16 @@ class Auction < ActiveRecord::Base
 
   belongs_to :category
   accepts_nested_attributes_for :photos 
-  before_validation :create_deadline
+  before_validation :set_dates
   before_create :initial_verified_time
-
   validates :deadline, :presence => true
   validates :title, :presence => true
   validates :description, :presence => true
   validates :start_date, :presence => true
   validates :end_date, :presence => true
   validates :category_id, :presence => true
-  
+  # validate :valid_dates
+
   def self.check_auction_finished
     @auctions = Auction.all
     @finished = @auctions.select { |auction| auction.end_date < Time.now && auction.bids.any? && !auction.winner_id }
@@ -61,8 +61,11 @@ class Auction < ActiveRecord::Base
     self.verified_time = 0
   end
 
+  def valid_dates
+    errors.add(:base, "Start date must be before end date") unless self.start_date < self.end_date
+  end
 
-  def create_deadline
+  def set_dates
     self.deadline = self.end_date + 1.month if self.end_date
   end
 
