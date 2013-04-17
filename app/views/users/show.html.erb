@@ -6,7 +6,7 @@
     </div>
   <% end %>
   <% if @user.identities.any? %>
-    <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.identities.first.username}" %>
+    <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.fb_identity.username}" %>
   <% end %>
 </div>
 <div class="row">      

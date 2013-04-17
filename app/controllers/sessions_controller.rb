@@ -29,18 +29,19 @@ class SessionsController < ApplicationController
 
     if @identity.nil?
       @identity = Identity.create_with_omniauth(auth)
+    else
+      @identity.update_with_omniauth(auth)
     end
 
     if signed_in?
       if @identity.user == current_user
-
-        redirect_to root_path, notice: "Already linked that account!"
+        redirect_to root_path, notice: "Facebook login refreshed!"
       else
         # TODO: need to figure out how to merge two user accounts (currently 
         # signed in and the one associated with identity) if user_id isn't nil here
         @identity.user = current_user
         @identity.save!
-        redirect_to root_path, notice: "Successfully linked that account!"
+        redirect_to root_path, notice: "Successfully linked your account!"
       end
     else
       if @identity.user.present?
@@ -48,7 +49,7 @@ class SessionsController < ApplicationController
         redirect_back_or root_path, notice: "Signed in!"
       else
         if User.find_by_email(@identity.email)
-          flash[:notice] = "Welcome back! Glad we could pull you away from facebook :)"
+          flash[:notice] = "Logged in and account linked! Glad we could pull you away from facebook :)."
           @identity.user = User.find_by_email(@identity.email)
           @identity.save!
         else
