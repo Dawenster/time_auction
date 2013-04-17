@@ -1,8 +1,8 @@
 <div class="category-display" id="auction">
   <ul class="nav nav-tabs category">
-    <li class="<%= "active" if params[:tab] == @categories[0].name || params[:tab].nil? %>"><a href="#people" data-toggle="tab">People</a></li>
-    <li class="<%= "active" if params[:tab] == @categories[1].name %>"><a href="#products" data-toggle="tab">Products</a></li>
-    <li class="<%= "active" if params[:tab] == @categories[2].name %>"><a href="#experiences" data-toggle="tab">Experiences</a></li>
+    <li class="<%= "active" if params[:tab] == "People" || params[:tab].nil? %>"><a href="#people" data-toggle="tab">People</a></li>
+    <li class="<%= "active" if params[:tab] == "Products" %>"><a href="#products" data-toggle="tab">Products</a></li>
+    <li class="<%= "active" if params[:tab] == "Experiences" %>"><a href="#experiences" data-toggle="tab">Experiences</a></li>
   </ul>
 
   <% active_count = 0 if params[:tab].nil?  %>
