@@ -71,9 +71,8 @@
 <!-- COMMENTS -->
       <div class="tab-pane" id="auction-comments">
         <h3>Auction Comments</h3>
-        <ul class="comments">
-          <%= render @comments %>
-          <%= will_paginate @comments %>
+        <ul class="comments" id="commentList">
+          <%= render 'comments/paginated_comments' %>
         </ul>
           <% if current_user %>
           <li id='comment_errors'></li>
