@@ -8,7 +8,6 @@ class BidsController < ApplicationController
     charity = Charity.find_or_create_by_name(params[:bid][:charity_id].downcase.capitalize)
 
     @bid.charity = charity
-    @all_charity_names = Charity.all.map { |charity| charity.name }
 
     if @bids == []
       @last_bid_time = 0

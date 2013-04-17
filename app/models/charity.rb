@@ -6,4 +6,8 @@ class Charity < ActiveRecord::Base
   has_many :bids
   has_many :photos, :as => :imageable, :dependent => :destroy
   accepts_nested_attributes_for :photos
+
+  def self.all_names
+    self.all.map { |charity| charity.name }
+  end
 end

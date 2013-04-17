@@ -45,7 +45,7 @@ $(document).ready(function() {
     'placement': "top"
   })
 
-  var availableTags = <%= @all_charity_names %>
+  var availableTags = <%= Charity.all_names %>
   $("#bid_charity_id").autocomplete({
     source: availableTags
   });
