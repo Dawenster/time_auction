@@ -1,2 +1,3 @@
 <%= render @comments %>
-<%= will_paginate @comments %>
+<%= will_paginate @comments, 
+  :params => { :controller => "auctions", :action => "show" } %>

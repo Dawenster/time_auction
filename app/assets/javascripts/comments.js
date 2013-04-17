@@ -6,6 +6,7 @@ var Comment = {
     $('.comments').on('click', 'a.icon-remove', this.confirmDelete);
     $('.comments').on('ajax:success', 'a.icon-remove', this.deleteComment);
     $('.comments').on('ajax:success', 'a.icon-remove', this.subtractCommentCount);
+    this.setPaginationEvent();
   },
 
   confirmDelete: function() {
@@ -28,6 +29,20 @@ var Comment = {
   subtractCommentCount: function() {
     newVal = parseInt($('#commentCount').text());
     $('#commentCount').text(newVal - 1);
+  },
+
+  setPaginationEvent: function() {
+    $('.pagination').on('click', 'a', this.reloadComments);
+  },
+
+  reloadComments: function(e) {
+    e.preventDefault();
+    var that = this;
+    $.get(that.pathname + '/comments' + that.search)
+    .done(function(data){
+      $('#commentList').html(data);
+      Comment.setPaginationEvent();
+    });
   }
 }
 
