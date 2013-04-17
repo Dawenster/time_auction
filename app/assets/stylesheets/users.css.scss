@@ -10,7 +10,7 @@ div#user-profile-name{
 }
 
 .span10 {
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
 .user-bid-hours{
@@ -22,7 +22,6 @@ div#user-profile-name{
   text-align: left;
   padding-bottom: 20px;
   bottom: 0;
-  margin-top: 48px;
 }
 
 .profile-header{
@@ -82,9 +81,19 @@ div#user-profile-name{
   }
 }
 
+.recentBidsContainer {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #ececec;
+  padding: 15px;
+  min-width: 765px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
 .recentBids {
   float:left;
-  width: 380px;
+  width: 355px;
   li {
     font-size: 1.1em;
     line-height: 1.3em;

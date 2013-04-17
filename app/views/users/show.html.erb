@@ -39,8 +39,8 @@
   </div>
   <div class="span10">
     <div class="profile-container">
-      <div>
-        
+      
+      <div class="recentBidsContainer">
         <div class="recentBids">
           <h2>Recent Bids</h2>
           <% if @entered_auctions.any? %>
@@ -59,7 +59,9 @@
             <%= @user.name %> hasn't participated in any auctions yet!
           <% end %>
         </div>
-
+      </div>
+        
+      <div class="recentBidsContainer">
         <div class="auctionsWon">
           <h2>Auctions Won</h2>
           <% if @winning_auctions.any? %>
@@ -71,6 +73,7 @@
           <% end %>
         </div>
       </div>
+      
     </div>
   </div>
 </div>
