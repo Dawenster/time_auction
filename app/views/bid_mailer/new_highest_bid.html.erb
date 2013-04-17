@@ -10,7 +10,7 @@
   <body>
     <h1>Hi <%= @user.name %>,</h1>
     <p>
-      There is now a new highest bidder for the auction <%= link_to @auction.title, @url + auction_path(@auction) %>.  <%= link_to @new_winner.name, @url + user_path(@new_winner) %> bid <%= @bid.time %> hours!
+      There is now a new highest bidder for the auction <%= link_to @auction.title, @url + auction_path(@auction) %>.  <%= link_to @new_winner.name, @url + user_path(@new_winner) %> bid <%= @bid.description %>!
     </p>
     <p>
       Want to outbid <%= link_to @new_winner.name, @url + user_path(@new_winner) %>?  Don't wait - the auction ends on <%= @auction.end_date.strftime('%B %d, %Y') %>.

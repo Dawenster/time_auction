@@ -38,7 +38,13 @@ class Auction < ActiveRecord::Base
   end
 
   def highest_bid
-    self.bids.order("time DESC").first
+    self.bids.order("time DESC").first || NullBid.new
+  end
+
+  class NullBid < Bid
+    def time
+      0
+    end
   end
 
   def started?

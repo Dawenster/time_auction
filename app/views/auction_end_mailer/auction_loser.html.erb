@@ -12,7 +12,7 @@
       Thank you for participating in a Time Auction.  The auction <%= link_to @auction.title, @url + auction_path(@auction) %> is now finished.
     </p>
     <p>
-      <%= link_to @winner.name, @url + user_path(@winner) %> bid <%= @bid.time %> hours and won the auction!
+      <%= link_to @winner.name, @url + user_path(@winner) %> bid <%= @bid.description %> and won the auction!
     </p>
     <p>
       Please keep trying :)  Try browsing some other <%= link_to 'auctions', @url + categories_path %>!

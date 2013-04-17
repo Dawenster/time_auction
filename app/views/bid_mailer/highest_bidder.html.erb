@@ -9,7 +9,7 @@
   <body>
     <h1>Hi <%= @user.name %>,</h1>
     <p>
-      Congratulations!  You are now the highest bidder for the auction <%= link_to @auction.title, @url + auction_path(@auction) %>.  You bid <%= @bid.time %> hours!
+      Congratulations!  You are now the highest bidder for the auction <%= link_to @auction.title, @url + auction_path(@auction) %>.  You bid <%= @bid.description %>!
     </p>
     <p>
       The auction will end on <%= @auction.end_date.strftime('%B %d, %Y') %>.  If you are still the highest bidder, then you will have won the auction.

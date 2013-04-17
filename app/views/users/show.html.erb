@@ -44,7 +44,7 @@
             <ul>
               <% if @bids %>
                 <% @bids.each do |bid| %>
-                  <li><%= bid.time %> hours on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
+                  <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
                 <% end %>
               <% end %>
             </ul>

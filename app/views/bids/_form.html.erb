@@ -2,11 +2,11 @@
   <div class="pop-up">
     <div class="pop-up-left">
       <h1>Making a bid</h1>
-      <h4>Thank you for wanting to volunteer!</h4>
+      <h4>Thank you for your interest in volunteering!</h4>
       <p>Here's what you need to know:</p>
       <ol>
         <li>You are awesome.</li>
-        <li>You need to bid higher than <%= @auction.highest_bid.nil? ? 0 : @auction.highest_bid.time %> hours.</li>
+        <li>You need to bid higher than <%= @auction.highest_bid.description %>.</li>
         <li>If you win, you need to complete your hours by <%= @auction.deadline.strftime('%b %d, %Y') %>.</li>
         <li>This needs to be a new volunteering commitment.</li>
         <li>We will call your charity to validate your awesome work.</li>

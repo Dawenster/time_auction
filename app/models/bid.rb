@@ -12,6 +12,6 @@ class Bid < ActiveRecord::Base
   end
 
   def description
-    self.time.to_s + " Hours"
+    self.time.to_s + " hours"
   end
 end
