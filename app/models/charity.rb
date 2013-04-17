@@ -8,6 +8,6 @@ class Charity < ActiveRecord::Base
   accepts_nested_attributes_for :photos
 
   def self.all_names
-    self.all.map { |charity| charity.name }
+    all.map(&:name)
   end
 end
