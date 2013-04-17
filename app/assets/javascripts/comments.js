@@ -37,8 +37,8 @@ var Comment = {
 
   reloadComments: function(e) {
     e.preventDefault();
-    var that = this;
-    $.get(that.pathname + '/comments' + that.search)
+    var urlTemp = this.pathname + '/comments' + this.search
+    $.get(urlTemp)
     .done(function(data){
       $('#commentList').html(data);
       Comment.setPaginationEvent();
