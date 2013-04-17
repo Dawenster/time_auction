@@ -35,8 +35,11 @@ $(document).ready(function() {
   });
 
   $('#trigger').click(function(){
-      $('#new_bid_form').fadeIn(50);
-      $('#overlay').fadeIn(50);
+    if ( $(document).scrollTop() < 52 || $(document).scrollTop() > 132) {
+      $('body').animate({scrollTop:90}, 500);
+    }
+    $('#new_bid_form').fadeIn(50);
+    $('#overlay').fadeIn(50);
   });
   
   $('#overlay').click(function(){
