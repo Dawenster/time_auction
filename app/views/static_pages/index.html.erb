@@ -3,26 +3,31 @@
   <div class="splashImage">
     <div class="splashBoxContent">
       <h1>Time is Money.</h1>
-      <p>Turn your charity hours into prizes and experiences.</p>
-      <%= link_to "Start Browsing", categories_path, :class => "btn btn-primary btn-large btn-danger" %>
+      <p>Bid on prizes using volunteer hours, not money</p>
+      <%= link_to "Start Browsing", categories_path, :class => "btn btn-primary btn-large btn-danger main-splash" %><BR><BR>
+
+      <%= link_to "Learn more >>", '/#intro', :id => 'learn-more' %>
     </div>
     <div class="splashBox">
     </div>
   </div>
 
-  <div class="splashContainer">
-    <h2>Bid on prizes using volunteer hours, not money</h2>
+  <div class="splashContainer" id="intro">
+    <h2>Here's how it works</h2>
 
     <hr/>
       
     <div class="wrapper">
-      <h3><span id="count">1.</span> Bid on Auctions</h3> 
+      <h3><span id="count">1.</span> Bid on Auctions</h3>
+      <%= image_tag '/assets/step1.png' %>
     </div>
     <div class="wrapper">
       <h3><span id="count">2.</span> Perform Charity Work</h3>
+      <%= image_tag '/assets/step2.png' %>
     </div>
     <div class="wrapper">
       <h3><span id="count">3.</span> Earn Your Reward</h3>
+      <%= image_tag '/assets/step3.png' %>
     </div>
 
     <div class="statisticsBox">
@@ -34,8 +39,8 @@
     </div>
 
     <div class="credentials">
-      <h3>Benefiting over <strong>50</strong> charities and non-profits</h3>
-      <h3>Averaging <strong>42 volunteer minutes per dollar</strong> of product donated.</h3>
+      <h3>A $50 product will generate an average of <strong>35 volunteer hours</strong> for a local charity.</h3>
+      <h3>Benefiting over <strong>50</strong> charities and counting</h3>
       <%= image_tag 'cred-dbc.png' %>
       <%= image_tag 'cred-heroku.png' %>
       <%= image_tag 'cred-rails.png' %>

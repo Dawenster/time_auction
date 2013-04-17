@@ -10,8 +10,8 @@
 }
 
 .splashBox {
-  width: 535px;
-  height: 225px;
+  width: 500px;
+  height: 260px;
   border-radius: 10px;
   opacity: 0.6;
   background-color: #000;
@@ -55,6 +55,13 @@
   }
 }
 
+#learn-more {
+  color: white;
+  & a:hover {
+    color: blue;
+  }
+}
+
 .splashContainer {
   width: 1040px;
   margin: auto;
@@ -78,6 +85,7 @@ hr {
   height: 285px;
   float: left;
   border: 2px solid #ccc;
+  text-align: center;
   border-radius: 10px;
   background-color: #ececec;
   padding: 10px 22px 22px 22px;
