@@ -3,10 +3,10 @@
   <div class="splashImage">
     <div class="splashBoxContent">
       <h1>Time is Money.</h1>
-      <p>Bid on prizes using volunteer hours, not money</p>
+      <p>Bid on prizes with volunteer hours, not money</p>
       <%= link_to "Start Browsing", categories_path, :class => "btn btn-primary btn-large btn-danger main-splash" %><BR><BR>
     
-      <%= link_to "Learn more >>", '/#intro', :id => 'learn-more' %>
+      <%= link_to "Learn more >>", '#', :id => 'learn-more' %>
     </div>
     <div class="splashBox">
     </div>
@@ -29,7 +29,11 @@
       <h3><span id="count">3.</span> Earn Your Reward</h3>
       <%= image_tag '/assets/step3.png' %>
     </div>
-
+    <div id="vp">
+      <h2>A $50 product generates an average of</h2>
+      <h2><strong>35</strong> volunteer hours for charity.</h2>
+    </div>
+    <hr>
     <div class="statisticsBox">
       <div id="hoursCount">
         <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
@@ -37,9 +41,10 @@
         <div id="hours">RAISED</div>
       </div>
     </div>
+      
+    
 
     <div class="credentials">
-      <h3>A $50 product will generate an average of <strong>35 volunteer hours</strong> for a local charity.</h3>
       <h3>Benefiting over <strong>50</strong> charities and counting</h3>
       <%= image_tag 'cred-dbc.png' %>
       <%= image_tag 'cred-heroku.png' %>
