@@ -54,6 +54,12 @@ class AuctionsController < ApplicationController
 
     proper_date = @auction.start_date < @auction.end_date if @auction.start_date && @auction.end_date
 
+    if @auction.winner_id
+      auction_winner = User.find(@auction.winner_id) 
+      auction_winner.time_donated += (params[:auction][:verified_time].to_i - @auction.verified_time)
+      auction_winner.save
+    end
+
     unless proper_date
       flash.now[:errors] = "Start date must be before end date"
     end

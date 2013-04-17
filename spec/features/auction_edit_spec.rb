@@ -4,9 +4,9 @@ describe "AuctionEdit" do
   subject { page }
 
   describe "editing an auction" do
-    let(:user) { FactoryGirl.create(:user, :admin => true) }
+    let!(:user) { FactoryGirl.create(:user, :admin => true) }
     let!(:auction) { FactoryGirl.create(:auction)} # does not have winner_id 
-    
+
     before do
       login_user(user)
       visit edit_auction_path(auction)
@@ -29,16 +29,29 @@ describe "AuctionEdit" do
       page.should have_content("2016")
     end
 
-    it "should not allow updating verified hours until winner id present" do
-      fill_in :auction_verified_time, with: 10
-      click_button 'Update Auction'
-      page.should have_content('Edit Auction')
+    # it "should not allow updating verified hours until winner id present" do
+    #   fill_in :auction_verified_time, with: 10
+    #   click_button 'Update Auction'
+    #   page.should have_content('Edit Auction')
+    # end
+
+    # it "should allow updating verified hours when winner_id present" do
+    #   auction.update_attribute(:winner_id, user.id)
+    #   fill_in :auction_verified_time, with: 10
+    #   click_button 'Update Auction'
+    #   page.should have_content('Comments') 
+    # end
+
+    it "should update winner's time_donated when verified hours is updated" do
+      auction.update_attribute(:winner_id, user.id)
+      fill_in :auction_verified_time, with: "10"
+      expect { click_button 'Update Auction' }.to change{user.time_donated}.by(10)
     end
 
-    it "should allow updating verified hours when winner_id present" do
-      fill_in :auction_verified_time, with: 10
-      click_button 'Update Auction'
-      page.should have_content('Comments') 
+    it "updates winner's time_donated correctly if there is some verified time already" do
+      auction.update_attribute(:verified_time, 20)
+      fill_in :auction_verified_time, with: "50"
+      expect { click_button 'Update Auction'}.to change{user.time_donated}.by(30)
     end
   end
 end
