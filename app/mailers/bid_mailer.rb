@@ -17,6 +17,16 @@ class BidMailer < ActionMailer::Base
     mail(:from => "team@timeauction.org", :to => user.email, :subject => "You're the higest bidder!", :content_type => "text/html")
   end
 
+  def bid_over_hundred(bid, admins)
+    @bid = bid
+    @user = @bid.user
+    @auction = @bid.auction
+    @admins = admins
+    @admins.each do |admin|
+      mail(:from => "team@timeauction.org", :to => admin.email, :subject => "Someone bid over 100 hours", :content_type => "text/html")
+    end
+  end
+
   def url
     'www.timeauction.org/'
   end

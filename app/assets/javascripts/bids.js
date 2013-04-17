@@ -55,5 +55,21 @@ $(document).ready(function() {
     'placement': "top"
   })
 
+  $('#bid_charity_id').click(function() {
+    $.ajax({
+      url: '/charities',
+      method: 'get',
+      dataType: 'json'
+    })
+    .done(function(data) {
+      var charities = []
+      for (i = 0; i < data.length; i++ ) {
+        charities.push(data[i].name);
+      }
+      $("#bid_charity_id").autocomplete({
+        source: charities
+      });
+    })
+  });
 
 });

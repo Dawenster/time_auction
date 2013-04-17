@@ -27,9 +27,3 @@
     </div>
   </div>
 <% end %>
-
-<script type="text/javascript">
-  $("#bid_charity_id").autocomplete({
-    source: <%= @all_charities.to_json.html_safe %>
-  });
-</script>
