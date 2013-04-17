@@ -1,10 +1,20 @@
-div#user-profile-name{
+div#userProfileName{
+  width: 400px;
+  float: left;
   text-align: left;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
+#userProfileTabs{
+  width: 640px;
+  float: left;
+  padding-top: 54px;
+  position: relative;
+}
+
 .span2 {
+  clear:both;
   margin-left: 0px;
   width: 200px;
 }
