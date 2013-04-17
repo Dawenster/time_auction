@@ -16,10 +16,23 @@
               <%= link_to auction.title.truncate(68), auction %>
             </p>
             <p class="current-high">
-              Highest Bid: <strong><%= auction.bids.empty? ? "Be the first to Bid!" : auction.highest_bid.description.titleize %></strong>
+              Highest Bid: 
+              <strong>
+                <% if auction.bids.empty? && auction.end_date > Time.now %>
+                  <%= "Be the first to Bid!" %>
+                <% elsif auction.end_date < Time.now %>
+                  <%= "Auction is Over" %>
+                <% else %>
+                  <%= auction.highest_bid.description.titleize %>
+                <% end %>
+              </strong>
             </p>
           </div>
         <% end %>
     </div>
   <% end %> 
 </div>
+
+
+
+              
