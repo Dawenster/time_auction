@@ -51,12 +51,13 @@ class AuctionsController < ApplicationController
       @auction.start_date = DateTime.parse(params[:auction].delete(:start_date).split('/').rotate(-1).join(''))
       @auction.end_date = DateTime.parse(params[:auction].delete(:end_date).split('/').rotate(-1).join(''))
     end
-    
+
     proper_date = @auction.start_date < @auction.end_date if @auction.start_date && @auction.end_date
 
     unless proper_date
       flash.now[:errors] = "Start date must be before end date"
     end
+
 
     if @auction.update_attributes(params[:auction]) && proper_date
       redirect_to auction_path(@auction)
