@@ -39,6 +39,7 @@ class AuctionsController < ApplicationController
     store_location
     @comments = @auction.comments.paginate(page: params[:page], :per_page => 10)
     @bids = @auction.bids
+    @all_charities = Charity.all.map { |charity| charity.name }
   end
 
   def edit
