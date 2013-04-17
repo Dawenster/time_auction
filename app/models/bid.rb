@@ -10,4 +10,8 @@ class Bid < ActiveRecord::Base
   def to_json
     { name: self.user.name }.to_json
   end
+
+  def description
+    self.time.to_s + " Hours"
+  end
 end

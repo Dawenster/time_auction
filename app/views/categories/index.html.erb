@@ -16,7 +16,7 @@
               <%= link_to auction.title.truncate(68), auction %>
             </p>
             <p class="current-high">
-              Highest Bid: <strong><%= auction.bids.empty? ? "Be the first to Bid!" : auction.bids.order("time DESC").first.time.to_s + " Hours" %></strong>
+              Highest Bid: <strong><%= auction.bids.empty? ? "Be the first to Bid!" : auction.highest_bid.description %></strong>
             </p>
           </div>
         <% end %>

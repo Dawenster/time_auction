@@ -37,9 +37,8 @@ class Auction < ActiveRecord::Base
     end
   end
 
-
   def highest_bid
-    self.bids.order("time DESC").first unless self.bids.empty? 
+    self.bids.order("time DESC").first
   end
 
   def started?
