@@ -56,11 +56,11 @@
 <!-- BID HISTORY -->
 
       <div class="tab-pane" id="auction-bid-history">
-        <h3>Auction History</h3>
+        <h3>Bid History</h3>
         <table class="bids">
           <tr>
             <th>Name</th>
-            <th>Hours Bid</th>
+            <th>Hrs</th>
             <th>Charity</th>
             <th>Posted</th>
           </tr>
@@ -160,7 +160,7 @@
         <% if Time.now < @auction.end_date %> <!-- Auction Hasn't Ended -->
           <h3>Auction End Date</h3>
           <p>
-            <h3><%= @auction.end_date.strftime('%b %d, %Y') %></h3>
+            <%= @auction.end_date.strftime('%b %d, %Y') %>
           </p>
         <% else %> <!-- Auction Ended  -->
           <h3>Auction Has Ended</h3>

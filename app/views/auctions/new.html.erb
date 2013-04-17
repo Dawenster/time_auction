@@ -1,3 +1,5 @@
-<div class="auction-title"><h1>Add an Auction</h1></div>
-<%= render 'form' %>
+<% @title = "Add an Auction" %>
+
+<% @submit = "Create Auction" %>
+<%= render 'form', :locals => { :title => @title, :submit => @submit } %>
 

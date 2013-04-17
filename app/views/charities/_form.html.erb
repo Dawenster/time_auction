@@ -1,0 +1,28 @@
+<div class="creation_container">
+  <h1 id="creation_title"><%= @title %></h1>
+    <div class="auction-category">
+      <%= link_to "> Back to charity", charity_path(@charity) if @charity.valid? %>
+    </div>
+  <div class="creation_form">
+    <%= form_for @charity do |f| %>
+      <%= f.label :name, 'Charity name', :autofocus => true %>
+      <%= f.text_field :name %>
+      <%= f.label :description, 'Describe the work that the charity does' %>
+      <%= f.text_area :description %>
+      <div class="upload">
+        <%= f.fields_for :photos, :html => { multipart: true } do |builder| %>
+        <label for="file">Attach a related photo to this charity</label>
+        <% if @title == "Add a Charity" %>
+          <%= builder.file_field :url, :required => true %>
+        <% else %>
+          <%= builder.file_field :url %>
+        <% end %>
+      <% end %>
+    </div>
+      <%= f.submit @submit, :class => "user_form_button" %>
+    <% end %>
+    <% if current_user.admin %>
+      <%= @delete_button if @delete_button %>
+    <% end %>
+  </div>
+</div>

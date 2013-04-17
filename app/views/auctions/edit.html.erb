@@ -1,4 +1,5 @@
-<div class="auction-category"><%= link_to "> Back to auction", auction_path(@auction) %></div>
-<div class="auction-title"><h1>Edit Auction</h1></div>
-<%= render 'form' %>
-<%= link_to "Delete auction", auction_path(@auction), :method => 'delete', :class => 'btn btn-danger btn-large' %>
+<% @title = "Edit Auction" %>
+
+<% @delete_button = button_to "Delete Auction", auction_path(@auction), :method => 'delete', :class => 'user_form_button' %>
+
+<%= render 'form', :locals => { :title => @title, :delete_button => @delete_button, :auction => @auction } %>

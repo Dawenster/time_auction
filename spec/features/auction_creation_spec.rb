@@ -46,14 +46,14 @@ describe "AuctionCreation" do
     it "edits auction with valid input" do
       visit edit_auction_path(auction)
       fill_in :auction_title, with: "I changed some stuff"
-      click_button 'Create Auction'
+      click_button 'Update Auction'
       page.should have_content "I changed some stuff"
     end
 
     it "doesn't edit an auction with blank input" do
       visit edit_auction_path(auction)
       fill_in :auction_title, with: ""
-      click_button 'Create Auction'
+      click_button 'Update Auction'
       page.should have_content "Edit Auction"
     end
 
@@ -61,7 +61,7 @@ describe "AuctionCreation" do
       visit edit_auction_path(auction)
       fill_in :auction_start_date, with: "04/13/2016"
       fill_in :auction_end_date, with: "04/13/2015"
-      click_button 'Create Auction'
+      click_button 'Update Auction'
       page.should have_content "Edit Auction"
     end
   end

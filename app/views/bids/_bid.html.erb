@@ -1,9 +1,9 @@
 <tr>
-  <td><%= bid.user.name %></td> 
+  <td><%= avatar(bid.user, options = {height: 32, width: 32}) %> <%= link_to bid.user.name, bid.user %></td> 
   <td><%= bid.time %></td>
   <td>
     <% if bid.charity %>
-      <%= link_to bid.charity.name, bid.charity %>
+      <%= link_to bid.charity.name.truncate(30), bid.charity %>
     <% else %>
       None Specified
     <% end %>
