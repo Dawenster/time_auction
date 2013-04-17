@@ -5,4 +5,5 @@ module LoginHelper
     fill_in :session_password, with: user.password
     click_button 'Login'
   end
+
 end

@@ -4,7 +4,7 @@ describe "Bid creation" do
 
   subject { page }
 
-  describe "creating a bid", :js => true do
+  describe "creating a bid" do
     let!(:auction) { FactoryGirl.create(:auction) }
     let!(:first_user) { FactoryGirl.create(:user) }
     let!(:existing_bid) { FactoryGirl.create(:bid, user_id: first_user.id, auction_id: auction.id) }
@@ -13,7 +13,6 @@ describe "Bid creation" do
     before do
       login_user(user)
       visit auction_path(auction)
-      click_button "Bid Hours"
     end
 
     it { should have_selector('#new_bid_form') }
@@ -36,7 +35,8 @@ describe "Bid creation" do
         page.should have_selector('table:nth-child(2) td', text: user.name)
       end
 
-      it "shows success popup page" do
+      it "shows success popup page", js: true do
+        click_button "Bid Hours"
         fill_in :bid_time, with: '9'
         click_button "Submit Bid"
         page.should have_selector('#bid_success_popup')
@@ -65,7 +65,7 @@ describe "Bid creation" do
     end
   end
 
-  describe "when the submitted bid is less than the current highest", :js => true do
+  describe "when the submitted bid is less than the current highest" do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:auction) { FactoryGirl.create(:auction) }
     let!(:bid) { FactoryGirl.create(:bid, :time => 5, :auction_id => auction.id) }
@@ -73,7 +73,7 @@ describe "Bid creation" do
     before do
       login_user(user)
       visit auction_path(auction)
-      click_button "Bid Hours"
+      # click_button "Bid Hours"
     end
 
     it "cannot create a bid" do
