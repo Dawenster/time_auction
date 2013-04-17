@@ -23,21 +23,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @winning_auctions = Auction.where("winner_id = ?", params[:id])
-    @hours_verified = 0
-
-    @bids = @user.bids
+    @bids = @user.bids.limit(10)
     @entered_auctions = @bids.map{ |bid| bid.auction }
-    @remaining_tasks = []
-
-    if @winning_auctions
-      @winning_auctions.each do |auction|
-        user_bid = auction.bids.find_by_user_id(@user.id)
-        @hours_verified += auction.verified_time
-        unless auction.verified_time == auction.bids.find_by_user_id(@user.id).time
-          @remaining_tasks << user_bid
-        end
-      end
-    end
   end
   
 end

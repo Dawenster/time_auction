@@ -24,48 +24,52 @@
         <% end %>
       <% end %>
     </div>
-  </div>
-
-  <div class="span10">
+  
     <div class="userStatisticsBox">
-
       <div id="hoursCount">
-        <%= number_with_delimiter(@hours_verified) %>
+        <%= number_with_delimiter(@user.time_donated) %>
         <div id="hours">Hours</div>
+        <div id="hours">Logged</div>
       </div>
     </div>
-    <div class="todo-header">
-      <h3>Recent Bids</h3>
-    </div>
+
+  </div>
+  <div class="span10">
+    <div class="profile-container">
       <div>
-        <ul>
-          <% if @bids %>
-            <% @bids.each do |bid| %>
-              <li>You bid <%= bid.time %> hours on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
-            <% end %>
+        
+        <div class="recentBids">
+          <h2>Recent Bids</h2>
+          <% if @entered_auctions.any? %>
+            <ul>
+              <% if @bids %>
+                <% @bids.each do |bid| %>
+                  <li><%= bid.time %> hours on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+          <div class="recentBidPhoto">
+            <%= cl_image_tag @entered_auctions.first.photos.first.url, :width => 400, :height =>  300, :crop => 'fill' %>
+            <h6><%= link_to @entered_auctions.first.title, auction_path(@entered_auctions.first) %></h6>
+          <% else %>
+            <%= @user.name %> hasn't participated in any auctions yet!
           <% end %>
-        </ul>
+        </div>
+
+        <div class="auctionsWon">
+          <h2>Auctions Won</h2>
+          <% if @winning_auctions.any? %>
+            <% @winning_auctions.each do |auction| %>
+              <%= link_to auction.title, auction %>
+            <% end %>
+          <% else %>
+            <%= @user.name %> hasn't won any auctions yet!
+          <% end %>
+        </div>
       </div>
-    
-     <!--  <ul>
-        <%# @winning_auctions.each do |auction| %>
-          <li><%#= link_to auction.title, auction %></li>
-          <li>Deadline: <%#= auction.deadline %></li>
-          <li>Hours Bid: <%#= auction.deadline %></li>
-        <%# end %>
-      </ul> -->
+    </div>
   </div>
 </div>
 
-<% if current_user == @user %>
-  <div id="activities">
-    Remaining Hours
-  </div>
-  <div class="hours-left">
-    <ul>
-      <% @remaining_tasks.each do |bid| %>
-      <li><%= bid.auction.title %>: <%= bid.time - bid.auction.verified_time %> hours left</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+

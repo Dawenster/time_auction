@@ -1,6 +1,7 @@
 div#user-profile-name{
   text-align: left;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .span2 {
@@ -8,61 +9,54 @@ div#user-profile-name{
 }
 
 .span10 {
-  margin-left: 50px;
+  margin-left: 100px;
 }
 
 .user-bid-hours{
   margin: 0;
 }
 
-#activities{
+.auctionsWon{
+  clear:both;
   text-align: left;
-  border-bottom: 1px solid gray;
   padding-bottom: 20px;
   bottom: 0;
-  font-size: 24.5px;
   margin-top: 48px;
 }
 
-.todo-header{
-  border-bottom: 1px solid gray;
-  width: 70%;
+.profile-header{
   display:inline-block;
 }
 
 .photo-upload{
-  margin-top: 20px;
   display:inline-block;
 }
 
-.hours-left{
-  margin-top: 5px;
-}
-
 .userStatisticsBox {
-  margin-top: 20px;
-  float: right;
-  width: 180px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   display: inline-block;
   background-color: #B4E0E8;
   color: #383838;
   padding: 20px;
   text-align: center;
+  margin-top: 20px;
   & #hoursCount{
     font-family: 'titilliumtext25l250_wt';
-    font-size: 4.5em;
-    line-height: 60px;
+    font-size: 4em;
+    line-height: 40px;
   }
   & #hours{
+    margin-top: 15px;
     font-family: 'titilliumtext25l800_wt';
-    font-size: 1em;
-    letter-spacing: -2px;
+    font-size: 0.9em;
+    letter-spacing: -1px;
   }
   & #hours:nth-child(2){
     font-family: 'titilliumtext25l800_wt';
-    font-size: 1em;
+    font-size: 0.8em;
     letter-spacing: -3px;
+    margin: 0;
   }
 }
 
@@ -81,6 +75,34 @@ div#user-profile-name{
   background-position: 0px -47px;
 }
 
+.profile-container {
+  h2 {
+    margin-top: 0px;
+  }
+}
+
+.recentBids {
+  float:left;
+  width: 380px;
+  li {
+    font-size: 1.1em;
+    line-height: 1.3em;
+  }
+}
+
+.recentBidPhoto {
+  float:left;
+  width: 400px;
+  h6 {
+    margin: 0px;
+    text-align: center;
+    font-size: 0.8em;
+  }
+}
+
+
+/* SIGNUP FORMS */
+
 .user_signup_container {
   margin: 0px auto;
   margin-top: 75px;
@@ -96,6 +118,7 @@ div#user-profile-name{
     color: #444;
     font-family: 'Lato';
     text-align: center;
+    margin-top: 0;
     margin-bottom: 20px;
   }  
 }
