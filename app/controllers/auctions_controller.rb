@@ -1,5 +1,5 @@
 class AuctionsController < ApplicationController
-  before_filter :load_auction, :only => [:show, :edit, :update, :destroy]
+  before_filter :load_auction, :only => [:show, :edit, :update, :destroy, :comments]
 
   def new
     @auction = Auction.new
@@ -37,7 +37,7 @@ class AuctionsController < ApplicationController
     @winner = User.find(@auction.winner_id) if @auction.winner_id
     @winning_time = @auction.bids.last.time if @winner
     store_location
-    @comments = @auction.comments.paginate(page: params[:page], :per_page => 10)
+    @comments = paginated_comments
     @bids = @auction.bids
     @all_charities = Charity.all.map { |charity| charity.name }
   end
@@ -73,14 +73,22 @@ class AuctionsController < ApplicationController
   end
 
   def destroy
-    @auction = Auction.find(params[:id])
     flash[:success] = "You have successfully deleted #{@auction.title}"
     Auction.destroy(@auction)
     redirect_to user_path(current_user)
   end
 
+  def comments
+    @comments = paginated_comments
+    render :partial => 'comments/paginated_comments'
+  end
+
   private
   def load_auction
     @auction = Auction.find(params[:id])
+  end
+
+  def paginated_comments
+    @auction.comments.paginate(page: params[:page], :per_page => 10)
   end
 end
