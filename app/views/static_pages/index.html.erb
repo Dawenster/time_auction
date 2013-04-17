@@ -30,27 +30,27 @@
       <%= image_tag '/assets/step3.png' %>
     </div>
     <div id="vp">
-      <h2>A $50 product generates about <strong>35</strong> volunteer hours.</h2>
+      <h2>Over <strong>$10,000</strong> in prizes have been TimeAuctioned.</h2>
+      <%= link_to "Browse active auctions now", categories_path, :class => "btn btn-primary btn-large btn-danger main-splash" %>
     </div>
-    <hr>
-    <div class="statisticsBox">
-      <div id="hoursCount">
-        <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
-        <div id="hours">HOURS</div>
-        <div id="hours">RAISED</div>
+    <hr/>
+
+    <div class="finalVP">
+      <div class="statisticsBox">
+        <div id="hoursCount">
+          <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
+          <div id="hours">HOURS</div>
+          <div id="hours">RAISED</div>
+        </div>
+      </div>
+        
+      <div class="credentials">
+        <h3>Benefiting over <strong>50</strong> charities and counting</h3>
+        <%= image_tag 'cred-dbc.png' %>
+        <%= image_tag 'cred-heroku.png' %>
+        <%= image_tag 'cred-rails.png' %>
       </div>
     </div>
-      
-    
-
-    <div class="credentials">
-      <h3>Benefiting over <strong>50</strong> charities and counting</h3>
-      <%= image_tag 'cred-dbc.png' %>
-      <%= image_tag 'cred-heroku.png' %>
-      <%= image_tag 'cred-rails.png' %>
-    </div>
-
-    <!-- <h3><%#= link_to "Start Bidding on a TimeAuction Today", new_user_path, :class => "lpcenter btn btn-primary btn-large" %></h3> -->
   </div>
 
   <%= render 'partials/footer' %>

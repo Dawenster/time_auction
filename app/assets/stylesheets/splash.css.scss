@@ -49,9 +49,9 @@
     padding: 18px;
     font-size: 1.6em;
     letter-spacing: 2px;
-    -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.95);
-    -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.95);
-    box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.95);
+    -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.60);
+    -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.60);
+    box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.60);
   }
 }
 
@@ -76,27 +76,31 @@ a#learn-more {
     letter-spacing: 1px;
   }
   #vp {
+    text-align: center;
+    margin: auto;
     clear: both;
     margin-bottom: 50px;
     h2:first-child {
       padding: 0px;
-      margin: 0px;
-
+      margin-bottom: 50px;
     }
-    h2:nth-child(2) {
-      padding: 0;
-      font-size: 3.4em;
-      letter-spacing: 2px;
-    }  
   }
-  
+  & .btn-danger {
+    margin: auto;
+    text-align: center;
+    width: 720px;
+    padding: 18px;
+    font-size: 1.6em;
+    letter-spacing: 2px;
+    -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.60);
+    -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.60);
+    box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.60);
+  }
 }
 
 hr {
   border-top: 1px solid #aeaeae;
-  &:last-child {
-    margin: 0px 0px 20px 0px !important;
-  }
+  margin: 30px 0px;
 }
 
 .wrapper {
@@ -109,7 +113,7 @@ hr {
   background-color: #ececec;
   padding: 10px 22px 22px 22px;
   margin-right: 20px;
-  margin-bottom: 120px;
+  margin-bottom: 70px;
   &:nth-child(5) {
     margin-right: 0px;
   }
@@ -121,6 +125,11 @@ hr {
   & #count{
     color: #F20505;
   }
+}
+
+.finalVP {
+  margin: 40px 0px;
+  min-height: 280px;
 }
 
 .statisticsBox {
@@ -166,7 +175,7 @@ hr {
     font-weight: 300;
     line-height: 1em;
     & strong {
-      /*font-size: 1.5em;*/
+      letter-spacing: 0px;
       font-weight: 400;
     }
   }
