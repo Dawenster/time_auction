@@ -40,28 +40,29 @@
   <div class="span10">
     <div class="profile-container">
       
-      <div class="recentBidsContainer">
+      <div class="profileBox">
         <div class="recentBids">
           <h2>Recent Bids</h2>
           <% if @entered_auctions.any? %>
             <ul>
-              <% if @bids %>
-                <% @bids.each do |bid| %>
-                  <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
-                <% end %>
+              <% @bids.each do |bid| %>
+                <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
               <% end %>
             </ul>
           </div>
+
           <div class="recentBidPhoto">
-            <%= cl_image_tag @entered_auctions.first.photos.first.url, :width => 400, :height =>  300, :crop => 'fill' %>
-            <h6><%= link_to @entered_auctions.first.title, auction_path(@entered_auctions.first) %></h6>
+            <% @entered_auctions.each do |auction| %>
+              <%= link_to (cl_image_tag auction.photos.first.url, width: 150, height: 150, :class => "browse-photo", :crop => :fill), auction %>
+            <% end %>
+          </div>
+
           <% else %>
             <%= @user.name %> hasn't participated in any auctions yet!
           <% end %>
-        </div>
       </div>
         
-      <div class="recentBidsContainer">
+      <div class="profileBox">
         <div class="auctionsWon">
           <h2>Auctions Won</h2>
           <% if @winning_auctions.any? %>
@@ -74,6 +75,22 @@
         </div>
       </div>
       
+      <% if current_user == @user %>
+        <div class="profileBox">
+          <div class="auctionsStatus">
+            <h2>Your Volunteer Status</h2>
+            <% if @winning_auctions.any? %>
+              <% @winning_auctions.each do |auction| %>
+                <%= link_to auction.title, auction %> - <%= auction.highest_bid.description %>
+              <% end %>
+            <% else %>
+              Your volunteer information will appear here when you've won an auction.
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+
     </div>
   </div>
 </div>
