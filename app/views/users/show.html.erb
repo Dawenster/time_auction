@@ -1,31 +1,15 @@
 <div id="userProfileName">
   <h1>Profile for <%= @user.name %></h1>
-  <% if current_user == @user && !@user.identities.any? %>
-    <div id="fbconnect">
-      <%= link_to "", fb_login_path %>
-    </div>
-  <% end %>
-  <% if @user.identities.any? %>
-    <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.fb_identity.username}" %>
-  <% end %>
-</div>
-
-<!-- TABS -->
-<div id="userProfileTabs">
-  <ul class="nav nav-tabs">
-    <li class="active">
-      <a href="#user-recent-bids" data-toggle="tab">Recent Bids</a></li>
-    <li>
-      <a href="#user-auctions-won" data-toggle="tab" id="auctionsWonTab">Auctions Won</a>
-    </li>
-    <li>
-      <a href="#user-volunteer-info" data-toggle="tab" id="volunteerInfoTab">Your Volunteer Info</a>
-    </li>
-  </ul>
-</div>
-<div class="row">      
+</div>  
+<div class="row">  
   <div class="span2">
     <div class="photo-upload">
+      <% if current_user == @user && !@user.identities.any? %>
+        <%= link_to image_tag('/assets/facebook-connect-200.png'), fb_login_path %>
+      <% end %>
+      <% if @user.identities.any? %>
+        <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.fb_identity.username}" %>
+      <% end %>
       
       <%= profile_pic(@user, 200, 200) %>
 
@@ -52,6 +36,20 @@
 
   </div>
   <div class="span10">
+    <!-- TABS -->    
+    <div id="userProfileTabs">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#user-recent-bids" data-toggle="tab">Recent Bids</a></li>
+        <li>
+          <a href="#user-auctions-won" data-toggle="tab" id="auctionsWonTab">Auctions Won</a>
+        </li>
+        <li>
+          <a href="#user-volunteer-info" data-toggle="tab" id="volunteerInfoTab">Your Volunteer Info</a>
+        </li>
+      </ul>
+    </div>
+
     <div class="profile-container">
 
 
@@ -80,6 +78,6 @@
 
     </div>
   </div>
-</div>
+
 
 
