@@ -26,7 +26,6 @@ class Auction < ActiveRecord::Base
     @finished.each do |auction|
       auction.winner_id = auction.highest_bid.user.id
       auction.save
-      arr = []
       uniq_users = auction.bids.map { |bid| bid.user }.uniq
       bid_ids = []
       uniq_users.each do |user|
