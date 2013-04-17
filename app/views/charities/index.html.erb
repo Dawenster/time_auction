@@ -1,5 +1,4 @@
 <div class="category-display" id="auction">
-
   <% @charities.each do |charity| %>
     <div class="auction-column">
       <% if charity.photos.any? %>
@@ -11,9 +10,9 @@
         <%= link_to charity.name.truncate(30), charity %>
       </p>
       <p class="charity-description">
-        <% if charity.description != "" && charity.description.length >= 40 %>
+        <% if !charity.description.blank? && charity.description.length >= 40 %>
           <%= link_to charity.description.truncate(68), charity %>
-        <% elsif charity.description.length < 40 && charity.description != "" %>
+        <% elsif !charity.description.blank? && charity.description.length < 40 %>
           <%= link_to charity.description, charity %><BR>
           (Short description - <%= link_to "Help edit this charity", edit_charity_path(charity) %>)
         <% else %>
