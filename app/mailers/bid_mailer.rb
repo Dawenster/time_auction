@@ -19,6 +19,7 @@ class BidMailer < ActionMailer::Base
 
   def bid_over_hundred(bid, admins)
     @bid = bid
+    @user = @bid.user
     @auction = @bid.auction
     @admins = admins
     @admins.each do |admin|
