@@ -6,10 +6,11 @@ div#user-profile-name{
 
 .span2 {
   margin-left: 0px;
+  width: 200px;
 }
 
 .span10 {
-  margin-left: 100px;
+  margin-left: 30px;
 }
 
 .user-bid-hours{
@@ -29,7 +30,7 @@ div#user-profile-name{
 }
 
 .photo-upload{
-  display:inline-block;
+  display:block;
 }
 
 .userStatisticsBox {
@@ -47,7 +48,7 @@ div#user-profile-name{
     line-height: 40px;
   }
   & #hours{
-    margin-top: 15px;
+    margin-top: 20px;
     font-family: 'titilliumtext25l800_wt';
     font-size: 0.9em;
     letter-spacing: -1px;

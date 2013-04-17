@@ -2,9 +2,9 @@ module UsersHelper
 
   def profile_pic(user, width = 200, height = 200)
     if user.photo_url
-      cl_image_tag user.photo_url, :width => width, :height => height, :crop => :pad
+      cl_image_tag user.photo_url, :width => width, :height => height, :crop => :thumb
     else
-      image_tag '/assets/avatar_blank.jpg'
+      cl_image_tag 'v1366177656/blank_avatar_lg_j0an0b.jpg', :width => width, :height => height, :crop => :thumb
     end
   end
 
@@ -26,7 +26,7 @@ module UsersHelper
         user_path(current_user), :id => link_id
       link + admin_note
     else
-      link = link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', 
+      link = link_to (cl_image_tag 'v1366177656/blank_avatar_lg_j0an0b.jpg', 
         :width => width, :height => height, 
         :gravity => :face, :crop => :thumb) + current_user.name.split(" ").first, 
         user_path(current_user), :id => link_id
@@ -43,7 +43,7 @@ module UsersHelper
         :width => width, :height => height, 
         :gravity => :face, :crop => :thumb)
     else
-      link_to (cl_image_tag 'v1365894993/avatar_blank_q1pbbs.jpg', 
+      link_to (cl_image_tag 'v1366177656/blank_avatar_lg_j0an0b.jpg', 
         :width => width, :height => height, 
         :gravity => :face, :crop => :thumb)
     end
