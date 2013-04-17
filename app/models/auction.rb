@@ -32,8 +32,7 @@ class Auction < ActiveRecord::Base
       uniq_users.each do |user|
         bid_ids << user.bids.where(:auction_id => auction.id).order("time DESC").first.id
       end
-      binding.pry
-      AuctionEndWorker.perform_async(bid_ids)
+      #AuctionEndWorker.perform_async(bid_ids)
     end
   end
 
