@@ -75,7 +75,7 @@
 .you-highest {
   width: 90%;
   /*height: 55px;*/
-  margin: 10px 20px 0px 20px;
+  margin: 20px 20px 0px 20px;
   border: 2px solid #ccc;
   border-radius: 10px;
   background-color: #B4E0E8;
@@ -386,4 +386,46 @@ li#comment_errors {
   font-family: 'Open Sans';
   font-weight: 400;
   color: #000;
+}
+
+table.bids {
+  width: 100%;
+  th {
+    font-family: 'aller_lightregular';
+    font-size: 1.2em;
+    padding-bottom: 10px;
+  }
+  tr:first-child:hover {
+    background-color: #f4f4f4;
+  }
+  tr:hover {
+    background-color: #aeaeae;
+  }
+  tr:nth-child(2n) {
+    background-color: #dedede;
+    &:hover {
+      background-color: #aeaeae;
+    }
+  }
+  tr {
+    text-align: center;
+    font-family: 'Open Sans';
+    font-size: 1em;
+    padding: 15px 5px;
+    text-align: left;
+    td:first-child {
+      width: 32%;
+    }
+    td:nth-child(2) {
+      width: 5%;
+    }
+    td:nth-child(3) {
+      width: 38%;
+    }
+    td:nth-child(4) {
+      width: 20%;
+      font-family: 'Open Sans Condensed';
+      letter-spacing: 1px;
+    }
+  }
 }
