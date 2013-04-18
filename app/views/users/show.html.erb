@@ -61,7 +61,7 @@
           <% if @entered_auctions.any? %>
             <% @entered_auctions.each do |auction| %>
               <div class="recentBidPhoto">
-                <%= link_to (cl_image_tag auction.photos.last.url, width: 150, height: 150, :crop => :fill), auction %>
+                <%= link_to (cl_image_tag auction.photos.last.url, width: 150, height: 150, :crop => :fill), auction if auction.photos.any? %>
               </div>
               <div class="recentBids">
                 <h3><%= link_to auction.title.truncate(55), auction %></h3>
@@ -82,7 +82,7 @@
             <% if @winning_auctions.any? %> <!-- RE-SET TO WINNING AUCTION FOR PROD -->
               <% @winning_auctions.each do |auction| %>
                 <div class="auction-column">
-                  <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction %>
+                  <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction if auction.photos.any? %>
                   <p class="auction-title">
                     <%= link_to auction.title.truncate(68), auction %>
                   </p>

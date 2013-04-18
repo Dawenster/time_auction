@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-describe "AuctionEdit" do
+describe "AuctionEdit", :js => true do
   subject { page }
 
   describe "editing an auction" do
     let!(:user) { FactoryGirl.create(:user, :admin => true) }
     let!(:auction) { FactoryGirl.create(:auction)} # does not have winner_id 
+    let!(:bid) { FactoryGirl.create(:bid, :auction_id => auction.id, :user_id => user.id) }
 
     before do
       login_user(user)
