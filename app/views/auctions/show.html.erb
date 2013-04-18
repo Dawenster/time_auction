@@ -84,7 +84,7 @@
           <% if current_user %>
           <li id='comment_errors'></li>
             <%= form_for [@auction, Comment.new], :remote => true do |f| %>
-            <%= f.text_area :content, :rows => 5, :class => "desc_box", :placeholder => "Comment on this Auction" %>
+            <%= f.text_area :content, :rows => 5, :class => "desc_box", :placeholder => "Comment on this auction" %>
             <%= f.submit "Add Comment", :class => "btn btn-large btn-danger" %>
             <% end %>
           <% end %>
