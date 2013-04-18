@@ -41,11 +41,11 @@ module UsersHelper
     if user.photo_url
       link_to (cl_image_tag user.photo_url,#.gsub('large', 'square'), 
         :width => width, :height => height, 
-        :gravity => :face, :crop => :thumb)
+        :gravity => :face, :crop => :thumb), user
     else
       link_to (cl_image_tag 'v1366177656/blank_avatar_lg_j0an0b.jpg', 
         :width => width, :height => height, 
-        :gravity => :face, :crop => :thumb)
+        :gravity => :face, :crop => :thumb), user
     end
   end
 end

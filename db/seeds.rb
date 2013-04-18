@@ -11,35 +11,3 @@ require 'faker'
 cat1 = Category.create(name: "People")
 cat2 = Category.create(name: "Products")
 cat3 = Category.create(name: "Experiences")
-
-User.create!(
-  name: "Kevin Ko",
-  email: "kevin@kevin.com",
-  password: "password",
-  phone: "",
-  time_donated: 9001,
-  admin: true)
-
-User.create!(
-  name: "Philip Woo",
-  email: "philip@philip.com",
-  password: "password",
-  phone: "",
-  time_donated: 9001,
-  admin: true)
-
-User.create!(
-  name: "David Wen",
-  email: "david@david.com",
-  password: "password",
-  phone: "",
-  time_donated: 9001,
-  admin: true)
-
-User.create!(
-  name: "J Connolly",
-  email: "connolly@connolly.com",
-  password: "password",
-  phone: "",
-  time_donated: 9001,
-  admin: true)

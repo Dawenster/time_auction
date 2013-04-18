@@ -5,7 +5,6 @@
     <%= form_for @user do |f| %>
       <%= f.text_field :name, placeholder: "Full name", :autofocus=>true %>
       <%= f.email_field :email, placeholder: "E-mail" %>
-      <%= f.text_field :phone, placeholder: "Phone number (optional)" %>
       <%= f.password_field :password, placeholder: "Password" %>
       <%= f.submit "Sign Up", :class => "user_form_button" %>
     <% end %>

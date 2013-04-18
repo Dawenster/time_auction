@@ -22,28 +22,28 @@ describe User do
 
     it "should not accept jay@134r.c" do
       expect {
-        User.create(name:"J", password:"password", phone: "310-433-3333", email: 'jay@134r.c')
+        User.create(name:"J", password:"password", email: 'jay@134r.c')
       }.to_not change(User, :count)
     end
   end
 
-  describe "valid phone number" do
-    it "should accept 415-361-6651" do
-      expect {
-        FactoryGirl.create(:user)
-      }.to change(User, :count).by(1)
-    end
+  # describe "valid phone number" do
+  #   it "should accept 415-361-6651" do
+  #     expect {
+  #       FactoryGirl.create(:user)
+  #     }.to change(User, :count).by(1)
+  #   end
 
-    it "should not accept 498572" do
-      expect {
-        User.create(name:"J", password:"password", phone: "498572", email: 'jay@gmail.com')
-      }.to_not change(User, :count)
-    end
+  #   it "should not accept 498572" do
+  #     expect {
+  #       User.create(name:"J", password:"password", phone: "498572", email: 'jay@gmail.com')
+  #     }.to_not change(User, :count)
+  #   end
 
-    it "should not accept 'I don't want to give this to you'" do
-      expect {
-        User.create(name:"J", password:"password", phone: "I don't want to give this to you", email: 'jay@gmail.com')
-      }.to_not change(User, :count)
-    end
-  end
+  #   it "should not accept 'I don't want to give this to you'" do
+  #     expect {
+  #       User.create(name:"J", password:"password", phone: "I don't want to give this to you", email: 'jay@gmail.com')
+  #     }.to_not change(User, :count)
+  #   end
+  # end
 end
