@@ -3,45 +3,57 @@
   <div class="splashImage">
     <div class="splashBoxContent">
       <h1>Time is Money.</h1>
-      <p>Turn your charity hours into prizes and experiences.</p>
-      <%= link_to "Start Browsing", categories_path, :class => "btn btn-primary btn-large btn-danger" %>
+      <p>Bid on prizes with volunteer hours, not money</p>
+      <%= link_to "Start Browsing", categories_path, :class => "btn btn-primary btn-large btn-danger main-splash" %>
+      <div>
+        <%= link_to "Learn more >>", '#', :id => 'learn-more' %>
+      </div>
     </div>
     <div class="splashBox">
     </div>
   </div>
 
-  <div class="splashContainer">
-    <h2>Bid on prizes using volunteer hours, not money</h2>
+  <div class="splashContainer" id="intro">
+    <h2>Here's how it works</h2>
 
     <hr/>
       
     <div class="wrapper">
-      <h3><span id="count">1.</span> Bid on Auctions</h3> 
+      <h3><span id="count">1.</span> Bid on Auctions</h3>
+      <%= image_tag '/assets/step1.png' %>
     </div>
     <div class="wrapper">
       <h3><span id="count">2.</span> Perform Charity Work</h3>
+      <%= image_tag '/assets/vp2.jpg' %>
     </div>
     <div class="wrapper">
       <h3><span id="count">3.</span> Earn Your Reward</h3>
+      <%= image_tag '/assets/vp3.jpg' %>
     </div>
+    <div id="vp">
+      <h2>Over <strong>$10,000</strong> in prizes have been Time Auctioned.</h2>
+      <%= link_to "Browse active auctions now", categories_path, :class => "btn btn-primary btn-large btn-danger main-splash" %>
+    </div>
+    <hr/>
 
-    <div class="statisticsBox">
-      <div id="hoursCount">
-        <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
-        <div id="hours">HOURS</div>
-        <div id="hours">RAISED</div>
+    <div class="finalVP">
+      <div class="statisticsBox">
+        <div id="hoursCount">
+          <%= number_with_delimiter(@users.inject(7000) {|sum, user| sum + user.time_donated }) %>
+          <div id="hours">HOURS</div>
+          <div id="hours">RAISED</div>
+        </div>
+      </div>
+        
+      <div class="credentials">
+        <h3>Benefiting over <strong>50</strong> charities and counting</h3>
+        <blockquote><%= image_tag '/assets/quote-icon.png', :id => "quote"%>Loved the experience and the free iPod!</blockquote>
+        <p>- Jeffrey 'Westside' Wescott, Student</p>
+        <%= image_tag 'cred-dbc.png' %>
+        <%= image_tag 'cred-heroku.png' %>
+        <%= image_tag 'cred-rails.png' %>
       </div>
     </div>
-
-    <div class="credentials">
-      <h3>Benefiting over <strong>50</strong> charities and non-profits</h3>
-      <h3>Averaging <strong>42 volunteer minutes per dollar</strong> of product donated.</h3>
-      <%= image_tag 'cred-dbc.png' %>
-      <%= image_tag 'cred-heroku.png' %>
-      <%= image_tag 'cred-rails.png' %>
-    </div>
-
-    <!-- <h3><%#= link_to "Start Bidding on a TimeAuction Today", new_user_path, :class => "lpcenter btn btn-primary btn-large" %></h3> -->
   </div>
 
   <%= render 'partials/footer' %>

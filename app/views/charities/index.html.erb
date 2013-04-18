@@ -7,7 +7,7 @@
         <%= link_to (image_tag '/assets/charity_default.jpg', :class => "browse-photo", width: 300, height: 200), charity %>
       <% end %>
       <p class="charity-name">
-        <%= link_to charity.name.truncate(30), charity %>
+        <%= link_to charity.name.truncate(28), charity %>
       </p>
       <p class="charity-description">
         <% if !charity.description.blank? && charity.description.length >= 40 %>

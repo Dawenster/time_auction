@@ -23,5 +23,10 @@ describe Bid do
       bid = Bid.new(user_id: user.id, auction_id: auction.id, time: 4)
       bid.should_not be_valid
     end
+
+    it "should not have two bids with equal time in one auction" do
+      bid = Bid.new(time: 5, auction_id: auction.id)
+      bid.should_not be_valid
+    end
   end
 end
