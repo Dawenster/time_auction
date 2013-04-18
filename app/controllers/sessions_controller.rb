@@ -7,9 +7,11 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts params
+    puts "^"*200
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-      sign_in(@user)
+      params[:session][:remember_me] == "1" ? persistant_sign_in(@user) : sign_in(@user)
       flash[:success] = "Welcome back, #{@user.name}!"
       redirect_back_or @user
     else
@@ -66,7 +68,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    sign_out
     redirect_to new_session_path
   end
 end

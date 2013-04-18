@@ -1,4 +1,7 @@
 TimeAuction::Application.routes.draw do
+  # get "password_resets/new"
+  resources :password_resets, :only => [:new, :create]
+
   root to: 'static_pages#index'
   resources :users, :except => :index do
     resources :photos, :only => [:create]

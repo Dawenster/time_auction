@@ -172,6 +172,26 @@ div#userProfileName{
     input[type=submit]{
       width: 280px !important; 
     }
+    #login_extras {
+      max-width: 281px;
+      position: relative;
+      margin-left: 10px;
+    }
+    #forgotten_password {
+      max-width:151px;
+      position:relative;
+      float:left;
+      top: 3px;
+    }
+    #remember_check_box {
+      max-width: 130px;
+      text-align:right;
+      float:right;
+      span.text {
+        position: relative;
+        top: 3px;
+      }
+    }
   }
 }
 
