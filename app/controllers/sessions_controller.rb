@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
 
   def create
     puts params
-    puts "^"*200
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       params[:session][:remember_me] == "1" ? persistant_sign_in(@user) : sign_in(@user)

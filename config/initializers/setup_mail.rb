@@ -1,4 +1,4 @@
-ActionMailer::Base.delivery_method = :smtp # be sure to choose SMTP delivery
+# ActionMailer::Base.delivery_method = :smtp # be sure to choose SMTP delivery
 
 ActionMailer::Base.smtp_settings = {
   :address   => "smtp.sendgrid.net",
