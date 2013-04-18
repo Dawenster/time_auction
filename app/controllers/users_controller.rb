@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @winning_auctions = Auction.where("winner_id = ?", params[:id])
-    @bids = @user.bids.limit(10)
+    @bids = @user.bids
     @entered_auctions = @bids.map{ |bid| bid.auction }.uniq
   end
   
