@@ -1,3 +1,3 @@
 <% @title = "Edit Charity" %>
-<% @delete_button = button_to "Delete Charity", charity_path(@charity), :method => 'delete', :class => 'user_form_button' %>
+<% @delete_button = button_to "Delete Charity", charity_path(@charity), :method => 'delete', :class => 'user_form_button', :id => "delete_button" %>
 <%= render 'form', :locals => { :title => @title, :delete_button => @delete_button, :charity => @charity } %>

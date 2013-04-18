@@ -1,5 +1,5 @@
 <% @title = "Edit Auction" %>
 
-<% @delete_button = button_to "Delete Auction", auction_path(@auction), :method => 'delete', :class => 'user_form_button' %>
+<% @delete_button = button_to "Delete Auction", auction_path(@auction), :method => 'delete', :class => 'user_form_button', :id => "delete_button" %>
 
 <%= render 'form', :locals => { :title => @title, :delete_button => @delete_button, :auction => @auction } %>

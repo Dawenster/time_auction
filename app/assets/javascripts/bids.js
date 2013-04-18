@@ -3,12 +3,10 @@ $(document).ready(function() {
   $('.commit-to-bid').click(function(e){
     e.preventDefault();
     var commitment_time = $('#bid_time').val();
-    if (confirm("Really commit to "+commitment_time +" volunteer hours?")) {
-      $("#new_bid_form").submit();
-      $('#new_bid_form').fadeOut(50);
-      $('#spinner').fadeIn(50);
-    }
-      return false;
+    $("#new_bid_form").submit();
+    $('.commit-to-bid').button();
+    $('.nav-tabs').button()
+    $('.commit-to-bid').button('loading');
   });
 
   $('#new_bid_form').on('ajax:success', function(event, data) {
@@ -18,7 +16,7 @@ $(document).ready(function() {
       $('#bid_success_popup .errors').text('PLEASE NOTE: Due to the generous ' +
        'size of this bid, an admin may follow up with you.');
     }
-    $('#spinner').fadeOut(50);
+    $('#new_bid_form').fadeOut(50);
     $('#bid_success_popup').fadeIn(50);
     $('.bids tr:first-child').after(data);
     $('.you-highest').removeClass('hide');
@@ -26,14 +24,19 @@ $(document).ready(function() {
     $('#flash').text("");
     $('#flash').removeClass("alert alert-errors");
     $('.no-bids-yet').text("Highest Bid");
+    $('.commit-to-bid').button("reset");
+    $('#bid_time').val("");
   });
   
   $('#new_bid_form').on('ajax:error', function(event, data) {
     $('#spinner').fadeOut(50);
     $('#overlay').fadeOut(50);
+    $('#new_bid_form').fadeOut(50);
     $('#flash').text("");
     $('#flash').addClass("alert alert-errors");
     $('#flash').append(data.responseText);
+    $('.commit-to-bid').button("reset");
+    $('#bid_time').val("");
   });
 
   $('#trigger').click(function(){
@@ -48,8 +51,6 @@ $(document).ready(function() {
       $('#new_bid_form, #bid_success_popup, #spinner').fadeOut(50);
       $('#overlay').fadeOut(50);
   });
-
- 
 
   $('#success_popup_close').click(function(){
     $('#bid_success_popup').fadeOut(50);
@@ -76,5 +77,4 @@ $(document).ready(function() {
       });
     })
   });
-
 });

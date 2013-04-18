@@ -19,15 +19,17 @@ describe "Bid creation" do
     
     context "with valid info" do
 
-      it "saves a new bid" do
+      it "saves a new bid", js: true do
         expect do
+          click_button "Bid Hours"
           fill_in :bid_time, with: "7"
           click_button "Submit Bid"
-          visit root_path
+          visit auction_path(auction)
         end.to change(Bid, :count).by(1)
       end
 
-      it "should show up at the top" do
+      it "should show up at the top", js: true do
+        click_button "Bid Hours"
         fill_in :bid_time, with: "8"
         click_button "Submit Bid"
         visit auction_path(auction)
@@ -39,10 +41,8 @@ describe "Bid creation" do
         click_button "Bid Hours"
         fill_in :bid_time, with: '9'
         click_button "Submit Bid"
-        page.driver.browser.switch_to.alert.accept
-        page.should have_selector('#bid_success_popup')
+        page.should have_content "Thank you"
       end
-
     end
 
     context "when the form is submitted without a time" do
@@ -54,14 +54,15 @@ describe "Bid creation" do
         }.not_to change(Bid, :count)
       end
 
-      it "displays an error" do
+      it "displays an error", js: true do
+        click_button "Bid Hours"
         click_button "Submit Bid"
         should have_content 'Please' || 'must be higher'
       end
 
       it 'does not show success popup' do
         click_button "Submit Bid"
-        page.should_not have_selector('#bid_success_popup')
+        page.should_not have_selector('alert-error')
       end
     end
   end

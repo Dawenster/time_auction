@@ -23,7 +23,9 @@
       <%= f.hidden_field :auction_id, value: @auction.id %>
 
       <div>By clicking below, you agree to the official <%= link_to "Time Auction rules", rules_path %>.</div><br>
-      <div><%= f.submit "Submit Bid", :class => "btn btn-success btn-large commit-to-bid" %></div>
+      <div><button type="button" class="btn btn-success btn-large commit-to-bid" data-loading-text="Submitting...">Submit Bid</button></div>
     </div>
   </div>
 <% end %>
+
+

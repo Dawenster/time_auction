@@ -27,6 +27,8 @@ class BidsController < ApplicationController
       render text: 'Sorry!  This auction has ended.  Try another one?', status: :unprocessable_entity and return
     end
 
+    sleep 2
+
     if @bid.save
       #EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
       

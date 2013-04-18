@@ -1,19 +1,23 @@
 <!-- LIGHTBOX -->
-
+<script src="/assets/bootstrap-button.js?body=1" type="text/javascript"></script>
 <div class="row">
   <div class="span10 offset1 hidden-bid-partial">
     <%= render 'bids/form' %>
   </div>
-  <div class="span8 offset2">
+</div>
+<div class="row">
+  <div class="span10 offset1">
     <%= render 'bids/success_popup' %>
-  </div>
-  <div class="span1 offset5 hide" id='spinner'>
-    <%= image_tag 'ajax_loader_red_64.gif' %>
   </div>
 </div>
 <div class="row">
-  
+  <div class="span10 offset1 hide" id='spinner'>
+    <%= image_tag 'ajax_loader_red_64.gif' %>
+  </div>
+</div>
 
+<div class="row">
+  
 <!-- TITLE -->
   <div class="span12">
     <div class="auction-category">
