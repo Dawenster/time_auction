@@ -26,4 +26,14 @@ describe Auction do
     higher_bid = Bid.create(time:5, auction_id: auction.id, user_id: 2)
     auction.highest_bid.should == higher_bid
   end
+
+  it "method complete? should return winner id if present" do
+    auction.update_attribute(:winner_id, 1)
+    auction.complete?.should == 1
+  end
+
+  it "started? should return false when auctions not started" do
+    auction.update_attributes(start_date: DateTime.now + 5.days, end_date: DateTime.now + 10.days )
+    auction.started?.should == false
+  end
 end
