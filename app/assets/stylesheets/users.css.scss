@@ -116,21 +116,22 @@ div#userProfileName{
   margin-bottom: 10px;
 }
 
-.recentBids {
-  float: left;
-  width: 420px;
-  display: block;
-  li {
+li {
     font-family: 'Lato';
     font-weight: 300;
     padding-left: 10px;
     list-style: none;
     font-size: 1.2em;
     line-height: 1.6em;
-    & strong {
-      font-weight: 400;
-    }
+  & strong {
+    font-weight: 400;
   }
+}
+
+.recentBids {
+  float: left;
+  width: 420px;
+  display: block;
   h3{
     font-size: 1.8em;
     margin-top: -4px;
