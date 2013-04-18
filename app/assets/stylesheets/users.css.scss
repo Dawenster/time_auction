@@ -219,18 +219,20 @@ div#userProfileName{
     #login_extras {
       max-width: 281px;
       position: relative;
-      margin-left: 10px;
+      margin: 0px 10px 30px 10px;
     }
     #forgotten_password {
       max-width:151px;
       position:relative;
-      float:left;
+      float:right;
       top: 3px;
+      margin-bottom: 20px;
     }
     #remember_check_box {
       max-width: 130px;
       text-align:right;
-      float:right;
+      float:left;
+      margin-bottom: 20px;
       span.text {
         position: relative;
         top: 3px;
