@@ -70,7 +70,7 @@ describe "Bid creation" do
   describe "when the submitted bid is less than the current highest" do
     let!(:user) { FactoryGirl.create(:user) }
     let!(:auction) { FactoryGirl.create(:auction) }
-    let!(:bid) { FactoryGirl.create(:bid, :time => 5, :auction_id => auction.id) }
+    # let!(:bid) { FactoryGirl.create(:bid, :time => 5, :auction_id => auction.id) }
 
     before do
       login_user(user)
