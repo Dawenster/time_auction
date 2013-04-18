@@ -12,6 +12,8 @@ $(document).ready(function() {
   $('#new_bid_form').on('ajax:success', function(event, data) {
 
     var hours = data.match(/>\d+</)[0].replace(/</,"").replace(/>/,"")
+    var name = data.match(/<a href="\/users\/\d+">(\w+|\w+\s+|\w+\s+\w+|\w+\s+\w+\s+\w+|\w+\s+\w+\s+\w+\s+\w+)<\/a>/)[0].split(',')[0]
+
     if (hours >= 100) {
       $('#bid_success_popup .errors').text('PLEASE NOTE: Due to the generous ' +
        'size of this bid, an admin may follow up with you.');
@@ -21,6 +23,7 @@ $(document).ready(function() {
     $('.bids tr:first-child').after(data);
     $('.you-highest').removeClass('hide');
     $('#hours').text(hours);
+    $('.highest-bidder').html('By: ' + name);
     $('#flash').text("");
     $('#flash').removeClass("alert alert-errors");
     $('.no-bids-yet').text("Highest Bid");
