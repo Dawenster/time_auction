@@ -38,13 +38,13 @@ class SessionsController < ApplicationController
 
     if signed_in?
       if @identity.user == current_user
-        redirect_to root_path, notice: "Facebook login refreshed!"
+        redirect_back_or root_path, notice: "Facebook login refreshed!"
       else
         # TODO: need to figure out how to merge two user accounts (currently 
         # signed in and the one associated with identity) if user_id isn't nil here
         @identity.user = current_user
         @identity.save!
-        redirect_to root_path, notice: "Successfully linked your account!"
+        redirect_back_or root_path, notice: "Successfully linked your account!"
       end
     else
       if @identity.user.present?
