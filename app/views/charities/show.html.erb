@@ -23,7 +23,7 @@
       <h1><%= @charity.name %></h1>
     </div>
     <div>
-      <p><%= @charity.description %></p>
+      <p><%= simple_format(@charity.description) %></p>
       <div><%= link_to 'Edit', edit_charity_path(@charity), :class => "edit-charity", :title => "Help us edit information on this charity" %></div>
     </div>
   </div>
