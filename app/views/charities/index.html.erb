@@ -11,9 +11,9 @@
       </p>
       <p class="charity-description">
         <% if !charity.description.blank? && charity.description.length >= 40 %>
-          <%= link_to charity.description.truncate(68), charity %>
+          <%= charity.description.truncate(68) %>
         <% elsif !charity.description.blank? && charity.description.length < 40 %>
-          <%= link_to charity.description, charity %><BR>
+          <%= charity.description %><BR>
           (Short description - <%= link_to "Help edit this charity", edit_charity_path(charity) %>)
         <% else %>
           (No description yet)<BR>
