@@ -34,6 +34,13 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def send_new_account_via_facebook
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.new_account_via_facebook(self).deliver
+  end
+
   def facebook
     if self.fb_identity 
       @facebook ||= Koala::Facebook::API.new(self.fb_oauth_token)
