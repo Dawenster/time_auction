@@ -113,7 +113,7 @@
 
                 <% @entered_auctions.each do |auction| %>
                   <% if auction.highest_bid.charity == charity %>
-                    <li><h4><%= link_to auction.title.truncate(60), auction %></h4></li>
+                    <h4><%= link_to auction.title.truncate(60), auction %></h4>
                     <ul>
                       <li><strong>Deadline:</strong> <%= convert_date(auction.deadline) %></li>
                       <li><strong>Hours Committed:</strong> <%= auction.highest_bid.description %></li>
