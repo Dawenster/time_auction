@@ -383,7 +383,12 @@ ul.nav-tabs {
   }
 }
 
+.tab-content {
+  clear: both;
+}
+
 .tab-pane {
+
   width: 580px;
   padding: 12px;
   padding-left: 20px;

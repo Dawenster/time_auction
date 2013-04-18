@@ -44,57 +44,67 @@
         <li>
           <a href="#user-auctions-won" data-toggle="tab" id="auctionsWonTab">Auctions Won</a>
         </li>
-        <li>
-          <a href="#user-volunteer-info" data-toggle="tab" id="volunteerInfoTab">Your Volunteer Info</a>
-        </li>
+        <% if current_user == @user %>
+          <li>
+            <a href="#user-volunteer-info" data-toggle="tab" id="volunteerInfoTab">Your Volunteer Info</a>
+          </li>
+        <% end %>
       </ul>
     </div>
 
     <div class="profile-container">
 
 
-<!-- DESCRIPTION -->
+<!-- RECENT BIDS -->
 
     <div class="tab-content">
-      <div class="tab-pane active" id="user-recent-bids profile"> 
+      <div class="tab-pane active" id="user-recent-bids"> 
         <% if @entered_auctions.any? %>
-        <ul>
-
-          <div class="recentBidPhoto">
-            <% @entered_auctions.each do |auction| %>
-              <%= link_to (cl_image_tag auction.photos.first.url, width: 150, height: 150, :class => "browse-photo", :crop => :fill), auction %>
-            <% end %>
-          </div>
-
-
-        </div>
-          <% @bids.each do |bid| %>
-            <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
-          <% end %>
-        </ul>
-
+          <% @entered_auctions.each do |auction| %>
+            <div class="recentBidPhoto">
+              <%= link_to (cl_image_tag auction.photos.first.url, width: 150, height: 150, :crop => :fill), auction %>
+            </div>
+            <div class="recentBids">
+              <h3><%= link_to auction.title.truncate(55), auction %></h3>
+              <% auction.bids.where(:user_id => @user.id).limit(3).each do |bid| %>
+                <li>Bid <strong><%= bid.description %></strong>, <%= time_ago_in_words(bid.created_at) %> ago</li>
+              <% end %>
+           </div> 
+          <% end %>  
         <% else %>
           <%= @user.name %> hasn't participated in any auctions yet!
         <% end %>
       </div>
 
-<!-- BID HISTORY -->
+<!-- AUCTIONS WON -->
 
       <div class="tab-pane" id="user-auctions-won">
-
-       
+        <% if @winning_auctions.any? %>
+          <% @winning_auctions.each do |auction| %>
+            <%= link_to auction.title, auction %>
+          <% end %>
+        <% else %>
+          <%= @user.name %> hasn't won any auctions yet!
+        <% end %>
       </div>
 
-<!-- COMMENTS -->
-      <div class="tab-pane" id="user-volunteer-info">
-
-       
-      </div>
-      </div>
-    </div>
-
+<!-- VOLUNTEER INFO -->
+      
+      <% if current_user == @user %>
+        <div class="tab-pane" id="user-volunteer-info">
+          <% if @winning_auctions.any? %>
+            <% @winning_auctions.each do |auction| %>
+              <%= link_to auction.title, auction %> - <%= auction.highest_bid.description %>
+            <% end %>
+          <% else %>
+            Your volunteer information will appear here when you've won an auction.
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
+</div>
 
 
 

@@ -107,20 +107,31 @@ div#userProfileName{
 }
 
 .recentBids {
-  width: 355px;
+  float: left;
+  width: 420px;
+  display: block;
   li {
-    font-size: 1.1em;
-    line-height: 1.3em;
+    font-family: 'Lato';
+    font-weight: 300;
+    padding-left: 10px;
+    list-style: none;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    & strong {
+      font-weight: 400;
+    }
+  }
+  h3{
+    margin-top: -4px;
+    line-height: 1em;
   }
 }
 
 .recentBidPhoto {
-  width: 400px;
-  h6 {
-    margin: 0px;
-    text-align: center;
-    font-size: 0.8em;
-  }
+  clear: both;
+  float: left;
+  width: 150px;
+  margin: 0px 10px 30px 0px;
 }
 
 
