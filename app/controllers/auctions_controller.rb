@@ -47,12 +47,16 @@ class AuctionsController < ApplicationController
   end
 
   def update
-    unless params[:auction][:start_date].blank? && params[:auction][:end_date].blank?
-      @auction.start_date = DateTime.parse(params[:auction][:start_date].split('/').rotate(-1).join(''))
-      @auction.end_date = DateTime.parse(params[:auction][:end_date].split('/').rotate(-1).join(''))
-    end
+    @auction.parse_dates(params)
+    params[:auction].delete(:start_date) && params[:auction].delete(:end_date)
 
     proper_date = @auction.start_date < @auction.end_date if @auction.start_date && @auction.end_date
+
+    if @auction.winner_id
+      auction_winner = User.find(@auction.winner_id) 
+      auction_winner.time_donated += (params[:auction][:verified_time].to_i - @auction.verified_time)
+      auction_winner.save
+    end
 
     unless proper_date
       flash.now[:errors] = "Start date must be before end date"
