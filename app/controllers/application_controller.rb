@@ -4,8 +4,16 @@ class ApplicationController < ActionController::Base
   
   protected
 
+  def persistant_sign_in(user)
+    cookies.permanent[:auth_token] = user.auth_token
+  end
+
   def sign_in(user)
-    session[:id] = user.id
+    cookies[:auth_token] = user.auth_token
+  end
+
+  def sign_out
+    cookies.delete(:auth_token)
   end
 
   def signed_in?
@@ -13,12 +21,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:id]) if session[:id] 
+    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
 
   def current_user=(user)
     @current_user = user
-    session[:id] = user.nil? ? user : user.id
+    cookies[:auth_token] = user.nil? ? nil : user.auth_token
   end
 
   helper_method :current_user, :signed_in?
