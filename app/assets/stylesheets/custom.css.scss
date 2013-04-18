@@ -87,11 +87,12 @@ a {
 }
 
 .upload input{
-    font-size: 1em;
+  font-size: 1em;
+  top: 0;
   font-family: 'Lato';
+  position: relative;
   padding: 0px;
   margin: 5px 0 10px;
-  line-height: 1px;
 }
 
 .creation_form {
