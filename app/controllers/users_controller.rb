@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @winning_auctions = Auction.where("winner_id = ?", params[:id])
     @bids = @user.bids
     @entered_auctions = @bids.map{|bid| bid.auction }.uniq
-    @user_charities = @entered_auctions.map{|auction| auction.highest_bid.charity }.uniq
+    @user_charities = @winning_auctions.map{|auction| auction.highest_bid.charity }.uniq
   end
   
 end
