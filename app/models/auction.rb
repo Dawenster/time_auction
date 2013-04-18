@@ -53,6 +53,11 @@ class Auction < ActiveRecord::Base
     self.winner_id
   end
 
+  def parse_dates(params)
+    self.start_date = DateTime.parse(params[:auction].delete(:start_date).split('/').rotate(-1).join(''))
+    self.end_date = DateTime.parse(params[:auction].delete(:end_date).split('/').rotate(-1).join(''))
+  end
+
   private
 
   def initial_verified_time
