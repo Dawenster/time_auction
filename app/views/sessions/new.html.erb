@@ -1,3 +1,20 @@
+<!-- linkedin stuff. see http://developer.linkedin.com/documents/javascript-api-tutorial -->
+<% content_for(:head) do %>
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: rqdpvtr80feb
+    authorize: true
+  </script>
+
+  <script type="text/javascript">
+    function onLinkedInAuth() {
+      IN.API.Profile("me")
+        .result( function(me) {
+          var id = me.values[0].id;
+          // AJAX call to pass back id to your server
+        });
+    }
+  </script>
+<% end %>
 <div class="user_signup_container">
   <h1 id="user_signup">Welcome Back</h1>
   <div class="user_form">
@@ -16,6 +33,11 @@
     <div id="fbconnect">
       <%= link_to "", fb_login_path %>
     </div>
+      <script type="in/Login">
+        Hello, <?js= firstName ?> <?js= lastName ?>.
+      </script>
     Need an account? <%= link_to "Sign up here", new_user_path %>
   </div>
 </div>
+
+
