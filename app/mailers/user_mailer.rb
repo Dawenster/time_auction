@@ -12,4 +12,9 @@ class UserMailer < ActionMailer::Base
     mail :from => "team@timeauction.org", :to => user.email, :subject => 'Password Reset'
   end
   
+  def new_account_via_facebook(user)
+    @user = user
+    @url = 'http://www.TimeAuction.org' + edit_password_reset_path(@user.password_reset_token)
+    mail :from => "team@timeauction.org", :to => user.email, :subject => 'Thanks for connecting!'
+  end
 end
