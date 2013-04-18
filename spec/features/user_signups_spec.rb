@@ -13,7 +13,6 @@ describe "UserSignups" do
       before do
         fill_in :user_name, with: "Test Name"
         fill_in :user_email, with: "j@example.com"
-        fill_in :user_phone, with: "310-333-3333"
         fill_in :user_password, with: "Password1"
       end
 
@@ -28,7 +27,6 @@ describe "UserSignups" do
       before do
         fill_in :user_name, with: "Test Name"
         fill_in :user_email, with: "j@example.com"
-        fill_in :user_phone, with: "310-333-3333"
       end
 
       it "should not create user" do
