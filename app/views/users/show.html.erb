@@ -1,19 +1,17 @@
-<div id="user-profile-name">
+<div id="userProfileName">
   <h1>Profile for <%= @user.name %></h1>
-  <% if current_user == @user && !@user.identities.any? %>
-    <div id="fbconnect">
-      <%= link_to "", fb_login_path %>
-    </div>
-  <% end %>
-  <% if @user.identities.any? %>
-    <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.fb_identity.username}" %>
-  <% end %>
-</div>
-<div class="row">      
+</div>  
+<div class="row">  
   <div class="span2">
     <div class="photo-upload">
-      
       <%= profile_pic(@user, 200, 200) %>
+
+      <% if current_user == @user && !@user.identities.any? %>
+        <%= link_to image_tag('/assets/facebook-connect-200.png'), fb_login_path %>
+      <% end %>
+      <% if @user.identities.any? %>
+        <%= link_to image_tag('/assets/facebook-icon.png'), "http://www.facebook.com/#{@user.fb_identity.username}" %>
+      <% end %>
 
       <% if current_user == @user %>
       <div class="upload">
@@ -38,44 +36,65 @@
 
   </div>
   <div class="span10">
+    <!-- TABS -->    
+    <div id="userProfileTabs">
+      <ul class="nav nav-tabs" id="profile">
+        <li class="active">
+          <a href="#user-recent-bids" data-toggle="tab">Recent Bids</a></li>
+        <li>
+          <a href="#user-auctions-won" data-toggle="tab" id="auctionsWonTab">Auctions Won</a>
+        </li>
+        <li>
+          <a href="#user-volunteer-info" data-toggle="tab" id="volunteerInfoTab">Your Volunteer Info</a>
+        </li>
+      </ul>
+    </div>
+
     <div class="profile-container">
-      
-      <div class="recentBidsContainer">
-        <div class="recentBids">
-          <h2>Recent Bids</h2>
-          <% if @entered_auctions.any? %>
-            <ul>
-              <% if @bids %>
-                <% @bids.each do |bid| %>
-                  <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </div>
+
+
+<!-- DESCRIPTION -->
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="user-recent-bids profile"> 
+        <% if @entered_auctions.any? %>
+        <ul>
+
           <div class="recentBidPhoto">
-            <%= cl_image_tag @entered_auctions.first.photos.first.url, :width => 400, :height =>  300, :crop => 'fill' %>
-            <h6><%= link_to @entered_auctions.first.title, auction_path(@entered_auctions.first) %></h6>
-          <% else %>
-            <%= @user.name %> hasn't participated in any auctions yet!
-          <% end %>
-        </div>
-      </div>
-        
-      <div class="recentBidsContainer">
-        <div class="auctionsWon">
-          <h2>Auctions Won</h2>
-          <% if @winning_auctions.any? %>
-            <% @winning_auctions.each do |auction| %>
-              <%= link_to auction.title, auction %>
+            <% @entered_auctions.each do |auction| %>
+              <%= link_to (cl_image_tag auction.photos.first.url, width: 150, height: 150, :class => "browse-photo", :crop => :fill), auction %>
             <% end %>
-          <% else %>
-            <%= @user.name %> hasn't won any auctions yet!
-          <% end %>
+          </div>
+
+
         </div>
+          <% @bids.each do |bid| %>
+            <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
+          <% end %>
+        </ul>
+
+        <% else %>
+          <%= @user.name %> hasn't participated in any auctions yet!
+        <% end %>
       </div>
-      
+
+<!-- BID HISTORY -->
+
+      <div class="tab-pane" id="user-auctions-won">
+
+       
+      </div>
+
+<!-- COMMENTS -->
+      <div class="tab-pane" id="user-volunteer-info">
+
+       
+      </div>
+      </div>
+    </div>
+
     </div>
   </div>
-</div>
+
 
 

@@ -30,7 +30,7 @@
   & h1 {
     font-family: 'Lato';
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 0px;
     font-size: 3.8em;
    }
@@ -49,35 +49,61 @@
     padding: 18px;
     font-size: 1.6em;
     letter-spacing: 2px;
-    -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.95);
-    -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.95);
-    box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.95);
+    -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.60);
+    -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.60);
+    box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.60);
+    margin-bottom: 5px;
   }
 }
 
-#learn-more {
+a#learn-more {
+  margin-top: 20px;
   color: white;
-  & a:hover {
-    color: blue;
+  &:hover {
+    color: #B4E0E8;
   }
 }
 
 .splashContainer {
   width: 1040px;
   margin: auto;
+  img {
+    border-radius: 10px;
+  }
   h2 {
-  padding: 30px;
-  text-align: center;
-  color: #383838;
-  font-family: 'Open Sans';
-  font-weight: 300;
-  font-size: 3em;
-  letter-spacing: 1px;
+    padding: 30px;
+    text-align: center;
+    color: #383838;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 3em;
+    letter-spacing: 1px;
+  }
+  #vp {
+    text-align: center;
+    margin: auto;
+    clear: both;
+    margin-bottom: 50px;
+    h2:first-child {
+      padding: 0px;
+      margin-bottom: 50px;
+    }
+  }
+  & .btn-danger {
+    margin: auto;
+    text-align: center;
+    padding: 18px;
+    font-size: 1.6em;
+    letter-spacing: 2px;
+    -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.60);
+    -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.60);
+    box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.60);
   }
 }
 
 hr {
   border-top: 1px solid #aeaeae;
+  margin: 30px 0px;
 }
 
 .wrapper {
@@ -102,6 +128,11 @@ hr {
   & #count{
     color: #F20505;
   }
+}
+
+.finalVP {
+  margin: 70px 0px;
+  min-height: 280px;
 }
 
 .statisticsBox {
@@ -131,14 +162,20 @@ hr {
 }
 
 .credentials {
+  text-align: center;
   margin-left: 20px;
   margin-bottom: 50px;
   float: left;
   display: inline-block;
   width: 600px;
   color: #383838;
+  font-family: 'Lato';
   & h3{
-    margin: -3px 0px 20px 0px;
+    font-family: 'Lato' !important;
+    font-weight: 400 !important;
+    font-size: 2.2em !important;
+    margin: -3px 0px 10px 0px;
+    text-shadow: 1px 1px 1px #aeaeae;
     &:nth-child(2) {
       margin-bottom: 0px;
     }
@@ -147,7 +184,25 @@ hr {
     font-weight: 300;
     line-height: 1em;
     & strong {
-      font-weight: 400;
+      letter-spacing: 0px;
+      font-weight: 700;
     }
+  }
+  & blockquote {
+    text-align: right;
+    font-style: italic;
+    font-size: 1.6em;
+    margin: 0px;
+    padding-left: 10px;
+    height: 30px;
+    & img#quote {
+      padding-bottom: 22px;
+    }
+  }
+  & p {
+    text-align: right;
+    font-size: 0.9em;
+    font-color: #ccc;
+    margin-bottom: 0;
   }
 }
