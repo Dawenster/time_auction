@@ -5,5 +5,10 @@ class UserMailer < ActionMailer::Base
     @url = "www.timeauction.org" + categories_path
     mail(:from => "team@timeauction.org", :to => user.email, :subject => "Welcome to Time Auction!!! ")
   end
+
+  def password_reset(user)
+    @user = user
+    mail :to => user.email, :subject => 'Password Reset'
+  end
   
 end
