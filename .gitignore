@@ -17,3 +17,4 @@
 /config/initializers/a-codes.rb
 /config/initializers/b-codes.rb
 config/mailer.yml
+/app/assets/images/.DS_Store

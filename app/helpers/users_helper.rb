@@ -39,7 +39,7 @@ module UsersHelper
     width = options.fetch(:width, 48)
     
     if user.photo_url
-      link_to (cl_image_tag current_user.photo_url,#.gsub('large', 'square'), 
+      link_to (cl_image_tag user.photo_url,#.gsub('large', 'square'), 
         :width => width, :height => height, 
         :gravity => :face, :crop => :thumb)
     else
