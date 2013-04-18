@@ -79,8 +79,8 @@
 
         <div class="tab-pane" id="user-auctions-won">
           <div id="auction">
-            <% if @winning_auctions.any? %> <!-- RE-SET TO WINNING AUCTION FOR PROD -->
-              <% @winning_auctions.each do |auction| %>
+            <% if @entered_auctions.any? %> <!-- RE-SET TO WINNING AUCTION FOR PROD -->
+              <% @entered_auctions.each do |auction| %>
                 <div class="auction-column">
                   <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction %>
                   <p class="auction-title">
@@ -101,17 +101,18 @@
         
         <% if current_user == @user %>
           <div class="tab-pane" id="user-volunteer-info">
-            <% if @winning_auctions.any? %> <!-- RE-SET TO WINNING AUCTION FOR PROD, ENTERED_AUCTIONS FOR DEV -->
+            <% if @entered_auctions.any? %> <!-- RE-SET TO WINNING AUCTION FOR PROD, ENTERED_AUCTIONS FOR DEV -->
             <p>Congrats on winning! Here are the final details of the auctions you've won and the charities you've pledged to. If you never declared a charity, we'll be in contact with you shortly.</p>
 
               <% @user_charities.each do |charity| %>
+              <div class="userCharityWrapper">
                 <% if charity.blank? %>
                   <h3>Pending Charity</h3>
                 <% else %>
                   <h3>Charity: <%= link_to charity.name, charity %></h3>
                 <% end %>
 
-                <% @winning_auctions.each do |auction| %>
+                <% @entered_auctions.each do |auction| %>
                   <% if auction.highest_bid.charity == charity %>
                     <h4><%= link_to auction.title.truncate(60), auction %></h4>
                     <ul>
@@ -120,6 +121,7 @@
                     </ul>
                   <% end %>
                 <% end %>
+              </div>
               <% end %>
             <% else %>
               Your volunteer information will appear here when you've won an auction.

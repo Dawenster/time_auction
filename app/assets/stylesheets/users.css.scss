@@ -1,11 +1,7 @@
 div#userProfileName{
   width: 400px;
-  /*float: left;*/
   margin-top: 10px;
 
-}
-
-#userProfileTabs{
 }
 
 .span2 {
@@ -94,6 +90,7 @@ div#userProfileName{
 }
 
 .profile-container {
+  font-size: 1.1em;
   h2 {
     margin-top: 0px;
   }
@@ -107,6 +104,20 @@ div#userProfileName{
   .auction-column:nth-child(2n) {
     margin-right: 0px;
   }
+  li {
+    font-family: 'Lato';
+    font-weight: 300;
+    padding-left: 10px;
+    list-style: none;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    & strong {
+      font-weight: 400;
+    }
+  }
+  h4 {
+    margin-top: 0px;
+  }
 }
 
 .profileBox {
@@ -119,17 +130,7 @@ div#userProfileName{
   margin-bottom: 10px;
 }
 
-li {
-    font-family: 'Lato';
-    font-weight: 300;
-    padding-left: 10px;
-    list-style: none;
-    font-size: 1.2em;
-    line-height: 1.6em;
-  & strong {
-    font-weight: 400;
-  }
-}
+
 
 .recentBids {
   float: left;
@@ -151,6 +152,18 @@ li {
     margin: 0px;
     text-align: center;
     font-size: 0.8em;
+  }
+}
+
+.userCharityWrapper {
+  width: 90%;
+  border: 2px solid #aeaeae;
+  border-radius: 5px;
+  background-color: #dedede;
+  margin-bottom: 20px;
+  padding: 20px;
+  h3 {
+    margin: 0px;
   }
 }
 
