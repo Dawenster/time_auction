@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  def persistant_sign_in(user)
+  def persistent_sign_in(user)
     cookies.permanent[:auth_token] = user.auth_token
   end
 
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
+    @current_user ||= User.where(:auth_token => cookies[:auth_token]).first if cookies[:auth_token]
   end
 
   def current_user=(user)

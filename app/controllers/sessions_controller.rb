@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     puts params
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-      params[:session][:remember_me] == "1" ? persistant_sign_in(@user) : sign_in(@user)
+      params[:session][:remember_me] == "1" ? persistent_sign_in(@user) : sign_in(@user)
       flash[:success] = "Welcome back, #{@user.name}!"
       redirect_back_or @user
     else

@@ -21,16 +21,26 @@ class Auction < ActiveRecord::Base
   # validate :valid_dates
 
   def self.check_auction_finished
+    # scope find finished bids
+    # auctions = Auction.finished
     @auctions = Auction.all
     @finished = @auctions.select { |auction| auction.end_date < Time.now && auction.bids.any? && !auction.winner_id }
+    
+    # set winner_id to owner of highest bid for each auction
     @finished.each do |auction|
       auction.winner_id = auction.highest_bid.user.id
-      auction.save
-      uniq_users = auction.bids.map { |bid| bid.user }.uniq
+      auction.save # what happens if this reutrns false
+      
+      # identify unique bidders of auction
+      uniq_users = auction.users.uniq # is this in rails?
       bid_ids = []
       uniq_users.each do |user|
+        # find the id of the last bid placed, for this auction
         bid_ids << user.bids.where(:auction_id => auction.id).order("time DESC").first.id
       end
+
+      # returning finished auction!!
+
       #AuctionEndWorker.perform_async(bid_ids)
     end
   end

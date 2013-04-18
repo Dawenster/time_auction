@@ -1,6 +1,6 @@
 desc "Seeds a demo admin (for opensource forks)"
 
-task :seed_admins => :environment do
+task :seed_demo_admin => :environment do
   User.create!(
   name: "Danny Aidemin",
   email: "test@example.com",

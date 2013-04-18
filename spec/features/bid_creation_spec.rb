@@ -5,7 +5,8 @@ describe "Bid creation" do
   subject { page }
 
   describe "creating a bid" do
-    let!(:auction) { FactoryGirl.create(:auction) }
+    let!(:category) { FactoryGirl.create(:category) }
+    let!(:auction) { FactoryGirl.create(:auction, :category_id => category.id) }
     let!(:first_user) { FactoryGirl.create(:user) }
     let!(:existing_bid) { FactoryGirl.create(:bid, user_id: first_user.id, auction_id: auction.id) }
     let!(:user) { FactoryGirl.create(:user) }
@@ -20,28 +21,40 @@ describe "Bid creation" do
     context "with valid info" do
 
       it "saves a new bid", js: true do
+        puts "*" * 100
+        puts auction.highest_bid.time
         expect do
           click_button "Bid Hours"
           fill_in :bid_time, with: "7"
           click_button "Submit Bid"
+          sleep 2
           visit auction_path(auction)
+          # debugger
         end.to change(Bid, :count).by(1)
       end
 
       it "should show up at the top", js: true do
         click_button "Bid Hours"
+        puts "*" * 100
+        puts auction.highest_bid.time
         fill_in :bid_time, with: "8"
         click_button "Submit Bid"
+        sleep 2
         visit auction_path(auction)
         page.find('#bidsTab').click
         page.should have_selector('table:nth-child(2) td', text: user.name)
+        # debugger
       end
 
       it "shows success popup page", js: true do
         click_button "Bid Hours"
+        puts "*" * 100
+        puts auction.highest_bid.time
         fill_in :bid_time, with: '9'
         click_button "Submit Bid"
+        sleep 2
         page.should have_content "Thank you"
+        # debugger
       end
     end
 
