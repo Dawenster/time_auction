@@ -40,7 +40,6 @@ TimeAuction::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
 
 

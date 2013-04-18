@@ -8,7 +8,8 @@ class UserMailer < ActionMailer::Base
 
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => 'Password Reset'
+    @url = 'http://www.TimeAuction.org' + edit_password_reset_path(@user.password_reset_token)
+    mail :from => "team@timeauction.org", :to => user.email, :subject => 'Password Reset'
   end
   
 end
