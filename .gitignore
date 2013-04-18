@@ -18,3 +18,5 @@
 /config/initializers/b-codes.rb
 config/mailer.yml
 /app/assets/images/.DS_Store
+/lib/tasks/seed_admins.task
+/public/uploads/
