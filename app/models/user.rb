@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :phone, :password, :time_donated, :admin
   has_many :bids, :order => 'bids.created_at DESC', :dependent => :destroy
   has_many :auctions, through: :bids
-  has_many :comments
+  has_many :comments, :dependent => :destroy
   has_one :photo, :as => :imageable
   has_many :identities, :dependent => :destroy
 
