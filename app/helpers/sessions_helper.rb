@@ -3,8 +3,8 @@ module SessionsHelper
     session[:return_to] = request.url
   end
 
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
+  def redirect_back_or(default, notice = '')
+    redirect_to (session[:return_to] || default), notice: notice
     session.delete(:return_to)
   end
 end
