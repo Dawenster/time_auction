@@ -21,7 +21,7 @@
     </div>
       <%= f.submit @submit, :class => "user_form_button" %>
     <% end %>
-    <% if current_user.admin %>
+    <% if current_user && current_user.admin %>
       <%= @delete_button if @delete_button %>
     <% end %>
   </div>
