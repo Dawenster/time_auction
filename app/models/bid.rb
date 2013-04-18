@@ -7,6 +7,7 @@ class Bid < ActiveRecord::Base
   belongs_to :auction
   belongs_to :charity
   validate :highest_in_auction
+  validate :under_max
 
   def to_json
     { name: self.user.name }.to_json
@@ -20,6 +21,12 @@ class Bid < ActiveRecord::Base
     def highest_in_auction
       if self.auction && self.auction.bids.where("time >= ?", self.time).any?
         self.errors.add(:time, 'must be greater than the highest bid')
+      end
+    end
+
+    def under_max
+      if self.time > 500
+        self.errors.add(:time, 'Bid was too high')
       end
     end
 end
