@@ -62,7 +62,7 @@
         <% if @entered_auctions.any? %>
           <% @entered_auctions.each do |auction| %>
             <div class="recentBidPhoto">
-              <%= link_to (cl_image_tag auction.photos.first.url, width: 150, height: 150, :crop => :fill), auction %>
+              <%= link_to (cl_image_tag auction.photos.last.url, width: 150, height: 150, :crop => :fill), auction %>
             </div>
             <div class="recentBids">
               <h3><%= link_to auction.title.truncate(55), auction %></h3>
@@ -79,21 +79,35 @@
 <!-- AUCTIONS WON -->
 
       <div class="tab-pane" id="user-auctions-won">
-        <% if @winning_auctions.any? %>
-          <% @winning_auctions.each do |auction| %>
-            <%= link_to auction.title, auction %>
+        <div id="auction">
+          <% if @entered_auctions.any? %>
+            <% @entered_auctions.each do |auction| %>
+              <div class="auction-column">
+                <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction %>
+                <p class="auction-title">
+                  <%= link_to auction.title.truncate(68), auction %>
+                </p>
+                <p class="current-high">
+                  Your Bid: <strong><%= auction.highest_bid.description.titleize %></strong>
+                </p>
+              </div>
+            <% end %>
+          <% else %>
+            <%= @user.name %> hasn't won any auctions yet!
           <% end %>
-        <% else %>
-          <%= @user.name %> hasn't won any auctions yet!
-        <% end %>
+        </div>
       </div>
+
+
+
+
 
 <!-- VOLUNTEER INFO -->
       
       <% if current_user == @user %>
         <div class="tab-pane" id="user-volunteer-info">
-          <% if @winning_auctions.any? %>
-            <% @winning_auctions.each do |auction| %>
+          <% if @entered_auctions.any? %>
+            <% @entered_auctions.each do |auction| %>
               <%= link_to auction.title, auction %> - <%= auction.highest_bid.description %>
             <% end %>
           <% else %>

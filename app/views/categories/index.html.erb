@@ -8,27 +8,27 @@
 
 
   <% @auctions_categories.each do |category, auctions| %>
-      <div class="tab-pane browse-auctions <%= "active" if params[:tab] == category %>" id="<%= category.downcase %>">
-        <% auctions.each do |auction|%>
-          <div class="auction-column">
-            <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction %>
-            <p class="auction-title">
-              <%= link_to auction.title.truncate(68), auction %>
-            </p>
-            <p class="current-high">
-              Highest Bid: 
-              <strong>
-                <% if auction.bids.empty? && auction.end_date > Time.now %>
-                  <%= "Be the first to Bid!" %>
-                <% elsif auction.end_date < Time.now %>
-                  <%= "Auction is Over" %>
-                <% else %>
-                  <%= auction.highest_bid.description.titleize %>
-                <% end %>
-              </strong>
-            </p>
-          </div>
-        <% end %>
+    <div class="tab-pane browse-auctions <%= "active" if params[:tab] == category %>" id="<%= category.downcase %>">
+      <% auctions.each do |auction|%>
+        <div class="auction-column">
+          <%= link_to (cl_image_tag auction.photos.last.url, width: 300, height: 200, :class => "browse-photo", :crop => :fill), auction %>
+          <p class="auction-title">
+            <%= link_to auction.title.truncate(68), auction %>
+          </p>
+          <p class="current-high">
+            Highest Bid: 
+            <strong>
+              <% if auction.bids.empty? && auction.end_date > Time.now %>
+                <%= "Be the first to Bid!" %>
+              <% elsif auction.end_date < Time.now %>
+                <%= "Auction is Over" %>
+              <% else %>
+                <%= auction.highest_bid.description.titleize %>
+              <% end %>
+            </strong>
+          </p>
+        </div>
+      <% end %>
     </div>
   <% end %> 
 </div>
