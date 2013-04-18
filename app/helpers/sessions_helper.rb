@@ -4,7 +4,11 @@ module SessionsHelper
   end
 
   def redirect_back_or(default, notice = '')
-    redirect_to (session[:return_to] || default), notice: notice
+    if notice == ''
+      redirect_to(session[:return_to] || default)
+    else
+      redirect_to (session[:return_to] || default), notice: notice
+    end
     session.delete(:return_to)
   end
 end
