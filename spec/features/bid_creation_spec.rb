@@ -39,6 +39,7 @@ describe "Bid creation" do
         click_button "Bid Hours"
         fill_in :bid_time, with: '9'
         click_button "Submit Bid"
+        page.driver.browser.switch_to.alert.accept
         page.should have_selector('#bid_success_popup')
       end
 
