@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :auctions, through: :bids
   has_many :comments
   has_one :photo, :as => :imageable
-  has_many :identities
+  has_many :identities, :dependent => :destroy
 
   validates :name, :presence => true
   validates :email, :presence => true

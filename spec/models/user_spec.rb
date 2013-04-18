@@ -9,7 +9,7 @@ describe User do
   it { should respond_to :phone }
   it { should have_many(:auctions).through(:bids) }
   it { should have_one(:photo)}
-  it { should have_many(:identities)}
+  it { should have_many(:identities).dependent(:destroy)}
 
   describe "valid email" do
     let(:user) { FactoryGirl.create(:user) }
