@@ -68,7 +68,7 @@
 
 
         </div>
-                    <% @bids.each do |bid| %>
+          <% @bids.each do |bid| %>
             <li><%= bid.description %> on <%= link_to bid.auction.title, auction_path(bid.auction) %></li>
           <% end %>
         </ul>

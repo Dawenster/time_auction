@@ -30,7 +30,7 @@
   & h1 {
     font-family: 'Lato';
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 0px;
     font-size: 3.8em;
    }
@@ -52,6 +52,7 @@
     -webkit-box-shadow: 0px 10px 15px rgba(50, 50, 50, 0.60);
     -moz-box-shadow:    0px 10px 15px rgba(50, 50, 50, 0.60);
     box-shadow:         0px 10px 15px rgba(50, 50, 50, 0.60);
+    margin-bottom: 5px;
   }
 }
 
@@ -66,6 +67,9 @@ a#learn-more {
 .splashContainer {
   width: 1040px;
   margin: auto;
+  img {
+    border-radius: 10px;
+  }
   h2 {
     padding: 30px;
     text-align: center;
@@ -88,7 +92,6 @@ a#learn-more {
   & .btn-danger {
     margin: auto;
     text-align: center;
-    /*width: 720px;*/
     padding: 18px;
     font-size: 1.6em;
     letter-spacing: 2px;
