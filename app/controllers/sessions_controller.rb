@@ -37,18 +37,18 @@ class SessionsController < ApplicationController
 
     if signed_in?
       if @identity.user == current_user
-        redirect_back_or root_path, notice: "Facebook login refreshed!"
+        redirect_back_or root_path, "Facebook login refreshed!"
       else
         # TODO: need to figure out how to merge two user accounts (currently 
         # signed in and the one associated with identity) if user_id isn't nil here
         @identity.user = current_user
         @identity.save!
-        redirect_back_or root_path, notice: "Successfully linked your account!"
+        redirect_back_or root_path, "Successfully linked your account!"
       end
     else
       if @identity.user.present?
         self.current_user = @identity.user
-        redirect_back_or root_path, notice: "Signed in!"
+        redirect_back_or root_path, "Signed in!"
       else
         if User.find_by_email(@identity.email)
           flash[:notice] = "Logged in and account linked! Glad we could pull you away from facebook :)."
