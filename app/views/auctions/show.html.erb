@@ -136,7 +136,9 @@
 
     <div class='you-highest<%= ' hide' unless @auction.highest_bid && @auction.highest_bid.user == current_user && !@auction.winner_id %>'>
         <h3>You're Currently the Top Bidder!</h3>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://TimeAuction.org/<%= @auction.id %>" data-text="I'm winning for charity at Time Auction-- try to top me!" data-count="none">Tweet</a>
+        
+        <!-- Twitter script -->
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://TimeAuction.org/auctions/<%= @auction.id %>" data-text="I'm winning for charity at Time Auction-- try to top me!" data-count="none">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
 
