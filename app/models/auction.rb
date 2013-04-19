@@ -41,7 +41,7 @@ class Auction < ActiveRecord::Base
 
       # returning finished auction!!
 
-      AuctionEndWorker.perform_async(bid_ids)
+      # AuctionEndWorker.perform_async(bid_ids)
     end
   end
 

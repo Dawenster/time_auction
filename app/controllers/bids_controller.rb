@@ -30,7 +30,7 @@ class BidsController < ApplicationController
     sleep 2
 
     if @bid.save
-      EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
+      # EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
       
       render text: render_to_string(partial: 'bid', locals: { bid: @bid })
     else
