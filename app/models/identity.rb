@@ -33,6 +33,6 @@ class Identity < ActiveRecord::Base
     user = User.create( name: self.name, email: self.email, phone: "", password: SecureRandom.uuid )
     self.user_id = user.id
     self.save!
-    self.send_new_account_via_facebook
+    # self.send_new_account_via_facebook
   end
 end
