@@ -1,5 +1,5 @@
 .splashImage {
-  background: url('../assets/front-page.jpg') no-repeat; 
+  background: url('../assets/front-page.jpg') no-repeat center; 
   padding-top: 60px;
   width: 100%;
   -webkit-background-size: cover;
@@ -9,21 +9,15 @@
   height: 600px;
 }
 
-.splashBox {
-  width: 500px;
-  height: 240px;
+.splashBoxContent { 
+  max-width: 500px;
   border-radius: 10px;
-  opacity: 0.6;
-  background-color: #000;
+  background: rgba(0, 0, 0, .7);
   position: absolute;
   top: 25%;
   left: 23%;
-}
-
-.splashBoxContent { 
   padding: 28px;
   color: #fff;
-  position: absolute;
   top: 25%;
   left: 23%;
   z-index: 10;
