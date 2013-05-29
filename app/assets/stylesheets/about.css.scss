@@ -1,6 +1,5 @@
 .aboutImage {
   background: url('../assets/about_page.jpg') no-repeat; 
-  padding-top: 60px;
   width: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8,6 +7,7 @@
   background-size: cover;
   height: 720px;
   opacity: 0.8;
+  padding: 60px 15% 0;
   & .transparent {
     visibility: hidden;
     }
@@ -19,7 +19,7 @@
       font-size: 6em;
     }
   & p {
-      font-size: 24px;
+      font-size: 1.8em;
       line-height: 30px;
       letter-spacing: 2px;
       margin-bottom: 20px;
@@ -32,13 +32,14 @@
 }
 
 .aboutBoxContent, .aboutBox { 
-  width: 47%;
-  padding: 36px;
+  max-width: 650px;
+  padding: 2%;
   color: #fff;
   position: absolute;
-  top: 25%;
   left: 25%;
+  top: 23%;
   z-index: 10;
+  margin: 4% auto;
   text-shadow: 2px 2px 2px #000;
 }
 
@@ -52,16 +53,16 @@
 }
 
 .row {
-  width: 1040px !important;
-  margin: 0px !important;
+  width: 100%;
+  max-width: 1040px !important;
+  margin: 0px auto !important;
+  display: block;
 }
 
 .span3 {
-  width: 240px !important;
-  margin: 0 0 0 24px !important;
-  &:first-child {
-    margin: 0px !important;
-  }
+  margin: auto;
+  min-width: 240px;
+  display: inline-block;
 }
 
 .teamCell {
@@ -73,8 +74,8 @@
   -webkit-box-shadow: 0px 4px 15px rgba(242, 5, 5, 0.10);
   -moz-box-shadow:    0px 4px 15px rgba(242, 5, 5, 0.10);
   box-shadow:         0px 4px 15px rgba(242, 5, 5, 0.10);
-
-
+  margin: auto;
+  margin: 0 0 0 1%;
   &:last-child {
     margin-right: 0px;
   }
@@ -96,9 +97,6 @@
   }
   &:hover {
     background-color: #ccc;
-    -webkit-box-shadow: 0px 4px 15px rgba(242, 5, 5, 0.75);
-    -moz-box-shadow:    0px 4px 15px rgba(242, 5, 5, 0.75);
-    box-shadow:         0px 4px 15px rgba(242, 5, 5, 0.75);
   }
   & p {
     padding: 8px;
