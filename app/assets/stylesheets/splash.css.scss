@@ -6,21 +6,29 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 600px;
+  height: 320px;
+  padding: 14% 0;
+}
+
+@media all and (max-width: 500px){
+  .splashImage {
+    padding-top: 20%;
+    }
+  .splashBoxContent {
+    width: 100%;
+    margin: 0 1% !important;
+    padding-top: 70px;
+  }
 }
 
 .splashBoxContent { 
   max-width: 500px;
+  margin: 0 10%;
   border-radius: 10px;
   background: rgba(0, 0, 0, .7);
   position: absolute;
-  top: 25%;
-  left: 23%;
-  padding: 28px;
+  padding: 2%;
   color: #fff;
-  top: 25%;
-  left: 23%;
-  z-index: 10;
   & h1 {
     font-family: 'Lato';
     font-weight: 700;
@@ -59,7 +67,8 @@ a#learn-more, a#the-team {
 }
 
 .splashContainer {
-  width: 1040px;
+  max-width: 1040px;
+  width: 100%;
   margin: auto;
   img {
     border-radius: 10px;
@@ -158,7 +167,7 @@ hr {
   margin-bottom: 50px;
   float: left;
   display: inline-block;
-  width: 600px;
+  max-width: 600px;
   color: #383838;
   font-family: 'Lato';
   & h3{

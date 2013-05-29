@@ -31,7 +31,8 @@ nav {
 
 ul#kstrap-navbar {
   margin: 0px auto;
-  width: 1040px;
+  width: 100%;
+  max-width: 1040px;
 }
 
 nav a {
@@ -51,10 +52,10 @@ ul#kstrap-navbar li {
 
 ul#kstrap-navbar li a {
   font-family: 'titilliumtext25l600_wt';
-  font-size: 20px; 
+  font-size: 1.2em; 
   line-height: 60px;
   display: inline;
-  padding: 15px;
+  padding: 1%;
   &#navName {
     &:hover {
       text-decoration: none;
