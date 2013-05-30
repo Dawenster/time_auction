@@ -1,32 +1,34 @@
 .splashImage {
-  background: url('../assets/front-page.jpg') no-repeat; 
+  background: url('../assets/front-page.jpg') no-repeat center; 
   padding-top: 60px;
   width: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 600px;
+  height: 320px;
+  padding: 14% 0;
 }
 
-.splashBox {
-  width: 500px;
-  height: 240px;
-  border-radius: 10px;
-  opacity: 0.6;
-  background-color: #000;
-  position: absolute;
-  top: 25%;
-  left: 23%;
+@media all and (max-width: 500px){
+  .splashImage {
+    padding-top: 20%;
+    }
+  .splashBoxContent {
+    width: 100%;
+    margin: 0 1% !important;
+    padding-top: 70px;
+  }
 }
 
 .splashBoxContent { 
-  padding: 28px;
-  color: #fff;
+  max-width: 500px;
+  margin: 0 10%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .7);
   position: absolute;
-  top: 25%;
-  left: 23%;
-  z-index: 10;
+  padding: 2%;
+  color: #fff;
   & h1 {
     font-family: 'Lato';
     font-weight: 700;
@@ -65,7 +67,8 @@ a#learn-more, a#the-team {
 }
 
 .splashContainer {
-  width: 1040px;
+  max-width: 1040px;
+  width: 100%;
   margin: auto;
   img {
     border-radius: 10px;
@@ -164,7 +167,7 @@ hr {
   margin-bottom: 50px;
   float: left;
   display: inline-block;
-  width: 600px;
+  max-width: 600px;
   color: #383838;
   font-family: 'Lato';
   & h3{

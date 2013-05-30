@@ -31,7 +31,8 @@ nav {
 
 ul#kstrap-navbar {
   margin: 0px auto;
-  width: 1040px;
+  width: 100%;
+  max-width: 1040px;
 }
 
 nav a {
@@ -41,7 +42,7 @@ nav a {
 
 ul#kstrap-navbar li {
   font-family: 'titilliumtext25l600_wt';
-  font-size: 1.4em;
+  font-weight: normal;
   display: inline;
   & img {
     padding-bottom: 5px;
@@ -51,10 +52,11 @@ ul#kstrap-navbar li {
 
 ul#kstrap-navbar li a {
   font-family: 'titilliumtext25l600_wt';
-  font-size: 20px; 
+  font-weight: normal;
+  font-size: 1.6em; 
   line-height: 60px;
   display: inline;
-  padding: 15px;
+  padding: 1%;
   &#navName {
     &:hover {
       text-decoration: none;
@@ -87,13 +89,13 @@ a#logo {
 
 ul#kstrap-navbar li.dropdown:hover ul.dropdown-menu {
   min-width: 0px !important;
-  margin-top: 15px;
+  margin-top: 5px;
   padding-top: 1px;
   display: block;
   list-style: none;
   background-color: #ECECEC;
   text-align: left;
-  padding: 0px !important;
+  padding: 0 1%;
   & li a:hover {
     color: #F20505;
     background: transparent !important;

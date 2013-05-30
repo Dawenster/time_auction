@@ -2,10 +2,13 @@
   clear: both;
   background-color: #3a3a3a;
   background-size: cover;
-  height: 300px;
+  min-height: 300px;
   font-family: 'Open Sans';  
   font-weight: 300;
   margin-top: 100px;
+  display: inline-block;
+  vertical-align:top;
+  width: 100%;
   & a {
     color: #999;
     &:hover {
@@ -16,7 +19,8 @@
 }
 
 .footerContainer {
-  width: 1040px;
+  width: 100%;
+  max-width: 1040px;
   padding-top: 40px;
   padding-bottom: 20px;
   margin: 0px auto;
