@@ -14,6 +14,7 @@ class CharitiesController < ApplicationController
   end
 
   def create
+    params[:charity][:name] = params[:charity][:name].downcase.titleize if params[:charity][:name]
     @charity = Charity.new(params[:charity])
 
     if @charity.save

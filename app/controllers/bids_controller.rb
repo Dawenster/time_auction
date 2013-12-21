@@ -5,7 +5,7 @@ class BidsController < ApplicationController
     @auction = @bid.auction
     @bids = @auction.bids
 
-    charity = Charity.find_or_create_by_name(params[:bid][:charity_id].downcase.capitalize)
+    charity = Charity.find_or_create_by_name(params[:bid][:charity_id].downcase.titleize)
 
     @bid.charity = charity
 
@@ -30,7 +30,7 @@ class BidsController < ApplicationController
     sleep 2
 
     if @bid.save
-      EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
+      # EmailWorker.perform_async(@bids.reload.map(&:id).uniq)
       
       render text: render_to_string(partial: 'bid', locals: { bid: @bid })
     else
